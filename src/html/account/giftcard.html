@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-use-rem="750">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keyword" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="sourceat-detection" content="telephone=no,address=no">
+	<meta name="sourceat-detection" content="email=no">
+	<title>My Gift Card</title>
+	<link rel="stylesheet" href="../../css/pages/account/giftcard.css">
+</head>
+<body>
+	<script type="text/javascript">(function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);</script>
+	<div class="header-wrapper">
+		<header class="header">
+			<a class="header-back-to" href="javascript:history.go(-1)"></a>
+			<h3 class="header-title">MY GIFT VOUCHER</h3>
+		</header>
+	</div>
+
+	<div class="header-sub">
+		<h3 class="sub-title">Total Exchange Price</h3>
+		<p class="total-num">Rs. 1800</p>
+	</div>
+
+	<div class="separator"></div>
+
+<ul class="cards-list">
+    <li class="cards-li disabled">
+		<div class="title-row">
+			Flipkart Gift Voucher
+			<span class="denomination">Rs. 100</span>
+		</div>
+		<div class="number-row">
+			<h3 class="notif">It can be used after the order approve.</h3>
+			<h3 class="sub-title">Voucher Number</h3>
+			<p class="number">1234 1234 1234 1234</p>
+			<span class="copy-btn">copy</span>
+		</div>
+		<div class="hr-wrap"><i class="hr"></i></div>
+		<div class="code-row">
+			<h3 class="sub-title">Voucher Pin</h3>
+			<p class="number">123456</p>
+			<span class="copy-btn">copy</span>
+		</div>
+		<div class="hr-wrap"><i class="hr"></i></div>
+		<div class="detail-row">
+			<ul class="details">
+				<li>Distribute Date: 18/04/2018</li>
+				<li>Expire Price: ₹90.00</li>
+			</ul>
+		</div>
+		<div class="mark-wrap">
+			<div class="mark-btn">
+				<p class="text">unused</p>
+			</div>
+		</div>
+	</li>
+	<li class="cards-li used">
+		<div class="title-row">
+			Flipkart Gift Voucher
+			<span class="denomination">Rs. 100</span>
+		</div>
+		<div class="number-row">
+			<h3 class="sub-title">Voucher Number</h3>
+			<p class="number">1234 1234 1234 1234</p>
+			<span class="copy-btn">copy</span>
+		</div>
+		<div class="hr-wrap">
+			<i class="hr"></i>
+		</div>
+		<div class="number-row">
+			<h3 class="sub-title">Voucher Pin</h3>
+			<p class="number">123456</p>
+			<span class="copy-btn">copy</span>
+		</div>
+		<div class="hr-wrap">
+			<i class="hr"></i>
+		</div>
+		<div class="detail-row">
+			<ul class="details">
+				<li>Expiry Date: 18/04/2018</li>
+				<li>Exchanged  Date: 18/04/2018</li>
+				<li>Exchange Price: ₹90.00</li>
+			</ul>
+		</div>
+	</li>
+	<li class="cards-li">
+		<div class="title-row">
+			Flipkart Gift Voucher
+			<span>Rs. 100</span>
+		</div>
+		<div class="number-row">
+			<h3 class="sub-title">Voucher Number</h3>
+			<p class="number">1234 1234 1234 1234</p>
+			<span class="copy-btn">copy</span>
+		</div>
+		<div class="hr-wrap">
+			<i class="hr"></i>
+		</div>
+		<div class="number-row">
+			<h3 class="sub-title">Voucher Pin</h3>
+			<p class="number">123456</p>
+			<span class="copy-btn">copy</span>
+		</div>
+		<div class="hr-wrap">
+			<i class="hr"></i>
+		</div>
+		<div class="detail-row">
+			<ul class="details">
+				<li>Expiry Date: 18/04/2018</li>
+				<li>Exchanged  Date: 18/04/2018</li>
+				<li>Exchange Price: ₹90.00</li>
+			</ul>
+		</div>
+	</li>
+
+ </ul>
+
+<div class="help-wrap">
+	<span class="help-btn">HOW TO USE GIFT VOUCHER?</span>
+</div>
+
+<!-- <div class="no-data">
+	<div class="wrap">
+		<img class="default" src="<%=config.wapcsspath%>/images/account/giftcard-nodata.png">
+		<h1 class="title">You have not redeemed the gift card yet!</h1>
+	</div>
+</div> -->
+
+<div class="tutorial-mask">
+	<div class="tutorial-content">
+		<p class="text">Long press to mark the usage of Gift Card.</p>
+		<i class="close-btn"></i>
+	</div>
+	<div class="corner lt"></div>
+	<div class="corner rt"></div>
+	<div class="corner lb"></div>
+	<div class="corner rb"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/zepto/1.2.0/zepto.min.js">
+
+</script>
+<script>
+function showTutorial(selector, tutorialText) {
+	let tarEle = document.querySelector(selector);
+	console.log(tarEle);
+	if (tarEle === null) {
+		throw new Error('没有这个元素。');
+	}
+
+	let left = tarEle.offsetLeft,
+		top = tarEle.offsetTop,
+		width = tarEle.offsetWidth,
+		height = tarEle.offsetHeight;
+
+	let wdWidth = document.body.clientWidth,
+		wdHeight = document.body.clientHeight;
+
+	let corners = {
+		ltCoord: [0, 0, left, top + height],
+		rtCoord: [left, 0, wdWidth - left, top],
+		lbCoord: [0, top + height, left + width, wdHeight - top - height],
+		rbCoord: [left + width, top, wdWidth - left - width, wdHeight - top],
+	};
+
+
+	let $body = $('body');
+
+	let $tutorialMask = $(document.querySelector('.tutorial-mask'));
+
+	['lt', 'rt', 'lb', 'rb'].map(function(item) {
+		$tutorialMask.find('.' + item).css({
+			left: corners[item + 'Coord'][0],
+			top: corners[item + 'Coord'][1],
+			width: corners[item + 'Coord'][2],
+			height: corners[item + 'Coord'][3]
+		});
+	});
+
+
+
+	$tutorialMask.find('.text').text(
+		typeof tutorialText === 'string'
+		? tutorialText
+		: '老哥还没传使用说明的文字。'
+	);
+
+	$tutorialMask.on('click', '.close-btn', function() {
+		$tutorialMask.hide();
+		$body.removeClass('no-scroll');
+	})
+
+	$tutorialMask.show();
+	$body.addClass('no-scroll');
+}
+
+// showTutorial('.cards-li', 'aaaaaaaa');
+setTimeout(function(){
+	showTutorial('.cards-li', 'sss')
+}, 500);
+
+</script>
+<!--
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
+<script>
+let c = new Clipboard('.copy-btn');
+c.on('success', function() {
+	console.log('Copied.');
+});
+c.on('error', function() {
+	console.log('Your browser doesn\'t support auto-copy.');
+});
+</script> -->
+</body>
+</html>

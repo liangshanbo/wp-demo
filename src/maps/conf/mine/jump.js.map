@@ -1,0 +1,1 @@
+{"version":3,"sources":["conf/mine/jump.js"],"names":[],"mappings":"AAAA","file":"../../../js_es6/conf/mine/jump.js","sourcesContent":["/**\n * 我的--跳转页面\n * @author guodanying\n * @date 20170220\n * 页面引用\n *  <script src=\"__PUBLIC__/js/lithe.js\"\n data-config=\"config.js\"\n data-debug=\"true\"\n data-main=\"conf/mine/jump.js\">\n </script>\n */"]}

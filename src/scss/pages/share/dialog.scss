@@ -1,0 +1,167 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+// @import '../../common/reset/reset.scss';
+// @import "../../common/layer/layer.scss";
+.share-layer {
+    width:100%;
+    height:100%;
+    position: fixed;
+    z-index:998;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif !important;
+    .share-mark {
+        width:100%;
+        height:100%;
+        background:#000;
+        opacity:0.6;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    .share-dialog {
+    	background-color:#fff;
+        width:100%;
+        height:rem(524);
+        max-height:50%;
+        z-index:999;
+        position: fixed;
+        bottom:0%;
+        left:0%;
+        margin-top:rem(-220);
+        .share-header{
+            font-family:'SFUIText-Medium';
+            color:#333333;
+            text-align: center;
+            height:rem(116);
+            font-size: rem(36);
+            line-height: rem(116);
+        }
+        .share-main{
+                width: 100%;
+                height: rem(404);
+            .share-content{
+                width:100%;
+                height:rem(404);
+                position: absolute;
+                padding:0 rem(10);
+                .share-content-list {
+                    width:100%;
+                    height:rem(200);
+                    li{
+                        float: left;
+                        margin-bottom: rem(10);
+                        width:33%;
+                        height: 100%;
+                        font-size:rem(30);
+                        color:#7C7c7c;
+                        em {
+                            display: block;
+                            width:rem(90);
+                            height:rem(90);
+                            margin:rem(10) 0 rem(12) rem(80);
+                            background-size: 100%;
+                        }
+                        span{
+                            text-align: center;
+                            display: block;
+                            height:rem(50);
+                            line-height:rem(50);
+                            width: 100%
+                        }
+                    }
+                    #share_facebook{
+                        em {
+                            background-image:url('../../../images/public/icon_facebook.png');
+                        }
+                    }
+                    #share_copylink{
+                        em{
+                            background-image:url('../../../images/public/icon_link.png');
+                        }
+                    }
+                    #share_twitter {
+                        em{
+                            background-image:url('../../../images/public/icon_twitter.png');
+                        }
+                    }
+                    #share_whatsapp{
+                        em{
+                            background-image:url('../../../images/public/icon_whatsapp.png');
+                        }
+                    }
+                }
+            }
+        }
+        .share-cancel {
+            text-align: center;
+            color: #00F;
+            font-size: rem(36);
+            width: 100%;
+            height:rem(110);
+            line-height: rem(110);
+            border-top: 1px solid #e0e0e0;
+        }
+    }
+}
+.slot{
+    width:rem(408);
+    height:rem(260);
+    background-color: #000;
+    position:fixed;
+    top:50%;
+    left:50%;
+    margin-top:rem(-130);
+    margin-left:rem(-204);
+    z-index:9999;
+    color:#FFF;
+    font-size:rem(24);
+    .slot_header{
+        width: 100%;
+        height:rem(100);
+        line-height:rem(100);
+        padding-left:rem(40);
+        em{
+            display:block;
+            float: right;
+            width:rem(32);
+            height:rem(32);
+            line-height:rem(32);
+            text-align: center;
+            margin:rem(18 15 0 0);
+        }
+    }
+    .slot_main{
+        height:rem(160);
+        .slot_main_texts {
+            height:rem(80);
+            padding:rem(10 0 0 40);
+            width: 80%;
+            p{
+                word-break: normal;
+                word-wrap: normal;
+            }
+        }
+        .slot_main_confirm {
+            height:rem(80);
+            a{
+                width:rem(90);
+                height:rem(50);
+                display: inline-block;
+                line-height:rem(50);
+                text-align: center;
+                font-size:rem(28);
+                color:#FFF;
+                border:1px solid #FFF;
+                float:right;
+                margin:rem(10 30);
+            }
+        }
+    }
+}
+.share-dialog.on{
+    height:rem(340);
+    .share-content-list li{
+        position:absolute;
+        left:33%;
+    }
+}
+

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+/*=======标题=========*/
+.title{
+	height: rem(110);
+	padding: rem(0 30);
+	position: relative;
+	&:before{
+		content: '';
+		position: absolute;
+		top:rem(40);
+		left: 0;
+		width: rem(8);
+		height: rem(30);
+		background-color: #FFD742;
+		box-shadow: rem(8) 0 0 0 #FFF1B8;
+	}
+	.title-main{
+		line-height: rem(110);
+		font-size: rem(34);
+		color: #333;
+	}
+	.title-arrows{
+		position: absolute;
+		right: rem(22);
+		top: rem(38);
+		width: rem(30);
+		height: rem(30);
+		background: url(../../../images/index/arrows-index.png) no-repeat;
+		background-size: cover;
+	}
+}

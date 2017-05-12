@@ -1,0 +1,32 @@
+//based on prefix() API;
+//Arhtor: ZYZ
+
+@mixin scale($direction:xy,$xy:(1,1),$prefixes:webkit,$origin:defaultValue){
+  // xy
+  @if $direction == xy {
+    @each $prefix in $prefixes{
+      -#{$prefix}-transform: scale($xy);
+    }
+    transform: scale($xy);
+  }
+  // x
+  @else if $direction == x {
+    @each $prefix in $prefixes{
+     -#{$prefix}-transform: scaleX($xy);
+    }
+    transform: scaleX($xy);
+  }
+  // y
+  @else if $direction == y {
+    @each $prefix in $prefixes{
+      -#{$prefix}-transform: scaleY($xy);
+    }
+    transform: scaleY($xy);
+  }
+  // origin
+  @each $prefix in $prefixes{
+    @if $origin != defaultValue {
+      -#{$prefix}-transform-origin:$origin;
+    }
+  }
+}

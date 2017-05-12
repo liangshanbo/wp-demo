@@ -1,0 +1,89 @@
+//based on line() API
+//Arhtor: ZYZ
+
+@import '_prefix.scss';
+
+// line
+@mixin line($direct:top,$border-color:#c7c7c7,$radius:0){
+  position:relative;
+  //left
+  @if $direct == left{
+    &:before{
+      @include pseudo($direct,$border-color,left top bottom width);
+      @include prefix(transform-origin,0 0);
+    }
+    // retian >= 1.5
+    @include media(1.5,(0.5,1));
+    // retian >= 3
+    @include media(3,(0.3,1));
+  }
+  //top
+  @if $direct == top{
+    &:before{
+      @include pseudo($direct,$border-color,left right top height);
+      @include prefix(transform-origin,0 0);
+    }
+    // retian >= 1.5
+    @include media(1.5,(1,0.5));
+    // retian >= 3
+    @include media(3,(1,0.3));
+  }
+  //right
+  @if $direct == right{
+    &:before{
+      @include pseudo($direct,$border-color,right top bottom width);
+      @include prefix(transform-origin,100% 0);
+    }
+    // retian >= 1.5
+    @include media(1.5,(0.5,1));
+    // retian >= 3
+    @include media(3,(0.3,1));
+  }
+  //bottom
+  @if $direct == bottom{
+    &:before{
+      @include pseudo($direct,$border-color,left right bottom height);
+      @include prefix(transform-origin,100% 100%);
+    }
+    // retian >= 1.5
+    @include media(1.5,(1,0.5));
+    // retian >= 3
+    @include media(3,(1,0.3));
+  }
+  // all
+  @if $direct == all {
+    &:before{
+      content:'';
+      position:absolute;
+      display:block;
+      left:0;
+      top:0;
+      width:200%;
+      height:200%;
+      border:1px solid $border-color;
+      @include box-sizing(border);
+      @include prefix(transform-origin,0 0);
+      @include prefix(border-radius,rem($radius) * 2);
+    }
+    @include media(1.5,(0.5,0.5));
+  }
+}
+// before
+@mixin pseudo($direct,$border-color:#ccc,$attr:(left top right height)){
+  content:'';
+  position:absolute;
+  #{nth($attr,1)}:0;
+  #{nth($attr,2)}:0;
+  #{nth($attr,3)}:0;
+  #{nth($attr,4)}:1px;//width or height
+  display:block;
+  border-#{$direct}:1px solid $border-color;
+}
+// media
+@mixin media($ratio:1.5,$scale:0.5){
+  @media (-webkit-min-device-pixel-ratio: $ratio){
+        &:before {
+            @include prefix(transform,scale(#{$scale}));
+        }
+    }
+}

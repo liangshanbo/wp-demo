@@ -1,0 +1,115 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+.register-title{
+  font-size: rem(56);
+  color: #333;
+  padding-top: rem(58);
+  font-weight: bold;
+}
+.register-section {
+  padding: rem(0 46);
+  .register-input-input {
+    border: none;
+    outline: 0;
+    margin-top: rem(44);
+    padding: rem(24 0);
+    height: rem(32);
+    box-sizing: content-box;
+    font-size:rem(32);
+    display: block;
+    @include flex-col(1);
+  }
+  .register-input-phone {
+    @include flex-box();
+    margin-top: rem(126);
+    height: rem(124);
+    position: relative;
+    font-size: rem(32);
+    .register-area{
+      width: auto;
+      display: block;
+      height: rem(80);
+      margin-top: rem(44);
+      padding-right: rem(20);
+      line-height: rem(80);
+      position: relative;
+      font-size: rem(32);
+      color: #333;
+      &:before{
+        content: '';
+        position: absolute;
+        right: 0;
+        top: rem(22);
+        height: rem(36);
+        width: 1px;
+        background-color: #E4E4E4;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+      }
+    }
+    .register-input-input {
+      margin-right: rem(20);
+      padding-left: rem(20);
+    }
+  }
+  .register-input-pwd{
+    position: relative;
+  }
+  .register-input-verification{
+    @include flex-box();
+    .register-input-input{
+      border-bottom: 1px solid #E4E4E4;
+    }
+    .register-verification-send {
+      border: 1px solid #CCCCCC;
+      color: #ccc;
+      margin-left: rem(20);
+      width: rem(168);
+      height: rem(70);
+      font-size: rem(30);
+      text-align: center;
+      line-height: rem(70);
+      margin-top: rem(54);
+      border-radius: rem(2);
+      display: block;
+    }
+    .verification-active{
+      border: 1px solid #919191;
+      color: #333;
+    }
+  }
+  .register-input-phone:before, .register-input-pwd:before{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #E4E4E4;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+  .register-btns{
+    margin-top: rem(60);
+  }
+  .register-agreement{
+    margin-top: rem(32);
+    @include flex-box();
+    .register-agreement-select{
+      width: rem(30);
+      height: rem(30);
+      background: url(../../../images/register/select.png) no-repeat;
+      background-size: 100% auto;
+      margin-right: rem(10);
+      display: block;
+    }
+    .register-agreement-href{
+      padding-left: rem(20);
+      color: $yellow;
+    }
+  }
+  .register-agreement-active .register-agreement-select{
+    background: url(../../../images/register/no-select.png) no-repeat;
+    background-size: 100% auto;
+  }
+}

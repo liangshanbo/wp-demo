@@ -1,0 +1,209 @@
+@charset "UTF-8";
+@import '../../../common/_base/_configure.scss';
+@import '../../../common/reset/reset.scss';
+@import '../../../common/module/header.scss';
+@import '../../../common/plugin/swiper.scss';
+
+/*------新人礼-------*/
+.top img,.content .bg{
+	width: 100%;
+}
+.content{
+	position: relative;
+}
+.content .content-in{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/*------------内容的头部-----------*/
+.rules{
+
+}
+.rule-title{
+	width: rem(533);
+	height: rem(87);
+	margin:rem(66) auto 0;
+	font-size: rem(36);
+	color: #333;
+	text-align: center;
+	line-height: rem(68);
+	background: url(../../../images/op/newgift/title.png) no-repeat;
+	background-size: cover;
+	position: relative;
+	z-index: 100;
+}
+.rule-para{
+	width: rem(652);
+	height: rem(398);
+	margin:rem(-40) auto 0;
+	background: url(../../../../images/op/newgift/rules.png) no-repeat;
+	background-size: cover;
+}
+.rule-btns{
+	overflow: hidden;
+	margin:rem(38 58 0);
+	.btn01{
+		float: left;
+		width: rem(296);
+		height: rem(106);
+		background: url(../../../images/op/newgift/btn_bonus.png) no-repeat;
+		background-size: cover;
+	}
+	.btn02{
+		float: right;
+		width: rem(296);
+		height: rem(106);
+		background: url(../../../images/op/newgift/btn_download.png) no-repeat;
+		background-size: cover;
+	}
+	.btn03{
+		float: left;
+		width: rem(630);
+		height: rem(106);
+		background: url(../../../images/op/newgift/btn_bonus_big.png) no-repeat;
+		background-size: cover;
+		margin-top: rem(58);
+	}
+}
+.view{
+	text-align: center;
+	line-height: 1.2;
+	margin-top: rem(40);
+	a{
+		color: #FFCB0B;
+		font-size: rem(24);
+		text-decoration: underline;
+	}
+}
+/*--------------第二部分----------------*/
+.ration{
+	margin-top: rem(108);
+
+}
+.cards{
+	margin:rem(56 48 0);
+	overflow: hidden;
+	color: #333;
+	.item{
+		width: rem(316);
+		font-size: rem(24);
+		line-height: rem(36);
+		padding: rem(76 24 0 40);
+	}
+	 .item:nth-child(1){
+		float: left;
+		padding-top: rem(94);
+		height: rem(424);
+		background: url(../../../../images/op/newgift/card1.png) no-repeat;
+		background-size: cover;
+	}
+	.item:nth-child(2){
+		float: right;
+		height: rem(422);
+		margin-top:rem(16);
+		background: url(../../../../images/op/newgift/card2.png) no-repeat;
+		background-size: cover;
+	}
+}
+/*--------------第3部分----------------*/
+.invite{
+	margin-top: rem(124);
+	img{
+		width: 100%;
+	}
+}
+/*===========mask=============*/
+.mask{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 1001;
+	display: none;
+	.close{
+		position: absolute;
+		top:rem(250);
+		right: rem(70);
+		width: rem(60);
+		height: rem(60);
+		background: url(../../../../images/op/newgift/close.png) no-repeat;
+		background-size: cover;
+		z-index: 1100;
+	}
+	.mask-cont{
+		position: absolute;
+		top:50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+	}
+	.red-close{
+		width: rem(522);
+		height: rem(408);
+		background: url(../../../../images/op/newgift/red-close.png) no-repeat;
+		background-size: cover;
+	}
+	.red-open{
+		width: rem(646);
+		height: rem(646);
+		background: url(../../../../images/op/newgift/red-open.png) no-repeat;
+		background-size: cover;
+	}
+	.btn-more{
+		display: block;
+		margin:rem(30) auto 0;
+		width: rem(322);
+		height: rem(106);
+		background: url(../../../../images/op/newgift/btn-more.png) no-repeat;
+		background-size: cover;
+	}
+	.money{
+		position: absolute;
+		width: rem(326);
+		left: rem(160);
+		text-align: center;
+		margin-top: rem(126);
+		color: #FF2442;
+		font-size: rem(72);
+	}
+}
+
+.modal {
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	z-index: 1001;
+	display: none;
+	.modal-cont {
+		position: absolute;
+		top:50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+		background-color: #FFF;
+		width: 6.5rem;
+		padding: 0.5rem;
+		h3{
+			font-size: 0.36rem;
+			font-weight: bold;
+			overflow: hidden;
+			text-align: center;
+			margin-bottom: 0.3rem;
+			.close {
+				float: right;
+				font-size: 0.4rem;
+			}
+		}
+		li {
+			line-height: 0.4rem;
+			font-size: 0.3rem;
+			font-family: "sans-serif";
+		}
+	}
+}

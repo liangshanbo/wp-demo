@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"  data-use-rem="750">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="国美Plus"/>
+    <meta name="description" content="国美Plus"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="google" value="notranslate">
+    <meta name="author" content="gome"/>
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="apple-mobile-web-app-title" content="美信">
+    <meta name="applicable-device" content="mobile">
+	<title>Invite Friends</title>
+	<link rel="stylesheet" href="../../css/pages/invite/regist.css"/>
+</head>
+<body>
+<script>
+    (function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);
+</script>
+	<header class="header">
+		<span class="header-head">
+	        <a href="javascript:history.go(-1)" class="header-head-back"></a>
+	    </span>
+		<h3>GomePlus</h3>
+	</header>
+	<div class="img"></div>
+	<section>
+		<div class="invite-ex">
+			<p>
+				Invitation introduction text.Invitation introduction text.Invitation introduction text.
+				Invitation introduction text.Invitation introduction text.Invitation introduction text.
+			</p>
+		</div>
+		<div class="register-btn active">
+	        <a href="javascript:;">Invite</a>
+	    </div>
+	    <a href="" class="invite-rules">View the invitation rules>></a>
+	</section>
+</body>
+</html>

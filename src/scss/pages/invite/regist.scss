@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+@import "../../common/module/header.scss";
+@import "../../common/module/btn.scss";
+@import "public.scss";
+@import "../public/country";
+
+.register-input .invite-input-phone {
+  border-bottom: 1px solid #e4e4e4;
+  .register-input-href {
+    line-height: rem(70);
+    font-size: rem(32);
+    color: #333;
+    position: relative;
+    padding-right: .2rem;
+    margin-right: .2rem;
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0.17rem;
+      height: 0.36rem;
+      width: 1px;
+      background-color: #E4E4E4;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+.invite-input-phone .register-input-input {
+  border-bottom:none;
+}
+.register-agreement{
+  margin-top: rem(32);
+  font-size: rem(24);
+  @include flex-box();
+  .register-agreement-select{
+    width: rem(30);
+    height: rem(30);
+    background: url(../../../images/register/select.png) no-repeat;
+    background-size: 100% auto;
+    margin-right: rem(10);
+    display: block;
+  }
+  .register-agreement-href{
+    padding-left: rem(20);
+    color: $yellow;
+  }
+}
+.register-agreement-active .register-agreement-select{
+  background: url(../../../images/register/no-select.png) no-repeat;
+  background-size: 100% auto;
+}
+.register-input-verification{
+  .register-input-input{
+    border-bottom: 1px solid #E4E4E4;
+  }
+  .register-verification-send {
+    display: inline-block;
+    border: 1px solid #CCCCCC;
+    color: #ccc;
+    margin-left: rem(20);
+    width: rem(168);
+    height: rem(70);
+    font-size: rem(30);
+    text-align: center;
+    line-height: rem(70);
+    border-radius: rem(2);
+  }
+  .verification-active{
+    border: 1px solid #919191;
+    color: #333;
+  }
+}

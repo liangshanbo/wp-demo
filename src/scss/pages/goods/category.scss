@@ -1,0 +1,56 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/module/header.scss';
+@import '../../common/reset/reset.scss';
+@import "../notFind/notFind.scss";
+/*-----------头部调整------------*/
+.header .header-close{
+	left: rem(-20);
+}
+
+/*============分类树===============*/
+.category{
+	padding: rem(30);
+}
+.category-item{
+	line-height: rem(104);
+}
+.category-item-title{
+	font-size: rem(44);
+	font-weight: 600;
+}
+.category-item-para_title{
+	color: #666;
+	height: rem(104);
+	position: relative;
+	font-size: rem(36);
+	&.active{
+		font-weight: 600;
+		color: #333;
+		.arrow{
+			background: url(../../../images/goods/icon-up.png) center center no-repeat;
+			background-size: rem(26 16);
+		}
+	}
+	& > span{
+		float: left;
+	}
+	& > .arrow{
+		position: absolute;
+		top:0;
+		right:rem(-20);
+		width: rem(104);
+		height: rem(104);
+	}
+	& >.arrow{
+		background: url(../../../images/goods/icon-down.png) center center no-repeat;
+		background-size: rem(26 16);
+	}
+}
+.category-item-para_list{
+	padding: rem(0 30);
+	font-size: rem(36);
+	& > li > a{
+			color: #666;
+	}
+}

@@ -1,0 +1,315 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import '../../common/module/header.scss';
+@import '../../common/module/title.scss';
+@import '../../common/module/alert.scss';
+@import '../../common/plugin/swiper.scss';
+@import '../../common/module/swiper-list.scss';
+@import "../../common/layer/layer.scss";
+@import "./_no-data.scss";
+@import "../../pages/public/help-layer.scss";
+@import "./_tutorial.scss";
+// @import "../share/dialog.scss";
+
+html {
+    width: 100%;
+    height: 100%;
+    // background: #fff;
+    background-color: #f3f3f3;
+}
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: rem(280);
+}
+img {
+    display: inline-block;
+}
+// 头部
+.header-wrapper {
+	position: fixed;
+	height: rem(96);
+	top: 0;
+	width: 100%;
+	background-color: #fff;
+	z-index: 2;
+}
+.header-sub {
+	z-index: 2;
+	position: fixed;
+	top: rem(96);
+	width: 100%;
+	padding: 0 rem(30);
+	height: rem(159);
+	background-color: #fff;
+    .sub-title {
+        font-size: rem(24);
+		color: #999;
+        margin: rem(40) 0 rem(10);
+    }
+	.total-num {
+		font-size: rem(52);
+		color: #b26200;
+        font-weight: 500;
+	}
+}
+.separator {
+	position: fixed;
+	top: rem(252);
+	width: 100%;
+	height: rem(30);
+	background-color: #f3f3f3;
+	z-index: 2;
+}
+// 主体
+.cards-list {
+	width: 100%;
+	z-index: 1;
+	padding: 0 rem(20);
+    background-color: #f3f3f3;
+}
+.cards-li {
+    position: relative;
+    margin-bottom: rem(30);
+    background-color: #fff;
+    border-radius: rem(4);
+    user-select: none;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    > div {
+        position: relative;
+        padding: 0 rem(30);
+    }
+    .title-row {
+        background: #ffe891;
+        line-height: rem(96);
+        font-size: rem(36);
+        color: #333;
+        .denomination {
+            float: right;
+            font-size: rem(36);
+            color: #b26200;
+            font-weight: 500;
+        }
+    }
+    .number-row,
+    .code-row {
+        height: rem(110);
+        padding-top: rem(20);
+        overflow: hidden;
+        .sub-title {
+            font-size: rem(24);
+            color: #999;
+            margin-bottom: rem(15);
+        }
+        .notif {
+            color: #ed5b5d;
+            font-size: rem(28);
+            margin-bottom: rem(20);
+        }
+        .number {
+            font-size: rem(36);
+            color: #333;
+        }
+        .copy-btn {
+            position: absolute;
+            right: rem(30);
+            top: 0;
+            color: #b26200;
+            font-size: rem(24);
+            line-height: rem(110);
+            text-transform: uppercase;
+            padding-top: rem(20);
+            &:after {
+                content: '';
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: rem(40);
+                border-bottom: rem(2) dotted #666;
+            }
+        }
+    }
+    .hr-wrap {
+        position: relative;
+        width: 100%;
+        .hr {
+            display: block;
+            border-bottom: rem(1) solid #e4e4e4;
+        }
+    }
+    .detail-row {
+        height: rem(132);
+        .details {
+            display: flex;
+            position: absolute;
+            top: rem(20);
+            bottom: rem(20);
+            left: rem(30);
+            right: rem(30);
+            flex-direction: column;
+            justify-content: space-between;
+            > li {
+                font-size: rem(24);
+                color: #999;
+            }
+        }
+        .fake-currency-icon {
+            display: inline-block;
+            height: rem(18);
+            margin-top: rem(-4);
+            margin-right: rem(-6);
+        }
+    }
+    /*
+    标记按钮弹层
+    */
+    .mark-wrap {
+        display: none;
+        position: absolute;
+        animation: fadeIn.3s;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(#000, .4);
+        .mark-btn {
+            position: absolute;
+            width: rem(144);
+            height: rem(144);
+            line-height: rem(144);
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border-radius: 50%;
+            background: #ffd022;
+            text-align: center;
+            color: #333;
+            font-size: rem(30);
+            text-transform: uppercase;
+        }
+    }
+    /*
+    活动赠送的（就是非兑换的）卡
+    */
+    &.activity {
+        .title-row {
+            background: #ffe891 url("../../../../images/account/icon-activity-card.png") 100% 0 no-repeat;
+            background-size: rem(68 68);
+            .denomination {
+                margin-right: rem(15);
+            }
+        }
+    }
+    /*
+    标记为已使用的卡
+    */
+    &.used:after {
+        content: '';
+        position: absolute;
+        width: rem(162);
+        height: rem(120);
+        right: rem(160);
+        bottom: rem(70);
+        background: #fff url("../../../../images/account/icon-used.png") no-repeat;
+        background-size: rem(162 120);
+    }
+    /*
+    未激活的卡
+    */
+    &.disabled {
+        .number-row {
+            height: rem(158);
+        }
+        .detail-row {
+            height: rem(100);
+        }
+        .copy-btn {
+            display: none;
+        }
+    }
+    /*
+
+    */
+}
+// 底部
+.help-wrap {
+    position: relative;
+    padding: rem(30) 0;
+	width: 100%;
+	height: rem(84);
+	background-color: #f3f3f3;
+	.help-btn {
+		line-height: rem(24);
+		font-size: rem(24);
+		float: right;
+        color: #666;
+        margin-right: rem(20);
+		border-bottom: rem(2) solid #666;
+	}
+}
+
+// Vue
+.v-cloak-wrap {
+    width: 100%;
+    height: 100%;
+    animation: fadeIn .4s;
+}
+[v-cloak] {
+    display: none;
+}
+// .fadeIn-transition {
+//     transition: all .3s;
+//     opacity: 1;
+// }
+// .fadeIn-enter, .fadeIn-leave {
+//     opacity: 0;
+// }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/*=========帮助弹层==========*/
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(#000, .7);
+}
+
+
+// 内嵌页reset
+html.app {
+    body {
+        padding-top: rem(280-96);
+    }
+    .header-sub {
+        top: 0;
+    }
+    .separator {
+        top: rem(252-96);
+    }
+    .no-data {
+		top: rem(280-96);
+	}
+}
+.inr-icon {
+	float: left;
+}
+.float-left {
+    float: left;
+    margin-right: rem(6);
+}

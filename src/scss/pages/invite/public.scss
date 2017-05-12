@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+@import "../../common/module/header.scss";
+@import "../../common/module/btn.scss";
+
+.img {
+  height: rem(578);
+  background:url("../../../images/invite/invite.png") center center no-repeat;
+  background-size:100% 100%;
+  margin-bottom: rem(14);
+}
+.register-section {
+  padding: rem(0 46);
+}
+.register-input-input {
+  display: block;
+  @include flex-col(1);
+  box-sizing: content-box;
+  height: rem(70);
+  line-height: rem(50);
+  font-size: rem(32);
+  color: #333;
+  border: none;
+  vertical-align: middle;
+  outline: 0;
+  border-bottom: 1px solid #e4e4e4;
+}
+.register-input .register-input-verification, .register-input .register-input-pwd, .register-input .invite-input-phone {
+  font-size: rem(28);
+  margin-bottom: rem(60);
+  @include flex-box();
+}

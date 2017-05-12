@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/*--------榛勮壊鑳屾櫙--------*/
+/*--------瀛椾綋棰滆壊--------*/
+/*--------鍒嗗壊绾胯壊--------*/
+/*--------搴曡壊--------*/
+/*=======标题=========*/
+.title {
+  height: 1.1rem;
+  padding: 0rem 0.3rem;
+  position: relative; }
+  .title:before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    width: 0.08rem;
+    height: 0.3rem;
+    background-color: #FFD742;
+    box-shadow: 0.08rem 0 0 0 #FFF1B8; }
+  .title .title-main {
+    line-height: 1.1rem;
+    font-size: 0.34rem;
+    color: #333; }
+  .title .title-arrows {
+    position: absolute;
+    right: 0.22rem;
+    top: 0.38rem;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAATJJREFUSA3V1j1qw0AQBWArEcGgc9iNfsC5hAsXRkIpUhiUmwhyk6QwRMa48Q18Bh1EbbRazxgZDAnO7tvZIgNiC2nnm93iocnkP1ae5y9Uj8jsD8gm3lMUxTstX33ffyI4BI/QYhz6FcGha2rbVidJstNaPxM+pycdhmGWpumB340D3V0gmDsSoFxwGHbFnWAX3BlGcREYwcVgW1wUtsHFYVPcC3yLU7Bwwv0ImYA/8lkUr09KqT2l3Gp0tmEYbqCsthk0iiI2wuueIAi+4zjWXk9cVdW067oDnXbJMKEfWZa91XU9eIPvoZchrlcguf6FeoFNUHHYFBWFbVAx2BYVgRHUGUZRJ9gFhWH+vaX8Pf6WSNzUpKCsbppGUfMTA7cxaAKKfFOW5ZpyFxpeZACkyRnIREn/rbmm2QAAAABJRU5ErkJggg==) no-repeat;
+    background-size: cover; }

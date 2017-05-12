@@ -1,0 +1,56 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import '../../common/module/header.scss';
+@import '../../common/layer/layer.scss';
+.box{
+    overflow-x: hidden; 
+    overflow-y: auto; 
+	background-color: #fff;
+    width: 6.6rem;
+    position: absolute;
+    left: 48%;
+    top: 0.7rem;
+    margin-left: -3.15rem;
+    color: #666;
+    line-height: 0.48rem;
+    font-size: 0.3rem;
+    margin-top: -.8rem;
+    padding-bottom: .2rem;
+	.box-title{
+		font-size: rem(36);
+		color: #333;
+		margin:rem(40 0 30);
+		text-align: center;
+	   font-weight: bold;
+	}
+	.box-sub-title{
+		font-size: rem(30);
+	    padding-top: rem(20);
+	    font-weight: bold;
+	}
+	.box-para-box{
+	  .box-para{
+		padding-top: rem(20);
+	  }
+	}
+	.box-btn{
+		position: absolute;
+		width: rem(90);
+		height: rem(90);
+		background: url(../../../images/common/icon-close.png) center center no-repeat;
+		background-size: rem(36 36);
+		top:rem(18);
+		right: -.2rem;
+	}
+	.mag0{
+	 margin-top:.3rem;
+	}
+}
+.br{
+  height: rem(16);
+  background: #F6F6F6;
+}
+.col{
+	color:#333;
+}

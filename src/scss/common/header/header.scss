@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+.common-header {
+  height: rem(88);
+  @include flex-box();
+  .common-head {
+    width: rem(68);
+    .common-head-back{
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: url("../../../images/common/header-icon-back.png") center center no-repeat;
+      background-size: rem(21) auto;
+      -webkit-background-size: rem(21) auto;
+    }
+  }
+}

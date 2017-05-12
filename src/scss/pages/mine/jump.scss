@@ -1,0 +1,56 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+
+html{
+   background: #e5e5e5;
+}
+.jump-title {
+  background: #fff;
+  border-bottom:1px solid #e5e5e5;
+  p {
+    font-size: .36rem;
+    line-height: .8rem;
+    text-align: center;    
+  }
+}
+.jump-con1{
+    background: #fff;
+    height: 3rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  img {
+   float: left;
+   margin: .2rem;
+   border-radius: .4rem;
+   width: 1.6rem;
+   height: 1.6rem;
+   border-radius:0.8rem;
+   border:1px solid #e5e5e5;
+  }
+  .right-box{
+       font-size: .36rem;
+       width: 100%;
+       padding-top:.8rem;
+     }
+    
+}
+.jump-con2{
+    margin-top: .1rem;
+    background: #fff;
+    line-height: .8rem;
+    text-align: center;
+    font-size: .36rem;
+}
+.jump-edition{
+    background: #fff;
+    margin-top: 7rem;
+    font-size: .36rem;
+    line-height: .8rem;
+    padding-left: .2rem;
+  span{
+   margin-left:.5rem;
+   margin-right:.2rem;
+  }
+}
