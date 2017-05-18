@@ -1,0 +1,28 @@
+{
+	"manifest_version":2,
+	"name":"我的音乐盒",
+	"version":"0.0.0.1",
+	"icons":{
+		"16":"images/music_box_16.png",
+		"48":"images/music_box_48.png",
+		"128":"images/music_box_128.png"
+	},
+	"background":{
+		"scripts":["./js/background.js"]
+	},
+	"browser_action": {
+	    "default_icon": "images/music_box_19.png",
+	    "default_title": "音乐盒",
+	    "default_popup": "popup.html"
+	},
+	"homepage_url":"http://m.shanbo.com",
+	"description":"大白的音乐盒",
+	"permissions":[
+			"cookies",
+			"geolocation",
+			"contextMenus",
+			"*://*.gomeplus.com/*"
+	],
+	"options_page":"options.html"
+
+}

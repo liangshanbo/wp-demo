@@ -1,0 +1,49 @@
+{
+  "name": "lithe",
+  "version": "0.3.6",
+  "author": [{
+    "name": "xiaojue",
+    "email": "designsor@gmail.com",
+    "url": "http://tuer.me/user/profile/designsor"
+  },{
+    "name":"Esoul",  
+    "email":"pillar0514@163.com",
+    "url":"https://github.com/Esoul"
+  }],
+  "description": "a javascript common loader",
+  "keywords": [
+    "javascript loader",
+    "commonjs loader"
+  ],
+  "main": "./lithe.js",
+  "bin": {
+    "lithe": "bin/lithe"
+  },
+  "dependencies": {
+    "uglify-js": "2.7.3",
+    "optimist": "0.6.0",
+    "commander": "*"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "grunt": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-includes": "0.4.0",
+    "grunt-mocha": "^0.4.11",
+    "mocha": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/litheModule/lithe.git"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "_id": "lithe@0.0.4",
+  "_from": "lithe"
+}

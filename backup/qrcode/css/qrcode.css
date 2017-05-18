@@ -1,0 +1,22 @@
+.qrcode_element{
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: block;
+	position: fixed;
+	z-index: 99999999999;
+	background-color: rgba(0,0,0,.6);
+}
+.qrcode_element #qrcode_box{
+	top:50%;
+	left: 50%;
+	width: 220px;
+	height: 220px;
+	padding: 10px;
+	position: absolute;
+	margin-top: -100px;
+	margin-left: -100px;
+	box-sizing: border-box;
+	background-color: #fff;
+}

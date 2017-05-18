@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<title>Unicode</title>
+</head>
+<body>
+	<input name='' id='origin_code' type='input'>
+	<button id='transform_btn'>Uincode编码</button><br />
+	<input name='' id='transformed_code' type='input'>
+	<button id='reduction_btn'>Uincode解码</button><br />
+	<input name='' id='reduction_code' type='input'>
+
+	<button id='utf8_transform_btn'>utf-8编码</button><br />
+	<input name='' id='utf8_transformed_code' type='input'>
+	<button id='utf8_reduction_btn'>utf-8解码</button><br />
+	<input name='' id='utf8_reduction_code' type='input'>
+
+	<button id='base64_transform_btn'>base64编码</button><br />
+	<input name='' id='base64_transformed_code' type='input'>
+	<button id='base64_reduction_btn'>base64解码</button><br />
+	<input name='' id='base64_reduction_code' type='input'>
+<!-- 	<button id='reduction_btn'>utf-8解码</button><br />
+	<input name='' id='reduction_code' type='input'> -->
+	<script>
+		let orgin = document.querySelector('#origin_code');
+		let btn = document.querySelector('#transform_btn');
+		let target = document.querySelector('#transformed_code');
+		let reduction_btn = document.querySelector('#reduction_btn');
+		let reduction_target = document.querySelector('#reduction_code');
+
+		let utf8_transform_btn = document.querySelector('#utf8_transform_btn');
+		let utf8_transformed_code = document.querySelector('#utf8_transformed_code');
+		let utf8_reduction_btn = document.querySelector('#utf8_reduction_btn');
+		let utf8_reduction_code = document.querySelector('#utf8_reduction_code');
+
+		let base64_transform_btn = document.querySelector('#base64_transform_btn');
+		let base64_transformed_code = document.querySelector('#base64_transformed_code');
+		let base64_reduction_btn = document.querySelector('#base64_reduction_btn');
+		let base64_reduction_code = document.querySelector('#base64_reduction_code');
+
+		String.prototype.padStart = function(len,char='0'){
+			let num = Math.floor(len - this.length);
+			return num > 0 ? char.toString().repeat(num) + this:this;
+		}
+		String.prototype.padEnd = function(len,char='0'){
+			let num = Math.floor(len - this.length);
+			return num > 0 ? this + char.toString().repeat(num):this;
+		}
+
+		btn.addEventListener('click',function(){
+			let origin_word = orgin.value;
+			target.value = toUincode(origin_word);
+		},false);target
+		reduction_btn.addEventListener('click',function(){
+			let origin_word = target.value;
+			reduction_target.value = reduction(origin_word);
+		},false);
+
+		utf8_transform_btn.addEventListener('click',function(){
+			let origin_word = orgin.value;
+			utf8_transformed_code.value = encodeUTF8(origin_word);
+		},false);
+		utf8_reduction_btn.addEventListener('click',function(){
+			let origin_word = utf8_transformed_code.value;
+			utf8_reduction_code.value = decodeUTF8(origin_word);
+		},false);
+
+		base64_transform_btn.addEventListener('click',function(){
+			let origin_word = orgin.value;
+			base64_transformed_code.value = encodeBase64(origin_word);
+		},false);
+		base64_reduction_btn.addEventListener('click',function(){
+			let origin_word = base64_transformed_code.value;
+			base64_reduction_code.value = decodeBase64(origin_word);
+		},false);
+
+		function toUincode(code){
+			let res = '\\u';
+			Array.from(code,function(char,index){
+				res += code.codePointAt(index).toString(16).padStart(4,0).toUpperCase() + '\\u';
+			});
+			return res.slice(0,-2);
+		}
+
+		function reduction(code){
+			let words = '',codes = code.split('\\u');
+			codes.shift();
+			codes.forEach(function(item){
+				words += String.fromCodePoint(parseInt(item,16));
+			});
+			return words;
+		}
+
+		function encodeUTF8(code){
+			return encodeURIComponent(code);
+		}
+		function decodeUTF8(code){
+			return decodeURIComponent(code);
+		}
+		function transfer(bcode){
+			let xcode = parseInt(bcode,2),newcode = bcode,res = '';
+			if(xcode < 0x7F){
+				return bcode = bcode.padStart(8,0);
+			}
+			else if(xcode < 0x7FF){
+				bcode = bcode.padStart(11,0);
+				newcode = '110' + bcode.slice(0,5) + '10' + bcode.slice(5);
+			}
+			else if(xcode < 0xFFFF){
+				bcode = bcode.padStart(16,0);
+				newcode = '1110' + bcode.slice(0,4) + '10' + bcode.slice(4,10) + '10' + bcode.slice(10);
+			}
+			else if(xcode < 0xFFFFFF){
+				bcode = bcode.padStart(21,0);
+				newcode = '11110' + bcode.slice(0,3) + '10' + bcode.slice(3,9)  + '10' + bcode.slice(9,15) + '10' + bcode.slice(15);
+			}
+			return newcode;
+		}
+
+		function Binary2UTF8(code){
+			let res = '',codes = Array.from(code);
+			while(codes.slice(0,5).join('') === '11110'){
+				let tempCode = codes.splice(0,24).join('');
+				res += String.fromCodePoint(parseInt((tempCode.slice(5,8) + tempCode.slice(10,16) + tempCode.slice(18,24) + tempCode.slice(26,32)).padStart(24),2));
+			}
+			while(codes.slice(0,4).join('') === '1110'){
+				let tempCode = codes.splice(0,24).join('');
+				res += String.fromCodePoint(parseInt((tempCode.slice(4,8) + tempCode.slice(10,16) + tempCode.slice(18,24)).padStart(24),2));
+			}
+			while(codes.slice(0,3).join('') === '110'){
+				let tempCode = codes.splice(0,24).join('');
+				res += String.fromCodePoint(parseInt((tempCode.slice(3,8) + tempCode.slice(10,16)).padStart(16),2));
+			}
+			while(codes.length){
+				res += String.fromCodePoint(parseInt(codes.splice(0,8).join('').padStart(8),2));
+			}
+			return res;
+		}
+
+		let base64Codes = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','0','1','2','3','4','5','6','7','8','9','+','/'];
+		
+		function encodeBase64(code){
+			let res = '';
+			Array.from(code,function(char,index){
+				res += transfer(code.codePointAt(index).toString(2));
+				console.log(base64EncodeTransfer(transfer(code.codePointAt(index).toString(2))));
+			});
+			return res =  base64EncodeTransfer(res);
+		}
+
+		function decodeBase64(code){
+			let res = '';
+			for(let i=0,c;c=code[i++];){
+				if(c === '='){
+					continue;
+				}
+				for(let [key,value] of base64Codes.entries()){
+					if(c === value){
+						res += key.toString('2').padStart(8);
+					}
+				}
+			}
+			return res = base64DecodeTransfer(res);
+		}
+
+		function base64EncodeTransfer(code){
+			let res = '',temp = Array.from(code);
+			while(temp.length >= 24){
+				let tempcode = temp.splice(0,24);
+				while(tempcode.length){
+					res += base64Codes[parseInt(tempcode.splice(0,6).join('').padStart(8),2)];
+				}
+			}
+			while(temp.length == 16){
+				let tempcode = temp.splice(0,16);
+				while(tempcode.length){
+					if(tempcode.length > 6){
+						res += base64Codes[parseInt(tempcode.splice(0,6).join('').padStart(8),2)];
+					}else{
+						res += base64Codes[parseInt(tempcode.splice(0,4).join('').padStart(6).padEnd(8),2)];
+					}
+				}
+				res += '='
+			}
+			while(temp.length == 8){
+				let tempcode = temp.splice(0,8);
+				while(tempcode.length){
+					if(tempcode.length > 6){
+						res += base64Codes[parseInt(tempcode.splice(0,6).join('').padStart(8),2)];
+					}else{
+						res += base64Codes[parseInt(tempcode.splice(0,4).join('').padStart(4).padEnd(8),2)];
+					}
+				}
+				res += '==';
+			}
+			return res;
+		}
+
+		function base64DecodeTransfer(code){
+			let res = '',codes = Array.from(code);
+			while(codes.length >= 32){
+				let tempCode = codes.splice(0,32);
+				while(tempCode.length){
+					res += tempCode.splice(0,8).slice(2).join('');
+				}
+			}
+			while(codes.length >= 24){
+				let tempCode = codes.splice(0,24);
+				while(tempCode.length){
+					if(tempCode.length > 8){
+						res += tempCode.splice(0,8).slice(2).join('');
+					}else{
+						res += tempCode.splice(0,8).slice(2,6).join('');
+					}
+				}
+			}
+			while(codes.length >= 16){
+				let tempCode = codes.splice(0,16);
+				while(tempCode.length){
+					if(tempCode.length > 8){
+						res += tempCode.splice(0,8).slice(2).join('');
+					}else{
+						res += tempCode.splice(0,8).slice(2,4).join('');
+					}
+				}
+			}
+			console.log('res:' + Binary2UTF8(res));
+			return res = Binary2UTF8(res);
+		}
+	</script>
+</body>
+</html>

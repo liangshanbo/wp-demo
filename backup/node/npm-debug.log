@@ -1,0 +1,66 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\wanglonghai\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'search',
+1 verbose cli   'express' ]
+2 info using npm@4.0.3
+3 info using node@v7.5.0
+4 silly mapToRegistry name -/all
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry http://npm.intra.gomeplus.com/
+7 silly mapToRegistry data Result {
+7 silly mapToRegistry   raw: '-/all',
+7 silly mapToRegistry   scope: null,
+7 silly mapToRegistry   escapedName: null,
+7 silly mapToRegistry   name: null,
+7 silly mapToRegistry   rawSpec: '-/all',
+7 silly mapToRegistry   spec: '-/all',
+7 silly mapToRegistry   type: 'local' }
+8 silly mapToRegistry uri http://npm.intra.gomeplus.com/-/all
+9 verbose all-package-metadata creating entry stream from local cache
+10 verbose all-package-metadata C:\Users\wanglonghai\AppData\Roaming\npm-cache\npm.intra.gomeplus.com\-\all\.cache.json
+11 silly search searching packages
+12 warn Failed to read search cache. Rebuilding
+13 silly all-package-metadata Error: ENOENT: no such file or directory, stat 'C:\Users\wanglonghai\AppData\Roaming\npm-cache\npm.intra.gomeplus.com\-\all\.cache.json'
+13 silly all-package-metadata  cache read error:  { Error: ENOENT: no such file or directory, stat 'C:\Users\wanglonghai\AppData\Roaming\npm-cache\npm.intra.gomeplus.com\-\all\.cache.json'
+13 silly all-package-metadata   errno: -4058,
+13 silly all-package-metadata   code: 'ENOENT',
+13 silly all-package-metadata   syscall: 'stat',
+13 silly all-package-metadata   path: 'C:\\Users\\wanglonghai\\AppData\\Roaming\\npm-cache\\npm.intra.gomeplus.com\\-\\all\\.cache.json' }
+14 verbose all-package-metadata creating remote entry stream
+15 warn Building the local index for the first time, please be patient
+16 verbose all-package-metadata No cached data: requesting full metadata db
+17 verbose request uri http://npm.intra.gomeplus.com/-/all
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 17:20:32
+20 verbose request using bearer token for auth
+21 verbose request id 3aa800b71581f465
+22 http request GET http://npm.intra.gomeplus.com/-/all
+23 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND npm.intra.gomeplus.com npm.intra.gomeplus.com:80
+24 info attempt registry request try #2 at 17:20:42
+25 verbose request using bearer token for auth
+26 http request GET http://npm.intra.gomeplus.com/-/all
+27 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND npm.intra.gomeplus.com npm.intra.gomeplus.com:80
+28 info attempt registry request try #3 at 17:21:42
+29 verbose request using bearer token for auth
+30 http request GET http://npm.intra.gomeplus.com/-/all
+31 verbose stack Error: No search sources available
+31 verbose stack     at C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\lib\search\all-package-metadata.js:71:19
+31 verbose stack     at C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\lib\search\all-package-metadata.js:146:20
+31 verbose stack     at C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\lib\cache\caching-client.js:53:8
+31 verbose stack     at f (C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\node_modules\once\once.js:25:25)
+31 verbose stack     at C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:89:10
+31 verbose stack     at Request.<anonymous> (C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:103:12)
+31 verbose stack     at Request.f (C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\node_modules\once\once.js:25:25)
+31 verbose stack     at emitOne (events.js:96:13)
+31 verbose stack     at Request.emit (events.js:189:7)
+31 verbose stack     at Request.onRequestError (C:\Users\wanglonghai\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:845:8)
+32 verbose cwd E:\web\node
+33 error Windows_NT 6.1.7601
+34 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\wanglonghai\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "search" "express"
+35 error node v7.5.0
+36 error npm  v4.0.3
+37 error No search sources available
+38 error If you need help, you may report this error at:
+38 error     <https://github.com/npm/npm/issues>
+39 verbose exit [ 1, true ]
