@@ -1,0 +1,29 @@
+{
+	"asi":true,  //禁止缺少分号警告
+	"boss":false,  //禁止比较表达式的值没有达到预期警告
+	"bitwise":false, //如果是true，则禁止使用位运算符
+    "curly":true,  //如果是true，则要求在if/while的模块时使用TAB结构
+    "eqeqeq":true,
+    "evil":true,  //禁止使用eval
+    "expr":true,  //允许应该出现赋值或函数调用的地方使用表达式
+    "forin":false,
+    "lastsemic":true, //检查一行代码最后声明后面的分号是否遗漏
+    "laxcomma":false, //检查逗号在代码行最前面的编程风格
+    "loopfunc":true, //禁止内部循环，定义函数的内部循环可能导致错误
+    "maxerr":100,    //检查怪异结构 new function () { ... } 和 new Object
+    "supernew":true,
+    "newcap":true,  //如果是true，则构造函数必须大写
+    "nomen":false,  //如果是true，则不允许在名称首部和尾部加下划线
+    "onevar":false, //如果是true，则在一个函数中只能出现一次var
+    "passfail":false, //如果是true，则在遇到第一个错误的时候就终止
+    "plusplus":false, //如果是true，则不允许使用++或者- -的操作
+    "regexp":false,  //如果是true，则正则中不允许使用.或者[^…]
+    "undef":false,  //如果是ture，则所有的局部变量必须先声明之后才能使用
+    "sub":true,  //如果是true，则允许使用各种写法获取属性(一般使用.来获取一个对象的属性值)
+    "esversion":6,
+    "freeze":false,
+    "funcscope":true,
+    "futurehostile":true, //允许警告js未来版本中定义的标识符。
+    "withstmt":true,  //检查with使用声明
+    "unused":true
+}
