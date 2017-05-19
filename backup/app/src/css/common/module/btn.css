@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*--------黄色背景--------*/
+/*--------字体颜色--------*/
+/*--------分割线色--------*/
+/*--------底色--------*/
+/*-------------通栏黄色按钮-----------*/
+.btn-fix {
+  display: block;
+  width: 100%;
+  height: 1.1rem;
+  line-height: 1.1rem;
+  text-align: center;
+  background-color: #FFD022;
+  color: #333;
+  font-size: 0.3rem;
+  z-index: 100;
+  font-weight: 600; }
+
+/*-------------通栏黄色按钮-----------*/
+.btn {
+  font-size: 0.3rem;
+  display: block;
+  height: 0.84rem;
+  line-height: 0.84rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.3rem; }
+
+.btn-border {
+  position: relative;
+  position: relative;
+  width: 6.58rem; }
+  .btn-border:before {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid #919191;
+    box-sizing: border-box;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    border-radius: 0rem; }
+  @media (-webkit-min-device-pixel-ratio: 1.5) {
+    .btn-border:before {
+      -webkit-transform: scale(0.5, 0.5);
+      transform: scale(0.5, 0.5); } }
+
+.btn-yellow {
+  background-color: #FFD022;
+  width: 6.58rem; }
+
+.disabled {
+  background-color: #FFE37B;
+  color: #858585; }

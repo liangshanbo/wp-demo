@@ -1,0 +1,84 @@
+<%- include('./header.html',{
+pageTitle: '前端打tag系统'
+}) %>
+    <form action="/gitHitTag" method="post" target="panel">
+        <p style="font-size:18px;">
+            需要上线的gitlab路径模块：
+            <label>
+                <select name="projectId" id="selSaveDev" class="form-control short-form-control">
+                    <%for (var i=0; i<mods.length; i++){%>
+                        <option value="<%=mods[i].id%>"><%=mods[i].name%></option>
+                    <%}%>
+                </select>
+            </label>
+            <button type="button" class="btn btn-success" id="saveDev">备份develop分支</button>
+        </p>
+    </form>
+
+    <form id='cleantags'>
+        <input type="button" id="cleanTagsBtn" value="清理两周以前的develop分支备份" class="btn btn-warning">
+        <p class="warn" style="margin-top:20px; font-size:16px;">请不要随便使用，此功能是异步删除develop分支,如果看到界面还有你要删除的分支,请不要再处理</p>
+    </form>
+
+    <form id="rollback" class="mform">
+        <h3>对gitlab进行操作</h3><br>
+        <select id="operateProjects" name="target" class="form-control projects">
+            <%for (var i=0; i<mods.length; i++){%>
+                <option value="<%=mods[i].id%>"><%=mods[i].name%></option>
+            <%}%>
+        </select>
+    </form>
+<%- include('./capacity.html') %>
+    <div class="text-center mborders">
+        <table name="p" id="version" class="table table-striped">
+            <!--<thead><tr class="head">
+                <th>序号</th> <th>时间</th> <th>版本</th> <th>用户</th> <th width="30%">注释</th> <th>操作</th></tr>
+            </thead>-->
+        </table>
+        <ul class="pagination pagination-lg pager " id="myPager"></ul>
+    </div>
+    <script id="test" type="text/html">
+        <thead><tr class="head">
+            <th>序号</th> <th>时间</th> <th>版本</th> <th>用户</th> <th width="30%">注释</th> <th>操作</th></tr>
+        </thead>
+        <tbody id="myTable">
+        {{each}}
+            <tr class='child'>
+                <td>{{$index + 1}}</td>
+                <td>{{$value.commit.authored_date | dateFormat: 'YYYY-MM-DD HH:mm:ss'}}</td>
+                <td>{{$value.name}}</td>
+                <td>{{$value.commit.author_name}}</td>
+                <td>{{$value.commit.message}}</td>
+                <td>
+                    <input type="button"  branchName="{{$value.name}}" class="btn btn-warning gitDelete"  value="删除">
+                    <input type="button" branchName="{{$value.name}}" class="btn btn-success gitRollback" value="回滚">
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </script>
+
+    <!--<input type="submit" value="回滚">-->
+
+
+    <!--<form action="/rmtags" method="post" target="panel" id="rmtags">
+            <p>删除10.125.2.44的tags</p>
+            <select name="target" class="projects">
+              <option value="app">app</option>
+              <option value="h5">h5</option>
+              <option value="pc">pc</option>
+              <option value="oppc">oppc</option>
+              <option value="oph5">oph5</option>
+              <option value="opapp">opapp</option>
+              <option value="public">public</option>
+            </select>
+            <input type="button" value="刷新" class="refresh"/>
+            <input type="submit" value="删除">
+            <ul style="height:200px;overflow-y:scroll;"></ul>
+        </form>-->
+    <script type="text/javascript" src="/js/websocket.js"></script>
+    <script type="text/javascript" src="/js/moment.min.js"></script>
+    <script type="text/javascript" src="/mods/pagination.js"></script>
+    <script type="text/javascript" src="/mods/panel.js"></script>
+</body>
+</html>

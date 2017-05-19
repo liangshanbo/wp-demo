@@ -1,0 +1,168 @@
+<% include ../public/header.ejs %>
+<script>
+    var keyword = "";
+    var userId = "<%-userId%>";
+</script>
+<div id="s_result" class="wrap">
+    <header class="search-zone<%=hasLogin?' right-small':''%>">
+        <div class="search" @click="click_show_slayer" id="go-search" >
+            <em class="search-icon"></em>
+            <p  class="search-txt">Search products & brands</p>
+        </div>
+        <% if(hasLogin) {%>
+            <a href="/user" class="search-mine">
+                <em class="icon-mine"></em>
+                <span class="search-text">Me</span>
+            </a>
+        <% }else{ %>
+        <a class="search-login" href="/login">LOG IN</a>
+        <% } %>
+    </header>
+    <div class="download" id="download" @click="click_down($event)">
+        <span class="download-tip">Download GomePlus APP</span>
+        <em class="download-btn"></em>
+    </div>
+    <%if(result1.code == 200 && result1.data.category) {%>
+    <!-- && result1.data.category && result1.data.category.peas-->
+    <nav class="nav">
+        <% var category = result1.data.category.peas;
+        for(var n = 0,len3 = category.length>4?4:category.length;n<len3;n++){%>
+            <a class="nav-item" href="/goods/detail?categoryId=<%=category[n].categoryId%>&title=<%=category[n].desc%>">
+                <img src="<%=category[n].icon%>" onerror="javascript:this.src='<%=config.wapcsspath%>/images/common/default-probanner.png'"  alt="<%=category[n].desc%>">
+                <p><%=category[n].desc%></p>
+            </a>
+        <%}%>
+        <a class="nav-item" href="/goods/cate">
+            <img src="<%=config.wapcsspath%>/images/index/more.png" alt="">
+            <p>More</p>
+        </a>
+    </nav>
+<% } if(result1.code == 200 && result1.data.banner){ %>
+  <!-- && result1.data && result1.data.banner &&result1.data.banner.peas-->
+  <div class="carousel swiper-container">
+       <div id="swiper-banner" class="carousel-banner swiper-wrapper">
+             <% for(var i=0; i <result1.data.banner.peas.length; i++) {%>
+               <% var banner=result1.data.banner.peas[i];%>
+                <div class="carousel-it swiper-slide" >
+                    <%if(banner.type ==0){%>
+                      <a href="/pro/detail?id=<%=banner.id%>&pdtype=1">
+                       <img data-src="<%=:banner.showPic|imgbed:'720'%>" class="swiper-lazy" alt="<%=banner.desc%>" gome-src="<%=:banner.showPic|imgbed:'720'%>" src="<%= config.wapcsspath %>/images/common/default-homebanner.png">
+                      </a>
+                    <%}else if(banner.type ==3){%>
+                      <a href="/goods/detail?categoryId=<%=banner.id%>&title=<%=banner.desc%>">
+                       <img  class="swiper-lazy" data-src="<%=:banner.showPic|imgbed:'720'%>" gome-src="<%=:banner.showPic|imgbed:'720'%>" alt="<%=banner.desc%>" src="<%= config.wapcsspath %>/images/common/default-homebanner.png">
+                      </a>
+                    <%}else if(banner.type ==2){%>
+                      <% if(/slotmachine/.test(banner.link)) {%>
+						<a href="/hy/game/slot">
+	                       <img  class="swiper-lazy" data-src="<%=:banner.showPic|imgbed:'720'%>" gome-src="<%=:banner.showPic|imgbed:'720'%>" alt="<%=banner.desc%>" src="<%= config.wapcsspath %>/images/common/default-homebanner.png">
+	                    </a>
+                      <% }else{%>
+						<a href="<%=banner.link%>">
+	                       <img  class="swiper-lazy" data-src="<%=:banner.showPic|imgbed:'720'%>" gome-src="<%=:banner.showPic|imgbed:'720'%>" alt="<%=banner.desc%>" src="<%= config.wapcsspath %>/images/common/default-homebanner.png">
+	                    </a>
+                      <%}%>
+                    <%}%>
+                </div>
+            <%}%>
+       </div>
+      <% if(result1.data.banner.peas.length>1){%>
+          <div class="swiper-pagination"></div>
+      <%}%>
+  </div>
+<%}%>
+   
+<% if(result1.code == 200 && result1.data.popular){ %>
+<!-- && result1.data && result1.data.popular &&result1.data.popular.peas-->
+ <div class="title">
+ <a href="/index/popularlist">
+    <h3 class="title-main">NEW ARRIVALS</h3>
+    <a class="title-arrows" href="/index/popularlist"></a>
+ </a>
+ </div>
+    <section class="hot swiper-container">
+        <ul class="hot-list swiper-wrapper">
+        <% for(var i=0,len = result1.data.popular.peas.length; i <len; i++) {%>
+            <%var popular=result1.data.popular.peas[i];%>
+                <li class="swiper-slide hot-it">
+                 <a href="/pro/detail?id=<%= popular.id %>&pdtype=2">
+                    <%var mainImg = popular.customImage === "" ? popular.mainImage : popular.customImage%>
+                    <div class="hot-pic">
+                        <img gome-src="<%=: mainImg | imgbed:'180'%>" src="<%= config.wapcsspath %>/images/common/default-home.png">
+                    </div>
+                    <h4 class="hot-para"><%=popular.name%></h4>
+                    <p class="hot-money">
+                      <strong class="hot-money-now">
+                         <%=:popular.sellingPrice.alternative|price%><%=:popular.sellingPrice.amount | money%>
+                      </strong>
+                      <del class="hot-money-before">
+                         <%=:popular.originPrice.alternative|price%> <%=:popular.originPrice.amount | money%>
+                      </del>
+                    </p>
+                    </a>
+                </li>
+        <%}%>
+        </ul>
+        <div class="hr"></div>
+    </section>
+<%}%>
+<% if(result && result.data && result.data.items){ %>
+    <div class="title">
+        <h3 class="title-main">DISCOUNT FOR YOU</h3>
+        <a class="title-arrows" href="javascript:;"></a>
+    </div>
+    <%  var items = result.data.items;
+        function buy(url){
+            var search = /\?/.test(url);
+            if(!!userId){
+                return url + (search ? "&":"?")+"affExtParam1="+userId;
+            }
+            return "/login?redirect="+encodeURIComponent(url)+"&type=buy";
+        }
+    if(items && items.length) { %>
+    <ul class="goods-list" id="goodsList">
+        <% for(var i=0; i < items.length; i++) {
+            var item = items[i]["item"],
+                pdtype = 3;
+        if(item){
+        %>
+           <% include ../public/proList.ejs %>
+        <%}else{%>
+            no data
+        <%break;}%>
+        <% } %>
+        <listmore :items="moreData"></listmore>
+    </ul>
+<% }}%>
+</div>
+<script type="v-template" id="prolist_tpl">
+    <li v-for="item in items" class="goods-item">
+        <a href="/pro/detail?id={{item.id}}&pdtype=3" class="goods-item">
+            <span class="goods-item-pic">
+               <img gome-src="{{item.item.mainImage | imgbed '180'}}" src="<%= config.wapcsspath %>/images/common/default-prolist.png" alt="{{item.item.name}}">
+            </span>
+            <div class="goods-item-cont">
+                <h4 class="goods-item-title">{{item.item.name}}</h4>
+                <p class="goods-item-money">
+                    <strong class="current-money" v-if="item.item.sellingPrice">
+                        {{item.item.sellingPrice.alternative|price}}{{item.item.sellingPrice.amount|money}}
+                    </strong>
+                    <del class="before-money" v-if="item.item.originPrice">
+                        {{item.item.originPrice.alternative|price}}{{item.item.originPrice.amount|money}}
+                    </del>
+                    <span class="save-money">{{item.item.discountPercentage}}% Off</span>
+                </p>
+                <div class="rebate" v-if="item.item.expectedCashBack.amount>100">
+                    <em class="icon-tag"></em>
+                    <p class="rebate-para">Upto {{item.item.expectedCashBack.alternative}}. {{Math.round(item.item.expectedCashBack.amount/100)}} Cashback</p>
+                </div>
+                <div class="from" v-if="item.item.source.url">
+                    <img gome-src="{{ item.item.source.url }}" src="<%=config.wapcsspath%>/images/common/default-prolist.png" alt="{{ item.item.source.name }}" >
+                </div>
+                <a class="btn-buy" href="{{item.item.outerUrl | buy}}"></a>
+            </div>
+        </a>
+    </li>
+</script>
+<% include ../public/searchLayer.ejs %>
+<% include ../public/footer.ejs %>

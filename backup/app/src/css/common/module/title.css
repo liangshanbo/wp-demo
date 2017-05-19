@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/*--------黄色背景--------*/
+/*--------字体颜色--------*/
+/*--------分割线色--------*/
+/*--------底色--------*/
+/*=======标题=========*/
+.title {
+  height: 1.1rem;
+  padding: 0rem 0.3rem;
+  position: relative; }
+  .title:before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    width: 0.08rem;
+    height: 0.3rem;
+    background-color: #FFD742;
+    box-shadow: 0.08rem 0 0 0 #FFF1B8; }
+  .title .title-main {
+    line-height: 1.1rem;
+    font-size: 0.38rem;
+    color: #333; }
+  .title .title-arrows {
+    position: absolute;
+    right: 0.22rem;
+    top: 0.38rem;
+    width: 0.3rem;
+    height: 0.3rem;
+    background: url(../../../images/index/arrows-index.png) no-repeat;
+    background-size: cover; }

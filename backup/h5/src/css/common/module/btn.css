@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/*--------榛勮壊鑳屾櫙--------*/
+/*--------瀛椾綋棰滆壊--------*/
+/*--------鍒嗗壊绾胯壊--------*/
+/*--------搴曡壊--------*/
+/*-------------通栏黄色按钮-----------*/
+.btn-fix {
+  display: block;
+  width: 100%;
+  height: 1.1rem;
+  line-height: 1.1rem;
+  text-align: center;
+  background-color: #FFD022;
+  color: #333;
+  font-size: 0.3rem;
+  z-index: 100; }
+
+/*-------------通栏黄色按钮-----------*/
+.btn {
+  font-size: 0.3rem;
+  display: block;
+  height: 0.84rem;
+  line-height: 0.84rem;
+  text-align: center;
+  color: #333;
+  font-size: 0.3rem; }
+
+.btn-border {
+  border: 0.01rem solid #919191;
+  position: relative;
+  width: 6.58rem; }
+
+.btn-yellow {
+  background-color: #FFD022;
+  width: 6.58rem; }
+  .btn-yellow:active {
+    background-color: #EEBF0E; }
+
+.disabled {
+  background-color: #FFE37B;
+  color: #858585; }
+  .disabled:active {
+    background-color: #FFE37B; }

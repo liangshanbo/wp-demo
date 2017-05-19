@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="GOMEPLUS" />
+    <meta name="description" content="GOMEPLUS" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="google" value="notranslate">
+    <meta name="author" content="gome" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="apple-mobile-web-app-title" content="GOMEPLUS">
+    <meta name="applicable-device" content="mobile">
+    <title>HELP</title>
+    <style>
+		*{margin:0;padding:0;}
+		.header{margin: 0rem 0.3rem;position: relative;height: 0.96rem;}
+		.header:before {content: '';position: absolute;right: 0;bottom: 0;height: 1px;width: 100%;background-color: #E4E4E4;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+		.header .header-back-to {position: absolute;width: 0.9rem;height: 0.9rem;top: 0;left: -0.3rem;background:url(<%=config.wapcsspath%>/images/common/go-back.png) center center no-repeat;background-size: 0.36rem 0.36rem;}
+		.header .header-title {font-weight: 400;font-size: 0.36rem;color: #333;line-height: 0.98rem;text-align: center;}
+		.container{margin:0 .6rem;line-height:.48rem;font-size:.3rem;padding-bottom:.3rem;}
+		.help .ques{font-weight:600;padding:.5rem 0 .2rem 0;color:#333;}
+		.help .ques-sec,.ques-third{color:#666;list-style:none;}
+		.ques-sec-tit{list-style: disc;list-style-position: inside;}
+    </style>
+</head>
+<body>
+<script>
+    (function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);
+</script>
+	<% if(source != "app"){ %>
+    <header class="header">
+		<a class="header-back-to" href="javascript:history.go(-1);"></a>
+		<h3 class="header-title">HELP & SUPPORT</h3>
+	</header>
+	<% }%>
+	<section class="container">
+		<dl class="help">
+			<dt class="ques">One. How to Log On/Register</dt>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>How to register</li></ul>
+				<ul class="ques-third">
+					<li>1)	Enter the log-on page by clicking the head portrait or triggering the log-on button. Use the mobile phone to register when the page transfer to registration page.</li>
+					<li>2)	When registered successfully, portrait and nickname will demonstrated the ones which system default</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>How to log on</li></ul>
+				<ul class="ques-third">
+					<li>1)	Use the mobile phone numbers used to register GOMEPLUS to log on.</li>
+					<li>2)	If users forget passwords, click “forgetting passwords” on the log-on page and find passwords by sending message including identifying codes</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>How to use the third-party account log on</li></ul>
+				<ul class="ques-third">
+					<li>1)	Quick login can be accessed by using the third party account in GOMEPLUS and currently the system only support Facebook account.</li>
+					<li>2)	First time using the third-part account to log on GOMEPLUS is necessary to associate one’s mobile phone numbers.</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl class="help">
+			<dt class="ques">Two. How to obtain purchase rebate on GOMEPLUS</dt>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Register and log on GOMEPLUS freely.</li></ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>After clicking “purchase” button on the detailed description page of certain product on GOMEPLUS platform, you will be switched to a third-party platform to purchase this product.</li></ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>When you finish purchasing the product on the third-part platform, you will have a rebate from GOMEPLUS with a message notification. </li></ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>When your rebate order passes through the third-party’s review, you will receive this rebate after 30 days.</li></ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Your rebate can be used to get gift cards from Flipkart platform.</li></ul>
+			</dd>
+		</dl>
+		<dl class="help">
+			<dt class="ques">Three. Q & A of Flipkart rebate</dt>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>How long will the rebate funds arrive in account.</li></ul>
+				<ul class="ques-third">
+					<li>After your reviewing order arrives at GOMEPLUS and the order is passed through examination (The transaction is successful and there is no return application.), you will receive rebate from GOMEPLUS in three months.</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>How to calculate the rebate if a return or exchange emerges.</li></ul>
+				<ul class="ques-third">
+					<li>You can have the rebate only if the order is closed and the order is in accordance with the rebate rules. We will update the rebate condition to you in time according to Flipkart’s rules. Please notice the condition from time to time.</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Why there is inconsistency between my rebate amount and the amount showed on GOMEPLUS platform？</li></ul>
+				<ul class="ques-third">
+					<li>According to the reviewing rules of Flipkart，there may exist difference between order's rebate amount and actual amount. The numbers in rebate order prevail.</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl class="help">
+			<dt class="ques">Four. How to check the rebate order</dt>
+			<ul class="ques-third">
+				<li>Rebate order: GOMEPLUS platform provide rebate order for the purchase from the third-party mall. Click on “My Order” to check the rebate order.</li>
+			</ul>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>The rebate order situation</li></ul>
+				<ul class="ques-third">
+					<li>1)	Expected rebate: for the ongoing rebate order, the third-part mall will review and pass through the order.2）</li>
+					<li>2)	Rebate received: Consumers can use the order which get the full rebate amount.</li>
+					<li>3)	Rebate failure: the order cannot get rebate due to the causes from the third-part mall.</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>How to return products</li></ul>
+				<ul class="ques-third">
+					<li>If customers want a change or return, please make an application in the third-party mall.</li>
+				</ul>
+			</dd>
+		</dl>
+		<dl class="help">
+			<dt class="ques">Five. How to check the account Balance </dt>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Account Balance</li></ul>
+				<ul class="ques-third">
+					<li>The account amount only belongs to personal account and your all rebate funds will return to this account including the rebate from the purchase in the third-party mall, rebate from new registration and rebate from activity participation.</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Check account balance</li></ul>
+				<ul class="ques-third">
+					<li>Via “Mine-Personal Account- Account Balance”</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Use and limitations of account balance</li></ul>
+				<ul class="ques-third">
+					<li>Users can purchase buy the third-party Flipkart’s gift cards with rebate. The rules are as follows:</li>
+					<li>1)	The amount of gift card is no more than the account balance </li>
+					<li>2)	Singe minimum exchange amount is 100 rupees.</li>
+					<li>3)	Singe maximum exchange aount is 100000 rupees.</li>
+					<li>4)	The maximum cash withdrawal is five times in one day.</li>
+					<li>5)	The maximum cash withdrawal is 1000000 rupees in one month.</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>The procedure of conversing into Flipkart’s cash gift cards</li></ul>
+				<ul class="ques-third">
+					<li>Step one: “Mine” (Users log in and enter into “Mine” page)</li>
+					<li>Step two: “Account Balance” (Users can exchange for gift cards by the account amount.)</li>
+					<li>Step three: “Exchange” (Users make exchanges and check exchange records in this entrance.)</li>
+					<li>Step four: “Exchange gift cards” (Users choose gift cards to make exchanges.)</li>
+					<li>Step five: “Deal” (When the exchange is done, users can receive message and make inquiry into exchange information.)</li>
+					<li>Step six: “Check exchange information” (Users can check exchange records and relative gift cards numbers, passwords etc.)</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Once the gift card is sent to you, you have to keep the passwords and gift card numbers to secrets.</li></ul>
+				<ul class="ques-third">
+					<li>GOMEPLUS/Flipkart is not responsible for the loss due to buyers’ mistakes. Gift card’s exchange cannot be canceled.</li>
+				</ul>
+			</dd>
+			<dd class="ques-sec">
+				<ul class="ques-sec-tit"><li>Usage of Flipkart gift cards </li></ul>
+				<ul class="ques-third">
+					<li>1)	Users enter into Flipkart mall- choose the products-pay for the products-choose gift cards to pay-enter gift cards information (numbers and passwords)-order discount</li>
+					<li>2)	Flipkart payment and settlement can be made by Flipkart gift cards.</li>
+					<li>3)	The Flipkart order can use maximum 15 gift cards once. </li>
+				</ul>
+			</dd>
+		</dl>
+	</section>
+</body>
+</html>

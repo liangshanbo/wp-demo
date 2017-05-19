@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        <%= pageTitle %>
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="/css/bootstrap_css/bootstrap.min.css">
+    <script type="text/Javascript" src="/js/jquery-1.12.1.min.js"></script>
+    <script type="text/Javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/Javascript" src="/js/artTemplate.js"></script>
+</head>
+<body>
+<input type="hidden" id="mySysType" value="<%=sysType%>">
+<link rel="stylesheet" href="/css/publics/navbar.css">
+<nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a <% if(sysType == 'svn'){%> href="/panel" <%}%> <% if(sysType == 'gitlab'){%> href="/gitPanel" <%}%>  <% if(current == 'panel'){%> class="active" <%}%> >前端打Tag工具</a></li>
+                <li><a <% if(sysType == 'svn'){%> href="/project" <%}%> <% if(sysType == 'gitlab'){%> href="/gitProject" <%}%> <% if(current == 'project'){%> class="active" <%}%> >静态资源服务</a></li>
+                <li><a <% if(sysType == 'svn'){%>href="/update" <%}%> <% if(sysType == 'gitlab'){%>href="/gitUpdate" <%}%> <% if(current == 'update'){%> class="active" <%}%> >更新</a></li>
+                <!--<li><a href="/autoTest" <% if(current == 'autoTest'){%> class="active" <%}%> >自动测试</a></li>-->
+                <!--<li><a href="javascript:;" <% if(sysType == 'gitlab'){%> id="operateLogs" <%}%> <% if(sysType == 'svn'){%> data-toggle="modal" data-target="#logs" <%}%> >操作日志</a></li>-->
+                <li><a href="javascript:;" id="operateLogs">操作日志</a></li>
+                <% if(sysType == 'gitlab'){%> <li><a href="/gitOnline" id="projectOnline" <% if(current == 'gitOnline'){%> class="active" <%}%>>项目上线</a></li> <% }%>
+                <li><a href="">用户名：<%= session.userInfo.username %></a></li>
+                <li>
+                    <form class="hiddenForm" action="/logout" method="post" id="logout">
+                        <button class="btn btn-info">退出登录</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<link rel="stylesheet" href="/css/panel.css">
+<div class="modal fade bs-example-modal-lg" id="logs" tabindex="-2" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="margin-left:20px;">操作日志</h2>
+            </div>
+            <div class="modal-body">
+                <iframe id="iframelogs" src="" width="100%" height="400" align="middle"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="editProject" tabindex="-3" role="dialog" aria-labelledby="myModalLabel1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="margin-left:20px;">编辑项目</h2>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="realPort">
+                <% if(sysType == 'svn'){%>
+                    <div class="formitem" style="display:inline-block;"><span class="label">静态服务描述</span><input class="form-control mStatic" type="text" value="" placeholder="静态服务svn库地址" id="serverDesc" name="serverDesc" style="width: 600px;"></div>
+		            <select class="form-control changeProject" style="display:inline-block;">
+			            <option value="未分类">未分类</option>
+			            <option value="活动">活动</option>
+			            <option value="h5">h5</option>
+			            <option value="pc">pc</option>
+			            <option value="内嵌">内嵌</option>
+		            </select>
+                    <textarea class="form-control mStatic" type="text" rows="6" style="width: 800px; height:300px;" value="" placeholder="静态服务svn库地址" id="url" name="url"></textarea>
+                <%}%>
+                <% if(sysType == 'gitlab'){%>
+                    <div class="formitem"><span class="label">静态服务描述</span><input class="form-control mStatic" type="text" value="" placeholder="静态服务描述" id="serverDesc" name="serverDesc" style="width: 600px;"></div>
+                    <div class="formitem"><span class="label">静态服务描述</span><input class="form-control mStatic" type="text" value="" placeholder="静态服务GitLab库地址" id="url" name="url" style="width: 600px;"></div>
+                    <div class="formitem"><span class="label">静态服务描述</span><input class="form-control mStatic" type="text" value="" placeholder="分支名称" id="branchName" name="branchName" style="width: 600px;"></div>
+                    <select class="form-control changeProject" style="display:inline-block;position:relative;top:6px;left:4px;">
+			            <option value="未分类">未分类</option>
+			            <option value="活动">活动</option>
+			            <option value="h5">h5</option>
+			            <option value="pc">pc</option>
+			            <option value="内嵌">内嵌</option>
+		            </select>
+                <%}%>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                <button type="button" id="saveEdit" class="btn btn-info" data-dismiss="modal">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .loading_con {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0);
+        z-index: 9999;
+    }
+
+    .loading_con .loading {
+        width: 300px;
+        height: 120px;
+        font-size: 0;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+    }
+
+    .loading_con .loading span {
+        display: inline-block;
+        vertical-align: top;
+        width: 8px;
+        height: 80px;
+        background-color: #fff;
+        margin: 0 4px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        border-radius: 2px;
+    }
+
+    .loading_con .loading span:nth-child(1) {
+        animation: loading 1.2s ease-in-out 0s infinite;
+        -webkit-animation: loading 1.2s ease-in-out 0s infinite;
+        -moz-animation: loading 1.2s ease-in-out 0s infinite;
+        -ms-animation: loading 1.2s ease-in-out 0s infinite;
+    }
+
+    .loading_con .loading span:nth-child(2) {
+        animation: loading 1.2s ease-in-out -1.1s infinite;
+        -webkit-animation: loading 1.2s ease-in-out -1.1s infinite;
+        -moz-animation: loading 1.2s ease-in-out -1.1s infinite;
+        -ms-animation: loading 1.2s ease-in-out -1.1s infinite;
+    }
+
+    .loading_con .loading span:nth-child(3) {
+        animation: loading 1.2s ease-in-out -1.0s infinite;
+        -webkit-animation: loading 1.2s ease-in-out -1.0s infinite;
+        -moz-animation: loading 1.2s ease-in-out -1.0s infinite;
+        -ms-animation: loading 1.2s ease-in-out -1.0s infinite;
+    }
+
+    .loading_con .loading span:nth-child(4) {
+        animation: loading 1.2s ease-in-out -0.9s infinite;
+        -webkit-animation: loading 1.2s ease-in-out -0.9s infinite;
+        -moz-animation: loading 1.2s ease-in-out -0.9s infinite;
+        -ms-animation: loading 1.2s ease-in-out -0.9s infinite;
+    }
+
+    .loading_con .loading span:nth-child(5) {
+        animation: loading 1.2s ease-in-out -0.8s infinite;
+        -webkit-animation: loading 1.2s ease-in-out -0.8s infinite;
+        -moz-animation: loading 1.2s ease-in-out -0.8s infinite;
+        -ms-animation: loading 1.2s ease-in-out -0.8s infinite;
+    }
+
+    .loading_con .loading span:nth-child(6) {
+        animation: loading 1.2s ease-in-out -0.7s infinite;
+        -webkit-animation: loading 1.2s ease-in-out -0.7s infinite;
+        -moz-animation: loading 1.2s ease-in-out -0.7s infinite;
+        -ms-animation: loading 1.2s ease-in-out -0.7s infinite;
+    }
+
+    @-webkit-keyframes loading {
+        0%,
+        40%,
+        100% {
+            transform: scaleY(0.4);
+            -webkit-transform: scaleY(0.4);
+        }
+        20% {
+            transform: scaleY(1.0);
+            -webkit-transform: scaleY(1.0);
+        }
+    }
+
+    @keyframes loading {
+        0%,
+        40%,
+        100% {
+            transform: scaleY(0.4);
+            -webkit-transform: scaleY(0.4);
+        }
+        20% {
+            transform: scaleY(1.0);
+            -webkit-transform: scaleY(1.0);
+        }
+    }
+</style>
+<div class="loading_con transition" style="display:none" id="loading">
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<script>
+    window.onload = function(){
+        $('#iframelogs').contents().find('body').append("<link href='/css/iframe.css' rel='stylesheet'>");
+    }
+</script>
+
+<script src="/mods/operationlog.js">
+</script>
+
+<p style="padding:25px;">
+    <% if (sysType === 'svn' ) {%>
+    <%=projectUrl %>
+    <%}%>
+    <% if (sysType === 'gitlab' ) {%>
+    <%=projectUrl %>
+    <%}%>
+    <% if(current == 'panel' && sysType === 'gitlab'){%> <span style="margin:0 0 0 15px;color:red;">   (在项目成员里面才可以操作项目喔~ 创建者也需添加到项目成员中！)</span> <%}%>
+</p>

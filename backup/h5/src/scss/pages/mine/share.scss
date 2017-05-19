@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+@import "../../common/header/header.scss";
+
+.fb-share {
+	margin-top:rem(50);
+	padding: rem(0 250);
+	@include flex(center,center);
+	a {
+		width: 100%;
+	    display: block;
+	    height: rem(60);
+	    background: #DDD;
+	    line-height: rem(60);
+	    color:#0088bb;
+	    font-size: rem(32);
+	    font-weight: bold;
+	    border-radius: rem(10);
+	    text-align: center;
+	    &:active {
+	    	background: #BBB;
+	    	color:#FFF;
+	    }
+	}
+}

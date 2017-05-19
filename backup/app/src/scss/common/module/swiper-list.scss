@@ -1,0 +1,51 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+
+/*============swiper hot===========*/
+.hot{
+	
+}
+.hot-it{
+	width: rem(240);
+	margin-left: rem(40);
+	float: left;
+	&:last-child{
+		margin-right: rem(40);
+	}
+	&:first-child{
+		margin-left: rem(32);
+	}
+	.hot-pic{
+		width: rem(240);
+		height: rem(280);
+		position: relative;
+		img{
+			max-width: 100%;
+			max-height: 100%;
+			position: absolute;
+			top:50%;
+			left: 50%;
+			transform:translate(-50%,-50%);
+		}
+	}
+	.hot-para{
+		height: rem(34);
+		line-height: rem(36);
+		font-size: rem(28);
+		color: #333;
+		@include ellipsis(mobile,1);
+		margin:rem(14 0);
+	}
+	.hot-money{
+		margin-bottom: rem(10);
+		.hot-money-now{
+			font-size: rem(32);
+			color: #333;
+			padding-right: rem(12);
+		}
+		.hot-money-before{
+			font-size: rem(26);
+			color: #999;
+		}
+	}
+}

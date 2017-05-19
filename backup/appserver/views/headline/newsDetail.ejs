@@ -1,0 +1,23 @@
+<% include ../public/header.ejs %>
+
+<section class="wrap">
+	<div class="banner">
+		<img data-url="<%=:result.coverImg|imgbed:'720'%>" onerror="this.style.display='none';" >
+	</div>
+	<article class="articles">
+		<h3 class="articles-title"><%=result.title%></h3>
+		<div class="articles-type"><%=:data.tags | circul %></div>
+		<div class="articles-infor">
+			<div class="author">
+				<span><%=result.author%></span>
+			</div>
+			<strong class="time"><%=: result.publishTime | time%></strong>
+		</div>
+		<div class="tips"><%=result.summary%></div>
+		<div class="article-cont">
+			<%-result.content%>
+		</div>
+	</article>
+</section>
+
+<% include ../public/footer.ejs %>

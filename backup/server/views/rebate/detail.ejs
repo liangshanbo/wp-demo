@@ -1,0 +1,158 @@
+<% include ../public/header.ejs %>
+
+<header class="header">
+    <a class="header-back-to" href="javascript:history.go(-1);"></a>
+    <h3 class="header-title">ORDER DETAILS</h3>
+</header>
+
+<section>
+<!-- 返利进度 -->
+<% if (result && result.data && result.data.status) {%>
+<% var status=result.data.status; %>
+<% var skudetail= result.data.sku; %>
+    <div class="rebate-progress" class="rebating">
+
+        <!-- 订单创建 -->
+        <% if(status=='CREATE_ORDER'){%>
+            <p class="rebate-amount">
+                <span class="value">
+                  <%=:result.data.expectedCashBackAmount.alternative|price%>
+                  <%=:result.data.expectedCashBackAmount.amount|money:2%>
+                </span>
+                <span class="title">Expected cashback</span>
+            </p>
+            <ul class="rebate-progress-tags">
+                <li class="rebate-progress-tag _order">
+                    <p class="title">Order</p>
+                    <p class="date"><%=result.data.orderTime%></p>
+                </li>
+                <li class="rebate-progress-tag _rebating pending">
+                    <p class="title pending">Rebating</p>
+                    <p class="date"></p>
+                </li>
+                <li class="rebate-progress-tag _rebated pending">
+                    <p class="title pending">Rebated</p>
+                    <p class="date"></p>
+                </li>
+            </ul>
+        <%}%>
+
+        <!-- 预计返利 -->
+        <% if(status=='EXPECTED_CASHBACK'){%>
+            <p class="rebate-amount">
+                <span class="value">
+                  <%=:result.data.expectedCashBackAmount.alternative|price%>
+                  <%=:result.data.expectedCashBackAmount.amount|money:2%>
+                </span>
+                <span class="title">Expected cashback</span>
+            </p>
+            <ul class="rebate-progress-tags">
+                <li class="rebate-progress-tag _order">
+                    <p class="title">Order</p>
+                    <p class="date"><%=result.data.orderTime%></p>
+                </li>
+                <li class="rebate-progress-tag _rebating">
+                    <p class="title">Rebating</p>
+                    <p class="date"><%=:result.data.expectedCashBackTime|time %></p>
+                </li>
+                <li class="rebate-progress-tag _rebated pending">
+                    <p class="title pending">Rebated</p>
+                    <p class="date"><%=:result.data.cashBackTime|time %></p>
+                </li>
+            </ul>
+        <%}%>
+
+        <!-- 返利到账 -->
+        <% if(status=='CASHBACK'){%>
+            <p class="rebate-amount">
+                <span class="value">
+                  <%=:result.data.cashBackAmount.alternative|price%>
+                  <%=:result.data.cashBackAmount.amount|money:2%>
+                </span>
+                <span class="title">Arrive Your Account</span>
+
+            </p>
+            <ul class="rebate-progress-tags">
+                <li class="rebate-progress-tag _order">
+                    <p class="title">Order</p>
+                    <p class="date"><%=result.data.orderTime%></p>
+                </li>
+                <li class="rebate-progress-tag _rebating">
+                    <p class="title">Rebating</p>
+                    <p class="date"><%=:result.data.expectedCashBackTime|time%></p>
+                </li>
+                <li class="rebate-progress-tag _rebated">
+                    <p class="title">Rebated</p>
+                    <p class="date"><%=:result.data.cashBackTime|time%></p>
+                </li>
+            </ul>
+        <%}%>
+
+        <!-- 返利失败 -->
+        <% if(status=='FAIL'){%>
+            <p class="rebate-amount">
+              <span class="value failed">Failed</span>
+              <span class="title"><%=result.data.failReason%></span>
+            </p>
+
+            <ul class="rebate-progress-tags failed">
+                <li class="rebate-progress-tag _order">
+                    <p class="title">Order</p>
+                    <p class="date"><%=result.data.orderTime%></p>
+                </li>
+                <li class="rebate-progress-tag _rebated failed">
+                    <p class="title failed">Failed</p>
+                    <p class="date"><%=:result.data.failTime|time%></p>
+                </li>
+            </ul>
+        <%}%>
+
+    </div>
+    <!-- 商品详情 -->
+    <a href="/pro/detail?id=<%= result.data.sku.itemId %>&pdtype=7">
+    <div class="good-detail">
+        <span class="good-image-wrapper">
+            <img class="good-image" gome-src="<%= skudetail.mainImage %>" src="<%= config.wapcsspath %>/images/common/default-prolist.png" alt="<%= skudetail.name %>"/>
+        </span>
+        <div class="good-description">
+            <span class="good-name" href="javascript:;">
+                <%=skudetail.name%>
+            </span>
+
+            <img class="source" src="<%= result.data.source.url%>" alt="<%= result.data.source.name%>">
+            <div class="at-bottom">
+                <p class="good-price">
+                    <span class="good-price__new"><%=:skudetail.sellingPrice.alternative|price%><%=:skudetail.sellingPrice.amount|money%></span>
+                    <span class="good-price__old"><%=:skudetail.sellingPrice.alternative|price%><%=:skudetail.originPrice.amount|money%></span>
+                </p>
+                <p class="good-quantity">
+                    x<%=result.data.quantity%>
+                </p>
+                <p class="order-outlay">
+                    <span class="title">
+                        Actual outlay
+                    </span>
+                    <span class="value">
+                        <%=:result.data.payAmount.alternative|price%>
+                        <%=:result.data.payAmount.amount|money%>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    </a>
+    <!-- 订单详情 -->
+    <div class="order-detail">
+        <p class="order-number">
+            <span class="title">Order number</span>
+            <span class="value"><%=result.data.outerOrderId%></span>
+        </p>
+        <p class="order-date">
+            <span class="title">Order date</span>
+            <span class="value"><%=result.data.orderTime%></span>
+        </p>
+    </div>
+<%}%>
+</section>
+
+<% include ../public/footer.ejs %>

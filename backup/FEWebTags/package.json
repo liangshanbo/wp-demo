@@ -1,0 +1,44 @@
+{
+  "name": "FEwebTags",
+  "version": "0.0.1",
+  "author": "xiaojue",
+  "keywords": [
+    "express site"
+  ],
+  "scripts": {
+    "app": "node app.js"
+  },
+  "dependencies": {
+    "asyncawait": "*",
+    "body-parser": "1.14.1",
+    "bootstrap": "3.3.6",
+    "bootstrap-select": "1.10.0",
+    "cookie-session": "2.0.0-alpha.1",
+    "ejs": "2.3.4",
+    "express": "4.x",
+    "flashify": "0.1.2",
+    "formidable": "^1.0.17",
+    "fs": "0.0.1-security",
+    "lactate": "0.13.12",
+    "ldapjs": "^1.0.0",
+    "log4js": "0.6.37",
+    "moment": "^2.10.6",
+    "multistream": "^2.0.5",
+    "nodegit": "^0.14.1",
+    "path": "^0.12.7",
+    "portfinder": "^1.0.3",
+    "request": "^2.73.0",
+    "ws": "^1.1.1"
+  },
+  "contributors": [
+    "xiaojue"
+  ],
+  "main": "app.js",
+  "license": "BSD",
+  "devDependencies": {
+    "iconv-lite": "^0.4.13",
+    "nodemon": "^1.10.2",
+    "os": "^0.1.1",
+    "pinyin": "^2.7.1"
+  }
+}

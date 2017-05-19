@@ -1,0 +1,45 @@
+<% if(result.data && result.data.countries.length>0){
+    var letter = [];
+    function inArray(arr,val,key){
+        for(var i = 0,len=arr.length;i<len;i++){
+            if( key ? arr[i][key] : arr[i] === val){
+                return i;
+            }
+        }
+        return -1;
+    }
+%>
+<div id="area" style="display: none">
+    <section class="wrap">
+        <header id="area_header" class="header no-border">
+            <a class="btn-cancel" id="area_cancel" href="javascript:;">Cancel</a>
+            <h3 class="header-title">COUNTRY/REGION</h3>
+        </header>
+        <section class="country" id="country">
+            <% for(var i = 0,len = result.data.countries.length;i<len;i++){
+                var countries = result.data.countries[i],
+                    index = inArray(letter,countries.name.charAt(0));
+                if(index<0){
+                    letter.push(countries.name.charAt(0));%>
+                    <%if(letter.length == 1){%>
+                        <dl class="country-item">
+                            <dt><a href="javascript:;"><%=countries.name.charAt(0)%></a></dt>
+                            <dd code="<%=countries.alpha2Code%>" countryCode="<%=countries.countryCode%>"><%=countries.name%></dd>
+                    <%}else{%>
+                        </dl><dl class="country-item">
+                            <dt><a href="javascript:;"><%=countries.name.charAt(0)%></a></dt>
+                            <dd code="<%=countries.alpha2Code%>" countryCode="<%=countries.countryCode%>"><%=countries.name%></dd>
+                    <%}%>
+                <%}else{%>
+                    <dd code="<%=countries.alpha2Code%>" countryCode="<%=countries.countryCode%>"><%=countries.name%></dd>
+                <%}%>
+            <%}%>
+        </section>
+    </section>
+    <div class="move-bar" id="scrollBar">
+        <%for(var j = 0,len1=letter.length;j<len1;j++){%>
+            <a href="javascript:;"><%=letter[j]%></a>
+        <%}%>
+    </div>
+</div>
+<%}%>

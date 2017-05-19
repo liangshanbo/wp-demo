@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+
+html,body{
+	padding: 5%;
+}
+label{
+	margin-bottom: 0.2rem;
+	display: block;
+}
+input[type="text"]{
+	height: 0.32rem;
+	font-size: 0.32rem;
+	padding: 0.24rem;
+	width: 80%;
+}
+p{
+	margin: 0.5rem 0;
+}
+#btn{
+	padding: 0.2rem;
+	background-color: #FFE37B;
+}
+textarea{
+	width: 80%;
+	height: 3rem;
+	padding: 0.1rem;
+}
+
+#result{
+	height: 5rem;
+	border: 1px solid silver;
+	padding: 0.1rem;
+}

@@ -1,0 +1,16 @@
+<div class="search-layer" id="s_layer" style="display: none">
+    <header class="search-header">
+        <div class="search-header-box">
+            <span class="search-header-icon"></span>
+            <input @keyup.13="go_search" @click="click_focus" id="s_layer_input" class="search-header-input" v-model="keyword" placeholder="Search" type="text"/>
+            <em class="search-header-del" v-show="keyword!==''" style="display: none" @click="click_text_null"></em>
+        </div>
+        <span class="search-cancel" @click="layer_hide">Cancel</span>
+    </header>
+    <section v-show="isShow>0" style="display: none" id="s_history" class="search-content">
+        <p class="search-content-title">Recent Searchs<em class="search-content-del" @click="click_del_his"></em></p>
+        <ul class="search-history">
+            <li v-for="item in his_data"><a href="/search?keyword={{item}}" v-text="item"></a></li>
+        </ul>
+    </section>
+</div>

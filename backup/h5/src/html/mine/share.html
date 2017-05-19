@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="国美Plus" />
+    <meta name="description" content="国美Plus" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="google" value="notranslate">
+    <meta name="author" content="gome" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="apple-mobile-web-app-title" content="国美Plus">
+    <meta name="applicable-device" content="mobile">
+    <title>LOG IN</title>
+    <link rel="stylesheet" href="../../css/pages/mine/jump.css"/>
+    <style type="text/css">
+        .share-mark {
+            width:100%;
+            height:100%;
+            background:#eee;
+            opacity:0.6;
+        }
+        .share-dialog {
+            background-color:#fff;
+            width:100%;
+            z-index:999;
+            position: fixed;
+            bottom:0;
+            left:0;
+            margin-top:-110px;
+            padding-top: 10px;
+        }
+        .mod-main {
+            height: 165px;
+        }
+        .share-header{
+            text-align: center;
+            height:55px;
+            font-size: 18px;
+            line-height: 55px;
+            margin-bottom: 5px;
+        }
+        .share-content-list li{
+            width: 75px;
+            height: 75px;
+            font-size: 14px;
+            border: 1px solid #e0e0e0;
+        }
+        .share-content-FB{
+            position: absolute;
+            left: 50%;
+            margin-left: -38px;
+            padding-top:25px;
+            margin-bottom:20px;
+        }
+        .share-content-friends {
+            float: left;
+            padding-top: 18px;
+            margin-left: 12%;
+        }
+        .share-content-copy {
+            float: right;
+            padding-top: 18px;
+            margin-right: 12%;
+        }
+        .share-content-list li p{
+            text-align: center;
+            line-height: 20px;
+        }
+        .share-cancel {
+            text-align: center;
+            color: #00F;
+            font-size: 18px;
+            width: 100%;
+            height:55px;
+            line-height: 55px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .slot{
+            width:204px;
+            height:130px;
+            background-color: #000;
+            position:fixed;
+            top:50%;
+            left:50%;
+            margin-top:-65px;
+            margin-left:-102px;
+            z-index:9999;
+            color:#FFF;
+            font-size:12px;
+        }
+        .slot_header{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            padding-left:20px;
+        }
+        .slot_header em{
+            display:block;
+            float: right;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            margin: 18px 15px 0 0;
+        }
+        .slot_main_texts {
+            height: 40px;
+            padding:5px 0 0 20px;
+            width: 80%;
+        }
+        .slot_main_texts p{
+            word-break: normal;
+            word-wrap: normal;
+        }
+        .slot_main_confirm {
+            height: 40px;
+        }
+        .slot_main_confirm a{
+            width:45px;
+            height: 25px;
+            display: inline-block;
+            line-height: 25px;
+            text-align: center;
+            font-size:14px;
+            color:#FFF;
+            border:1px solid #FFF;
+            float:right;
+            margin:5px 15px;
+        }
+        .share-firends-content {
+            height: 130px;
+        }
+        .share-firends-content ul {
+            overflow-x:auto;
+            overflow-y:hidden;
+            white-space:nowrap;
+        }
+        .share-firends-content li{
+            width: 90px;
+            height: 120px;
+            text-align: center;
+            display: inline-block;
+        }
+        .share-firends-content em{
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius:50%;
+            margin-top: 10px;
+            border:1px solid #CCC;
+        }
+        .share-firends-content .share-firends-name {
+            font-size: 16px;
+        }
+        .share-firends-content .share-firends-describe{
+            font-size: 12px;
+            padding-top:5px;
+            color: #CCC;
+        }
+        .share-firends-text {
+            padding:5px 10%;
+            margin-top:5px;
+        }
+        .share-firends-input {
+            width: 90%;
+            min-height: 30px;
+            background:#EEE;
+            font-size: 14px;
+            padding:6px;
+            border-radius:3px;
+        }
+        .share-firends-footer{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #00F;
+            font-size:20px;
+            margin-top:5px;
+            border-top:1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+<script>
+    (function(win){var doc=win.document,html=doc.documentElement,option=html.getAttribute("data-use-rem");if(option===null){return}var baseWidth=parseInt(option).toString()==="NaN"?640:parseInt(option);var grids=baseWidth/100;var clientWidth=html.clientWidth||320;html.style.fontSize=clientWidth/grids+"px";var testDom=document.createElement("div");var testDomWidth=0;var adjustRatio=0;testDom.style.cssText="height:0;width:1rem;";doc.body.appendChild(testDom);var calcTestDom=function(){testDomWidth=testDom.offsetWidth;if(testDomWidth!==Math.round(clientWidth/grids)){adjustRatio=clientWidth/grids/testDomWidth;var reCalcRem=clientWidth*adjustRatio/grids;html.style.fontSize=reCalcRem+"px"}else{doc.body.removeChild(testDom)}};setTimeout(calcTestDom,20);var reCalc=function(){var newCW=html.clientWidth;if(newCW===clientWidth){return}clientWidth=newCW;html.style.fontSize=newCW*(adjustRatio?adjustRatio:1)/grids+"px"};if(!doc.addEventListener){return}var resizeEvt="orientationchange" in win?"orientationchange":"resize";win.addEventListener(resizeEvt,reCalc,false);doc.addEventListener("DOMContentLoaded",reCalc,false)})(window);
+</script>
+<script type="text/javascript" src="./jquery.min.js"></script>
+<script type="text/javascript" src="./clipboard.min.js"></script> 
+<script type="text/javascript" src="./ZeroClipboard.min.js"></script> 
+    <div class="share-mark"></div>
+    <div class="share-dialog mod-friends">
+        <header class="share-header">
+            <div class="share-header-nav">
+                Share
+            </div>
+        </header>  
+        <section class="share-main">
+            <div class="share-content">
+                <ul class="share-content-list">
+                    <li class="share-content-friends">
+                        <em></em>
+                        <p>My</p>
+                        <p>Friends</p>
+                    </li>
+                    <li class="share-content-FB" id="share">
+                        <em></em>
+                        <p data-clipboard-text="Copy Me!">FBB</p>
+                        
+                    </li>
+                    <li class="share-content-copy" data-clipboard-action="copy" data-clipboard-target="#fe_text" id="btn">
+                        <em></em>
+                        <p>Copy</p>
+                        <p id="aaa">Link</p>
+                        <input  style="display: none" id="fe_text" value="123123123123">
+                    </li>
+                </ul>
+                <!-- <div class="share-firends">
+                    <div class="share-firends-content">
+                        <ul>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                            <li>
+                                <em></em>
+                                <p class="share-firends-name">alex</p>
+                                <p class="share-firends-describe">rabettl</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="share-firends-text">
+                        <div class="share-firends-input" contenteditable="true"></div>
+                    </div>
+                    <div class="share-firends-footer">
+                        SHARE
+                    </div>
+                </div> -->
+            </div>
+        </section>      
+    </div>
+    <div class="slot" style="display: none">
+        <header class="slot_header">
+            <div class="slot_header_content">
+                Shared Successfully!
+                <em>X</em>
+            </div>
+        </header>
+        <article class="slot_main">
+            <div class="slot_main_texts">
+                <p>Play the slot machine to win rupee!</p>
+            </div>
+            <div class="slot_main_confirm">
+                <a href="">GO</a>
+            </div>
+        </article>
+    </div>
+    <script type="text/javascript">
+        var ss = new Clipboard('#btn');
+        ss.on('success',function (e){
+            alert(e.text);
+        })
+        
+        // document.getElementById('share').onclick = function (event){
+        //     console.log(event);
+        //     console.log(event.target.clipboardData);
+        //     console.log(event.clipboardData);
+        //     if(event.clipboardData){
+        //         return event.clipboardData.setData("text/plain",'123');
+        //     }else if(window.clipboardData){
+        //         return window.clipboardData.setData("text",'123');
+        //     }
+        // }
+
+        var clipboard = new Clipboard('#btn');
+        console.log(clipboard)
+        clipboard.on('success', function(e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+            alert("复制成功");
+            e.clearSelection();
+        });
+    </script>
+</body>
+</html>

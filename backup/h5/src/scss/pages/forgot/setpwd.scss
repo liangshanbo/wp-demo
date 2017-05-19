@@ -1,0 +1,12 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+@import "../../common/module/header.scss";
+@import "../public/register.scss";
+@import "../../common/module/btn.scss";
+.register-section {
+  .register-title {
+    line-height: rem(70);
+  }
+}

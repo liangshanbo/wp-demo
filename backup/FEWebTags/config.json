@@ -1,0 +1,17 @@
+{
+  "tags_overdue_num": 3,
+  "basepath": "https://svn.gomeo2o.cn:8443/gomeo2o_H5/dev/",
+  "targetpath": "https://svn.gomeo2o.cn:8443/gomeo2o_H5/dist/",
+  "projectsPaths": ["app", "h5", "public", "oppc", "oph5", "opapp", "pc","videopc","videoh5", "pc-git"],
+  "projectPath":"/gomeo2o/www/projects/",
+  "gitProjectsPaths": ["app", "h5", "public", "oppc", "oph5", "opapp", "pc","videopc","videoh5", "pc-git"],
+  "gitProjectPath":"/gomeo2o/www/projects/",
+  "webhome":"/gomeo2o/www/",
+  "webgithome":"/home/wanglonghai/web/git/",
+  "projectPrefix":"CDN",
+  "nginxConfPath":"/usr/local/nginx/conf/conf.d/",
+  "nginxGitConfPath":"/usr/local/nginx/conf/conf.d/",
+  "nginxConfPrefix":"conf",
+  "newProjectPath": "/gomeo2o/www/projects/",
+  "serverIp":"10.69.201.45"
+}

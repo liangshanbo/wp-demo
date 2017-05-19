@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/*--------榛勮壊鑳屾櫙--------*/
+/*--------瀛椾綋棰滆壊--------*/
+/*--------鍒嗗壊绾胯壊--------*/
+/*--------搴曡壊--------*/
+/*搜索弹层样式*/
+.search-layer {
+  background: #fff; }
+  .search-layer .search-content {
+    padding: 0 0.3rem; }
+    .search-layer .search-content .search-content-title {
+      font-size: 0.28rem;
+      color: #666;
+      height: 0.78rem;
+      line-height: 0.78rem; }
+      .search-layer .search-content .search-content-title .search-content-del {
+        float: right;
+        width: 1rem;
+        height: 100%;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAuCAYAAABap1twAAAAAXNSR0IArs4c6QAAAZVJREFUWAntWLFOwzAQjSOXqAtLvwMEI6zwBwhmWJJ8DRLKkmRpFxAC8Qcw8QHwD7CAxMKCApHCO9R0shXZh6yAzpLr9nzP9/RyF9dWkUdL0/QBsC1H6GNd19uOmCh2BYT2F4JcxVWWZZXrIl3XHQAzc8S9KaVuHDGRRrDUFeTpP/OJNfoc1JA981REYH9CAdWzxO4wweM+od8YP8uyXPRzIcY8z49RRGsUC+Mcu84Xfdf0QS1JkmnTNP0r5x2mBdlDNZA6Q1+neOByieGH4OirWAhyU2SVg64LoagOUUz7wF1VVXVnwmMb3YP9CLl1i6S/NvkM2TiPeAeBU5DctAXB/MbSZ9fmM2TnEBxa+1fmhSBXRlFQFOQqwMVLDoqCXAW4eMlBUZCrABcvOfjvFfQ+k+Dsetq27Tn+0j/ZVIrj+AJHgnut9YvNZ8juTbAoimcsTt3acDvxiknq3k2KxFu6JVAU5CpoLBJU5hQ3ByV3cRc8xTT5GwnCcYI+iqvh0efgSkFcXn7gxZqbZA5tIy6hY3rH+waYtGqnGQeBMwAAAABJRU5ErkJggg==) no-repeat center center;
+        background-size: 0.4rem auto;
+        -webkit-background-size: 0.4rem auto; }
+    .search-layer .search-content .search-history {
+      font-size: 0.36rem; }
+      .search-layer .search-content .search-history li {
+        overflow: hidden;
+        word-break: break-all;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        height: 0.78rem;
+        line-height: 0.78rem;
+        color: #333; }
+        .search-layer .search-content .search-history li a {
+          display: block; }

@@ -1,0 +1,41 @@
+<% include ../public/header.ejs %>
+
+<script type="text/javascript">
+	var targetURI = "<%- targetURI%>";
+</script>
+<% if(result.code !== 200) { %>
+	<section class="not-find">
+		<span class="notfind-pic"></span>
+		<h5 class="notfind-title">Uh~The server is too tired，<br/>engineers are trying to wake up…<br/>Please Return</h5>
+	</section>
+<% } else {   
+       var data = result.data;	
+       if(data.title){
+%>
+	<section class="wrap pt110">
+		<div class="banner">
+			<img  data-url="<%=:data.coverImg | imgbed:'720'%>"  alt="">
+		</div>
+		<article class="articles">
+			<h3 class="articles-title"><%=data.title%></h3>
+			<div class="articles-type"><%-:data.tags | circul %></div>
+			<div class="articles-infor">
+				<div class="author">
+					<span><%=data.author%></span>
+				</div>
+				<strong class="time"><%=:data.publishTime|time%></strong>
+			</div>
+			<div class="tips"><%=data.summary%></div>
+			<div class="article-cont">
+				<%-data.content%>
+			</div>
+		</article>
+	</section>
+	<a href="javascript:;" class="btn-fix" id="buyBtn" style="display: none;"> CLICK HERE TO BUY</a>	
+<%}else{%>
+	<section class="not-find">
+		<span class="notfind-pic"></span>
+		<h5 class="notfind-title">Uh~The server is too tired，<br/>engineers are trying to wake up…<br/>Please Return</h5>
+	</section>
+<% } }%>
+<% include ../public/footer.ejs %>

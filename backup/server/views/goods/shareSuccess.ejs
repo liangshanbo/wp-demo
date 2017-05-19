@@ -1,0 +1,58 @@
+<% include ../public/header.ejs %>
+<%if(result && result.data && result.data.items.items){ %>
+    <script>
+        var cateId = "<%- categoryId %>";
+        var userId = "<%-userId%>";
+    </script>
+    <section class="wrap bt110">
+        <header class="header">
+             <a class="header-back" href="/"></a>
+            <a href="javascript:;" class="header-back-to"></a>
+            <h3 class="header-title">Shared Success</h3>
+        </header>
+        <banner class="banner">
+            <a href="https://m.gomeplus.in/hy/game/slot" style="background:url(<%=result.data.banner.peas[0].showPic%>) no-repeat;background-size:100% 100%"></a>
+        </banner>
+        <section class="detail">
+            <div class="title">
+                <h3 class="title-main">RECOMMENDATION</h3>
+                <a class="title-arrows" href="javascript:;"></a>
+            </div>
+            <%  var items = result.data.items.items;
+                function buy(url){
+                    var search = /\?/.test(url);
+                    if(!!userId){
+                        return url + (search ? "&":"?")+"affExtParam1="+userId;
+                    }
+                    return "login?redirect="+encodeURIComponent(url)+"&type=buy";
+                }
+            if(items && items.length) { %>
+            <ul class="goods-list" id="goodsList">
+                <% for(var i=0; i < items.length; i++) {
+                    var item = items[i]["item"],pdtype = 9;
+                if(item){
+                %>
+                    <% include ../public/proList.ejs %>
+                <%}else{%>
+                    no data
+                <%break;}%>
+                <% } %>
+                <li class="noMore">no more item</li>
+            </ul>
+            <% }else{ %>
+            <section class="not-find">
+                <span class="notfind-pic" style="visibility:hidden"></span>
+                <p class="notfind-para"> System internal error</p>
+                <a class="btn-not" href="/">CONTINUE</a>
+            </section>
+            <% } %>
+        </section>
+    </section>
+<% }else{ %>
+    <section class="not-find">
+        <span class="notfind-pic"></span>
+        <p class="notfind-para"> System internal error</p>
+        <a class="btn-not" href="/">CONTINUE</a>
+    </section>
+<% } %>
+<% include ../public/footer.ejs %>

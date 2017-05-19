@@ -1,0 +1,64 @@
+<%- include('./header.html',{
+pageTitle: '自动测试'
+}) %>
+    <form action="/addScript" class="form-signin" role="form" method="post" enctype='multipart/form-data'>
+        <h3 class="form-signin-heading" style="margin-bottom:30px;">上传脚本</h3>
+        <% if(flash.message){ %>
+        <p style="color:#4a62ff"><%= flash.message %></p>
+        <% } %>
+
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" id="subfile" class="form-control" disabled style="cursor:default; background-color: white;">
+                <span class="input-group-btn">
+                    <div class="icon_container" id="btnChoose">
+                        <input type="button" class="btn btn-info" value="选择文件..." style="border-top-left-radius: 0; border-bottom-left-radius: 0;padding-left:40px;width:200px; height:40px;">
+                        <img src="/img/upload_icon.png" id="input_icon">
+                    </div>
+                </span>
+            </div>
+        </div>
+        <input id="fulAvatar" name="fulAvatar" type="file" class="form-control" style="width:1px; visibility: hidden"><br>
+        <input class="form-control" type="text" value="" placeholder="脚本描述" name="scriptDesc" style="margin-left:16px; width: 40%;"><br>
+        <button id="btnSub" class="btn btn-primary" type="submit" style="width:100px; height:40px;font-size:15px;">上 传</button>
+    </form>
+
+    <div class="mborders" style="border-top-color:lightgray">
+        <h3 style="margin:25px;">操作脚本</h3>
+        <table style="width:100%" class="table table-striped">
+            <thead>
+            <tr class="head">
+                <th>脚本描述</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <%
+            for(var i = 0; i<userData.length; i++){
+            %>
+            <tr>
+                <td valign="middle"><%=userData[i].desc%></td>
+                <td>
+                    <form action="/delScript" method="post" class="hiddenForm" id="delScript">
+                        <input onclick="return confirm('确认删除该脚本吗？')"
+                               class="btn btn-warning" type="submit" value="删除">
+                        <input type="hidden" name="path" value="<%=userData[i].filePath%>">
+                        <!--<input type="hidden" name="desc" value="<%=userData[i].desc%>">-->
+                    </form>
+                    <form action="/runScript" method="post" class="hiddenForm" id="runScript" target="panel">
+                        <input class="btn btn-success" type="submit" value="运行" data-toggle="modal" data-target="#myModal">
+                        <input type="hidden" name="path" value="<%=userData[i].filePath%>">
+                    </form>
+                </td>
+            </tr>
+            <%
+            }
+            %>
+
+        </table>
+    </div>
+
+    <%- include('./capacity.html') %>
+    <script type="text/Javascript" src="/mods/autoTest.js"></script>
+    <script type="text/javascript" src="/mods/panel.js"></script>
+</body>
+</html>

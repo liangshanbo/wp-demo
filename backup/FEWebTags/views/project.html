@@ -1,0 +1,73 @@
+<%- include('./header.html',{
+pageTitle: '静态资源服务生成工具'
+}) %>
+    <div class="oneKeyCro">
+        <button class="oneKeyRecovery btn btn-warning">一键恢复所有丢失文件</button>
+    </div>
+    <form action="/addServer" method="post" target="panel">
+        <h3>新建静态资源服务</h3>
+        <p class="desc">此功能主要用来将所提供的svn目录检出到服务器磁盘上，然后将其配置nginx并提供随机的端口以供进行代理访问</p>
+        <div class="formitem">
+	        <!--<span class="label">静态服务描述</span>-->
+	        <input class="form-control mStatic" type="text" value="" placeholder="静态服务描述" name="serverDesc" style="width: 600px;display:inline-block;">
+	        <select name="classify" class="form-control projects" style="display:inline-block;">
+		        <option value="未分类">未分类</option>
+		        <option value="活动">活动</option>
+		        <option value="h5">h5</option>
+		        <option value="pc">pc</option>
+		        <option value="内嵌">内嵌</option>
+            </select>
+        </div>
+        <div class="formitem"><span class="label">静态服务svn库地址</span><textarea class="form-control mStatic" onkeypress="if(event.keyCode==13) return false;" type="text" rows="6" style="width: 800px; height:300px;" value="" placeholder="静态服务svn库地址" name="serverSvn"></textarea></div>
+        <button style="margin-top:24px; margin-left:5px;" type="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal">提交</button>
+    </form>
+    <div class="static">
+        <h3>编辑服务</h3>
+        <input type="text" id="keyword" placeholder="输入服务描述查找常用语">
+        <button style="margin-left:15px;" type="button" id="searchBtn" class="btn btn-success">搜索</button>
+	    <span style="margin-left:20px;">根据分类筛选：</span>
+	    <select class="form-control typeProject" style="display:inline-block;">
+		    <option value="全部">全部</option>
+		    <option value="未分类">未分类</option>
+		    <option value="活动">活动</option>
+		    <option value="h5">h5</option>
+		    <option value="pc">pc</option>
+		    <option value="内嵌">内嵌</option>
+	    </select>
+        <form action='/modifyServer' method='post' target="panel" id="formPanel" style="border:none;margin: 20px 0 0 0;padding: 0">
+            <input type="radio" name="type" value="update"  checked="checked"  id="updateBtn"/><label for="updateBtn">更新</label>
+            <input type="radio" name="type" value="delete"  id="deleteBtn"/><label for="deleteBtn">删除</label>
+            <button style="margin-left:15px;" type="button" id="submitBtn" class="btn btn-success" data-toggle="modal" data-target="#myModal">提交</button>
+            <table style="width:100%" class="table table-striped projects">
+                <thead>
+                <tr class="head">
+                    <th style="width:40px;"></th>
+                    <!--<th>分支</th>-->
+                    <th>端口</th>
+                    <th>静态服务描述</th>
+                    <th>分类</th>
+                    <th>地址</th>
+                </tr>
+                </thead>
+                <%
+                for(var i = 0;i<projects.length;i++){
+                %>
+                <tr>
+                    <td><input name="servers" type="checkbox" value="<%=projects[i].port%>" id="<%=projects[i].port%>"></td>
+                    <td><label for="<%=projects[i].port%>"><%=projects[i].port%></label></td>
+                    <td><%=projects[i].desc%></td>
+                    <td><%=projects[i].type%></td>
+                    <td><input type="text" disabled value="http://<%=projects[i].ip%>:<%=projects[i].port%>"></td>
+                    <td><button class="btn btn-warning editBtn changeProjectBtn" port="<%=projects[i].port%>">编辑</button></td>
+                </tr>
+                <%
+                }
+                %>
+            </table>
+        </form>
+    </div>
+    <%- include('./capacity.html') %>
+    <script type="text/javascript" src="/js/websocket.js"></script>
+    <script type="text/Javascript" src="/mods/project.js"></script>
+</body>
+</html>

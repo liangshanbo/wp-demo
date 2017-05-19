@@ -1,0 +1,33 @@
+<li class="goods-item">
+    <a href="/pro/detail?id=<%= item.id %>&pdtype=<%=pdtype%>">
+                <span class="goods-item-pic">
+                    <img gome-src="<%=: item.mainImage | imgbed:'180'%>" src="<%= config.wapcsspath %>/images/common/default-prolist.png" alt="<%= item.name %>">
+                </span>
+        <div class="goods-item-cont">
+            <h4 class="goods-item-title"><%= item.name %></h4>
+            <p class="goods-item-money">
+                <% if(item.sellingPrice) { %>
+                <strong class="current-money"><%= item.sellingPrice.alternative %>. <%= Math.round(item.sellingPrice.amount/100) %></strong>
+                <% } %>
+                <% if(item.originPrice && item.originPrice.amount !== item.sellingPrice.amount) { %>
+                <del class="before-money"><%= item.originPrice.alternative %>. <%= Math.round(item.originPrice.amount/100) %></del>
+                <% } %>
+                <%if(item.discountPercentage>0){%>
+                    <span class="save-money"><%=item.discountPercentage%>% Off</span>
+                <%}%>
+            </p>
+            <%if(item.expectedCashBack.amount>=100){%>
+                <div class="rebate">
+                    <em class="icon-tag"></em>
+                    <p class="rebate-para">Upto <%=item.expectedCashBack.alternative%>. <%=Math.round(item.expectedCashBack.amount/100)%> Cashback</p>
+                </div>
+            <%}%>
+            <%if(item.source.url){%>
+            <div class="from">
+                <img src="<%= item.source.url %>" onerror="javascript:this.src='<%=config.wapcsspath%>/images/common/default-probanner.png'" alt="<%= item.source.name %>" >
+            </div>
+            <%}%>
+            <a class="btn-buy" href="<%=buy(item.outerUrl)%>"></a>
+        </div>
+    </a>
+</li>

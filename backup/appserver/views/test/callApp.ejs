@@ -1,0 +1,21 @@
+<% include ../public/header.ejs %>
+<div id="main">
+	<p>
+		<label>URL(例如：/common/toast)：</label>
+		<input type="text" id="url" placeholder="URL" />
+	</p>
+	<p>
+		<label>参数(例如: {msg: 'toast提示', time: 2000})：</label>
+		<textarea id="params" placeholder="参数,"></textarea>
+	</p>
+	<p>
+		<input type="button" id="btn" value="Test" />
+	</p>
+	<p>
+		<label>Result:</label>
+		<div id="result">
+			
+		</div>
+	</p>
+</div>
+<% include ../public/footer.ejs %>

@@ -1,0 +1,120 @@
+@charset "UTF-8";
+/*--------黄色背景--------*/
+/*--------字体颜色--------*/
+/*--------分割线色--------*/
+/*--------底色--------*/
+/*===========头部标题==========*/
+.header {
+  margin: 0rem 0.3rem;
+  position: relative;
+  height: 0.96rem; }
+  .header:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #E4E4E4;
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5); }
+  .header .header-title {
+    font-size: 0.36rem;
+    color: #333;
+    line-height: 0.98rem;
+    text-align: center; }
+  .header .header-back, .header .header-back-to, .header .header-close {
+    position: absolute;
+    width: 0.9rem;
+    height: 0.9rem; }
+  .header .header-back {
+    top: 0;
+    right: -0.3rem;
+    background: url(../../../images/common/icon-index.png) center center no-repeat;
+    background-size: 0.4rem 0.42rem; }
+  .header .header-back-to {
+    top: 0;
+    left: -0.3rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAWlJREFUWAnN2DFuwjAUAFCcsHbIBboyZMglOEEyEqkzcInkEIiVoq65RQfWZMlBOnUh/I/kyAg7fGzHtiXkLyf+ftjDN8QLw1ZVVZQkyTlN01Xf97+G6RaxSQLEdF13hhzlMAxrQP2boiJdEMcAZMNzQPzJY91eCyTDMMaOTdPsdSF8HuMBtZ/CAGqg5lG9t1Q9kI0jpm3bb3g2HhPfGRsYXJO8QwKm5FjbGDLIFYYEcol5CXKNmQT5wChBvjBSkE/ME8g35gEUAmYEhYK5g0LCICjGyxX0s5YDXIjaIqhHf+LLcKf5qOuaXOPEuTbiCO8wWCSFZCVWdDxKYcxZeN8J2BVWFMUB+q2w8k+WZV8Auwpjs4fj0YSCGkH41UNAPYBCQD2BfKOkIJ8oJcgXahLkA/US5BpFArlEkUGuUG+BXKDeBs2N0qro+DtedkuA/4pOCDZpWiBcUIG6mGCszMWCnOf5AT47GwlvaLNijoSQIdUAAAAASUVORK5CYII=) center center no-repeat;
+    background-size: 0.36rem 0.36rem; }
+  .header .header-close {
+    top: 0;
+    right: -0.2rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAetJREFUWAm92L1OwzAQB/DYBWVGQeIRGnXgHRBbF5R0qhg6kZEHYCoPwsCAOpWIpVtfApYuvAFiz0DL/dMkUt00OduJvUQ+272f3I87VXg0JpPJeLfbzX3fHy8Wix/EXI3pdHqZZdlKCDFfLpcrAcx2u30ngE/BT0LdukIVmDVdxjXlz6SUsSTMBUHOcCNYIO0aGzHvcygYD4bcgqRRFN1T4JVAA8z7vqkazB/lnqVp+iYAwHCFasLAUYFcoNowR6A+URxMLagPFBdzEtQlSgfTCOoCpYtpBdmgTDAskAnKFMMG6aBsMFogDsoWow1qQmENdbAolCg/VTnAGncc/FJzD9WVGZy1xeA1jEA4qKIQwzC9mf1pz8ureznReW42m6/RaPRLtzJWzj1S1X5RYuypZO9UNuIDTJgHJYwbSrCmxrlzo7es7tuEhAS07qe0QXUYgswAotuxbvK0QKcw6PQAUj/oBNTu0dmgNgxAGLYoFoiL2ZPsUK0gXYwtqhFkirFBnQTZYkxRtaCuMCaoI1DXGF3UAagvjA6qAvWN4aJykCsMByVcY9pQg+Fw+EzFMcJG2+aqTMZ5op8Kw/Cbct7RfrRBV/R3jJRBEDzR5MMlpgSjKKNTQG4YCovnJUlyHsfxTbnR9RO5YUDef9V67Av1kMr8AAAAAElFTkSuQmCC) center center no-repeat;
+    background-size: 0.36rem 0.36rem; }
+
+.header.no-border:before {
+  display: none !important; }
+
+/*===========头部搜索==========*/
+.header-search {
+  padding: 0.2rem 0.3rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -ms-flexbox;
+  display: flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  box-pack: justify;
+  -ms-flex-pack: justify;
+  flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  box-align: center;
+  -ms-flex-align: center;
+  flex-align: center;
+  align-items: center; }
+  .header-search .search {
+    width: 6.2rem;
+    height: 0.7rem;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -ms-flexbox;
+    display: flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    box-pack: start;
+    -ms-flex-pack: start;
+    flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    box-align: center;
+    -ms-flex-align: center;
+    flex-align: center;
+    align-items: center;
+    background-color: #F6F6F6;
+    padding: 0rem 0.28rem; }
+  .header-search .search-icon {
+    width: 0.34rem;
+    height: 0.34rem;
+    margin-right: 0.16rem;
+    background: url(../../../images/common/icon-search.png) no-repeat;
+    background-size: cover; }
+  .header-search .search-txt {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    color: #333;
+    font-size: 0.3rem;
+    border: none;
+    height: 0.4rem;
+    line-height: 0.4rem; }
+  .header-search .header-back {
+    width: 0.4rem;
+    height: 0.42rem;
+    background: url(../../../images/common/icon-index.png) no-repeat;
+    background-size: cover; }
+
+/*===========头部搜索 search-more==========*/
+.search-more .search-close {
+  width: 0.32rem;
+  height: 0.32rem;
+  background: url(../../../images/common/search-close.png) no-repeat;
+  background-size: cover;
+  margin-left: 0.1rem; }
+.search-more .search {
+  width: 5.68rem; }
+.search-more .search-cancel {
+  font-size: 0.3rem; }

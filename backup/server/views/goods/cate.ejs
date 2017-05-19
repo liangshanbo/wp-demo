@@ -1,0 +1,45 @@
+<% include ../public/header.ejs %>
+<div class="wrap">
+	<header class="header">
+		<a class="header-back-to" href="javascript:history.back();"></a>
+		<h3 class="header-title">ALL CATEGORY</h3>
+	</header>
+	<div class="category">
+		<% if(result && result.data && result.data.categories){ %>
+			<% var cates = result.data.categories; %>
+			<% for(var i=0,l=cates.length;i<l;i++){
+					var cate = cates[i];
+			%>
+				<dl class="category-item">
+					<dt class="category-item-title" data-level="<%=cate.level %>" data-categoryId="<%= cate.id%>" @click="pro_list($event)"><%=cate.name %></dt>
+					<% var children = cate.children;%>
+					<% for(var j=0,k=children.length;j<k;j++){ 
+						var child = children[j];
+					%>
+						<dd class="category-item-para">
+							<div class="category-item-para_title" data-level="<%= child.level%>" data-categoryId="<%= child.id%>" @click="pro_list($event)">
+								<span><%=child.name %></span>
+								<%if(child.hasChildren){%>
+									<em class="arrow up"> </em>
+								<%}%>
+							</div>
+							<% var grandsons = child.children;%>
+							<% if(grandsons.length > 0){ %>
+								<ul class="category-item-para_list" data-show='0' style="display:none;">
+									<% for(var m=0,n=grandsons.length;m<n;m++){%>
+										<li data-level="<%= grandsons[m].level%>" @click="pro_list($event)" data-categoryId="<%= grandsons[m].id%>">
+											<a href="javascript:;"><%=grandsons[m]["name"] %></a>
+										</li>
+									<% } %>
+								</ul>
+							<% } %>
+						</dd>
+					<% } %>
+				</dl>
+			<% } %>
+		<% }else{ %>
+			<%include ../search/noresult.ejs%>
+		<% } %>
+	</div>
+</div>
+<% include ../public/footer.ejs %>

@@ -1,0 +1,64 @@
+<% include ../public/header.ejs %>
+<script>
+    var cateId = "<%- categoryId %>";
+    var userId = "<%-userId%>";
+</script>
+<header class="header">
+    <a class="header-back" href="/"></a>
+    <h3 class="header-title"><%=htitle%></h3>
+</header>
+<section>
+    <% if(result && result.data && result.data.items){ %>
+    <%  var items = result.data.items;
+    if(items && items.length) { %>
+    <ul class="goods-list">
+        <% for(var i=0; i < items.length; i++) {
+            function buy(url){
+                var search = /\?/.test(url);
+                if(!!userId){
+                    return url + (search ? "&":"?")+"affExtParam1="+userId;
+                }
+                return "/login?redirect="+encodeURIComponent(url)+"&type=buy";
+            }
+        var item = items[i].item,pdtype=4; %>
+        <%include ../public/proList.ejs%>
+        <% } %>
+        <listmore :items="moreData"></listmore>
+    </ul>
+    <% }else{ %>
+        <%include ../search/noresult.ejs%>
+    <% } %>
+    <% }else{ %>
+        <%include ../search/noresult.ejs%>
+    <% } %>
+</section>
+<script type="v-template" id="details">
+    <li v-for="item in items" class="goods-item">
+        <a href="/pro/detail?id={{item.item.id}}&pdtype=4" class="goods-item">
+            <span class="goods-item-pic">
+               <img gome-src="{{item.item.mainImage|imgbed '180'}}" src="<%= config.wapcsspath %>/images/common/default-prolist.png" alt="{{item.item.name}}">
+            </span>
+            <div class="goods-item-cont">
+                <h4 class="goods-item-title">{{item.item.name}}</h4>
+                <p class="goods-item-money">
+                    <strong class="current-money" v-if="item.item.sellingPrice">
+                        {{item.item.sellingPrice.alternative|price}}{{item.item.sellingPrice.amount|money}}
+                    </strong>
+                    <del class="before-money" v-if="item.item.originPrice">
+                        {{item.item.originPrice.alternative|price}}{{item.item.originPrice.amount|money}}
+                    </del>
+                    <span class="save-money">{{item.item.discountPercentage}}% Off</span>
+                </p>
+                <div class="rebate" v-if="item.item.expectedCashBack.amount>100">
+                    <em class="icon-tag"></em>
+                    <p class="rebate-para">Upto {{item.item.expectedCashBack.alternative}}. {{Math.round(item.item.expectedCashBack.amount/100)}} Cashback</p>
+                </div>
+                <div class="from" v-if="item.item.source.url">
+                    <img gome-src="{{ item.item.source.url }}" src="<%=config.wapcsspath%>/images/common/default-prolist.png" alt="{{ item.item.source.name }}" >
+                </div>
+               <a class="btn-buy" href="{{item.item.outerUrl | buy}}"></a>
+            </div>
+        </a>
+    </li>
+</script>
+<% include ../public/footer.ejs %>

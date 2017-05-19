@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*--------黄色背景--------*/
+/*--------字体颜色--------*/
+/*--------分割线色--------*/
+/*--------底色--------*/
+/*============swiper hot===========*/
+.hot-it {
+  width: 2.4rem;
+  margin-left: 0.4rem;
+  float: left; }
+  .hot-it:last-child {
+    margin-right: 0.4rem; }
+  .hot-it:first-child {
+    margin-left: 0.32rem; }
+  .hot-it .hot-pic {
+    width: 2.4rem;
+    height: 2.8rem;
+    position: relative; }
+    .hot-it .hot-pic img {
+      max-width: 100%;
+      max-height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+  .hot-it .hot-para {
+    height: 0.34rem;
+    line-height: 0.36rem;
+    font-size: 0.28rem;
+    color: #333;
+    overflow: hidden;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    margin: 0.14rem 0rem; }
+  .hot-it .hot-money {
+    margin-bottom: 0.1rem; }
+    .hot-it .hot-money .hot-money-now {
+      font-size: 0.32rem;
+      color: #333;
+      padding-right: 0.12rem; }
+    .hot-it .hot-money .hot-money-before {
+      font-size: 0.26rem;
+      color: #999; }

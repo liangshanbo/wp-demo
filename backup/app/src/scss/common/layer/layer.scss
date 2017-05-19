@@ -1,0 +1,81 @@
+.m-toast {
+  width: rem(380);
+  height: auto;
+  background-color: rgba(0, 0, 0, .8);
+  -webkit-border-radius: rem(20);
+  border-radius: rem(20);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 40010;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  .toast-txt {
+    color: #FFF;
+    font-size: rem(30);
+    line-height: 1.3;
+    text-align: center;
+    padding: rem(30);
+  }
+}
+.m-mask-private{
+  background-color: rgba(0,0,0,.4);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 40000;
+  .m-dialog{
+    width: 5.4rem;
+    min-height: 2.2rem;
+    overflow: hidden;
+    padding-bottom: .88rem;
+    background-color: #fff;
+    -webkit-border-radius: .2rem;
+    border-radius: .2rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 40010;
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    .dialog-tit{
+      color: #333;
+      font-size: .3rem;
+      line-height: 1.3;
+      text-align: center;
+      padding: .3rem .6rem;
+      margin-top: -.4rem;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+    }
+    .dialog-btn{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-top: 1px solid #e5e5e5;
+      @include flex-box();
+      div{
+        font-size: .32rem;
+        line-height: .88rem;
+        overflow: hidden;
+        width: 50%;
+        text-align: center;
+        display: block;
+      }
+      :last-child{
+        color: #FFF;
+        background-color: #FF5C5C;
+      }
+    }
+  }
+}
+

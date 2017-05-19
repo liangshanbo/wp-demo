@@ -1,0 +1,14 @@
+{
+  "name": "email",
+  "version": "1.0.0",
+  "description": "auto email",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wanglonghai",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^3.1.8"
+  }
+}

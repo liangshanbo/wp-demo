@@ -1,0 +1,186 @@
+<% include ../public/header.ejs %>
+<script>
+	var hasLogin = <%=hasLogin%>;
+</script>
+<% var pro = result.data.item;%>
+<script>
+	var userId = "<%-userId%>";
+</script>
+<section class="wrap bt110">
+	<header class="header">
+		<a href="javascript:history.go(-1)" class="header-back-to"></a>
+		<a class="header-back" href="/"></a>
+		<h3 class="header-title">DETAILS</h3>
+	</header>
+	<section data-id="<%=pro.id %>">
+		<div class="detail">
+			<div class="carousel swiper-container">
+				<div id="swiper-banner" class="carousel-banner swiper-wrapper">
+					<% if(pro.images.length > 0) {%>
+					<% for(var i=0,len=pro.images.length;i<len;i++) {
+						var img = pro.images[i];
+					%>
+						<div class="carousel-it swiper-slide detail-pic"><a href="javascript:;"><img gome-src="<%=:img|imgbed:'720'%>" src="<%= config.wapcsspath %>/images/common/default-probanner.png" alt="<%=pro.name%>"></a></div>
+					<%}}else{%>
+						<div class="carousel-it swiper-slide detail-pic"><a href="javascript:;"><img gome-src="<%=:pro.mainImage|imgbed:'720'%>" src="<%= config.wapcsspath %>/images/common/default-probanner.png" alt="<%=pro.name%>"></a></div>
+					<%}%>
+					</div>
+				<% if(pro.images.length > 1) {%>
+					<div class="swiper-pagination"></div>
+				<%}%>
+			</div>
+			<h4 class="detail-title"><%= pro.name %></h4>
+			<p class="goods-item-money">
+				<strong class="current-money"><%= pro.sellingPrice.alternative %>. <%=:pro.sellingPrice.amount|money %></strong>
+				<% if(pro.originPrice && pro.originPrice.amount !== pro.sellingPrice.amount) {%>
+				<del class='before-money'><%= pro.originPrice.alternative %>. <%=:pro.originPrice.amount|money %></del>
+				<% } %>
+				<% if(pro.discountPercentage>0){%>
+					<span class="save-money"><%=pro.discountPercentage %>% Off</span>
+				<%}%>
+			</p>
+			<div class="detail-from">
+				<%if(pro.expectedCashBack.amount>=100){%>
+				<div amount="<%=pro.expectedCashBack.amount%>" id="proDetailLayer" class="goods-item-tag">Upto <%= pro.expectedCashBack.alternative %>. <%=:pro.expectedCashBack.amount|money%> Cashback</div>
+				<%}%>
+				<img class="logos-img" src="<%= pro.source.url %>" onerror="javascript:this.src='<%=config.wapcsspath%>/images/common/default-probanner.png'" alt="">
+			</div>
+			<div class="detail-handler">
+				<% var className = "";if(collect === 1){
+					className = "active";
+				}%>
+				<a class="detail-btn" collect="<%=collect%>" id="like" href="javascript:;"><i class="icon-like <%=className%>"></i><span>Wishlist</span></a>
+				<a class="detail-btn" id="share" href="javascript:;"><i class="icon-share"></i><span>Share</span></a>
+			</div>
+		</div>
+		<div class="br"></div>
+	</section>
+	<% if(pro.skus && pro.skus.length>0){
+		var keyArr = [], valArr = [],skuArr = [];
+		function inArray(arr,name){
+			for(var i = 0,len=arr.length;i<len;i++){
+				if(arr[i] === name){
+					return i;
+				}
+			}
+			return -1;
+		}
+		for(var k = 0,lens= pro.skus.length;k<lens;k++){
+			var sku = pro.skus[k];
+			var attributes = sku.attributes;
+			for(var m = 0,len2 = attributes.length;m<len2;m++){
+				var index = inArray(keyArr,attributes[m].key);
+				if(index < 0){
+					valArr[keyArr.length]=[attributes[m].value];
+					skuArr[keyArr.length]=[sku.inStock];
+					keyArr.push(attributes[m].key);
+				}else{
+					var idx = inArray(valArr[index],attributes[m].value);
+					if(idx < 0){
+						valArr[index].push(","+attributes[m].value);
+						skuArr[index].push(sku.inStock);
+					}
+				}
+			}
+		}
+	%>
+	<% if(keyArr.length>0){%>
+	<section class="detail-skus">
+		<div class="title" id="showList">
+			<h3 class="title-main">ALL DETAILS</h3>
+			<% if(keyArr.length > 4){ %>
+			<a class="title-arrows" href="javascript:;"></a>
+			<% } %>
+		</div>
+		<ul class="skus" isShow="0" id="skus">
+			<% for(var n = 0, len3 = keyArr.length;n < len3;n++){ %>
+			<% if(n < 4){ %>
+				<li class="sku-item">
+				<em class="sku-item-key"><%= keyArr[n] %></em>
+					<span class="sku-item-val">
+						<% for(var l = 0, len4 = valArr[n].length;l < len4;l++){ %>
+							<% if(l > 3){ %>
+								<a style="display: none"><%= valArr[n][l] %></a>
+							<% }else{ %>
+								<a><%= valArr[n][l] %></a>
+							<% } %>
+						<% } %>
+					</span>
+			</li>
+			<% }else{ %>
+			<li style="display: none"  class="sku-item">
+				<em class="sku-item-key"><%= keyArr[n] %></em>
+				<span class="sku-item-val">
+					<% for(var l = 0, len4 = valArr[n].length;l < len4;l++){ %>
+						<% if(l > 3){ %>
+							<a style="display: none"><%= valArr[n][l] %></a>
+						<% }else{ %>
+							<a><%= valArr[n][l] %></a>
+						<% } %>
+					<% } %>
+				</span>
+			</li>
+			<% }} %>
+		</ul>
+		<div class="br"></div>
+	</section>
+	<%}%>
+	<%}%>
+	<section class="hot">
+		<div class="title" id="showList">
+			<h3 class="title-main">RECOMMENDATION</h3>
+		</div>
+		<ul class="hot-list">
+			<%if(recommend.data && recommend.data.items && recommend.data.items.length > 0) {%>
+			<%
+				var items = recommend.data.items;
+			for(var i=0,len=items.length;i<len;i++) {
+				var item = items[i].item;
+			%>
+			<li class="hot-it">
+				<a href="/pro/detail?id=<%=item.id%>&pdtype=5" >
+					<div class="hot-pic">
+						<img gome-src="<%=:item.mainImage|imgbed:'360' %>" alt="<%= item.name %>" src="<%= config.wapcsspath %>/images/common/default-pro.png">
+					</div>
+					<h4 class="hot-para"><%= item.name %></h4>
+					<p class="hot-money">
+						<% if(item.sellingPrice) { %>
+						<strong class="hot-money-now"><%= item.sellingPrice.alternative %>. <%= Math.round(item.sellingPrice.amount/100) %></strong>
+						<% } %>
+						<% if(item.originPrice) { %>
+						<del class="hot-money-before"><%= item.originPrice.alternative %>. <%= Math.round(item.originPrice.amount/100) %></del>
+						<% } %>
+					</p>
+				</a>
+			</li>
+			<%}%>
+			<%}else{%>
+				no data
+			<%}%>
+		</ul>
+	</section>
+	<div style="display: none" id="goodDetailLayer" class="alert">
+		<div class="box">
+			<span class="box-btn" id="closeLayer"></span>
+			<h4 class="box-title">How It Works</h4>
+			<h5 class="box-sub-title" style="padding-top: 0">Step One</h5>
+			<p class="box-para">Sign up and log in GOMEPLUS for free.</p>
+			<h5 class="box-sub-title">Step Two</h5>
+			<p class="box-para">Click Button " TAP HERE TO BUY"  to get a certain product in GOMEPLUS, you will be re-directed to Flipkart to purchase the product.</p>
+			<h5 class="box-sub-title">Step Three</h5>
+			<p class="box-para">When you complete your purchase in the third-party platform re-directed from GOMEPLUS, you will have some CASHBACK from GOMEPLUS. This will be added to " MY ORDER " within 72 hours. We will notify your cashback status through SMS.</p>
+			<h5 class="box-sub-title">Step Four</h5>
+			<p class="box-para">When your CASHBACK order is approved by Flipkart, you will receive this CASHBACK after 30 days.</p>
+			<h5 class="box-sub-title">Step Five</h5>
+			<p class="box-para">Your CASHBACK can be redeemed to Flipkart gift card.</p>
+			<h4 class="box-title">Terms & Conditions</h4>
+			<div class="box-para-box">
+				<p class="box-para" style="padding-top: 0">When your CASHBACK order is approved by Flipkart, you will receive this CASHBACK after 30 days.</p>
+				<p class="box-para">Due to the approval rules of Flipkart, we’re really sorry that it may be some errors between the displayed cashback and the actually received cashback. Please follow the REAL number in the cashback order details.</p>
+			</div>
+		</div>
+	</div>
+	<a href="javascript:;" id="buy" data-url="<%= pro.outerUrl %>" class="btn-fix"> TAP HERE TO BUY</a>
+</section>
+<% include ../public/shareDialog.ejs %>
+<% include ../public/footer.ejs %>

@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+/*
+兑换相关的动画类
+@zhangenming
+*/
+
+.floating-icon {
+    position: fixed;
+    // z-index 由 10 计数
+    z-index: 10;
+    width: rem(60);
+    height: rem(40);
+    top: 50%;
+    left: 40%;
+    background: url("../../../images/account/icon-giftcard.png");
+    background-size: rem(60 40);
+    opacity: 0;
+    transform: scale(2.5) rotate(-30deg);
+    &.go {
+        animation: go ease-out 1s;
+    }
+    html.app &.go {
+        animation: go-app ease-out 1s;
+    }
+    @keyframes go {
+        20% {
+            opacity: 1;
+        }
+        60% {
+            opacity: .8;
+        }
+        90% {
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1) rotate(0);
+            top: rem(116);
+            left: rem(626);
+        }
+    }
+    @keyframes go-app {
+        20% {
+            opacity: 1;
+        }
+        60% {
+            opacity: .8;
+        }
+        90% {
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1) rotate(0);
+            // 内嵌和h5有不同的结束帧top值
+            top: rem(116 - 96);
+            left: rem(626);
+        }
+    }
+}
+
+.link-giftcards .icon {
+
+    .first-exchange-badge,
+    .more-exchanges-badge {
+        position: absolute;
+        width: rem(20);
+        height: rem(20);
+        top: rem(-10);
+        right: rem(-10);
+        border-radius: 100%;
+        background-color: rgb(219, 36, 22);
+    }
+
+    // 首次成功兑换
+    .first-exchange-badge {
+        animation: fadeIn ease-out 1s;
+        z-index: 12;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            // 70% {
+            //     opacity: 0;
+            // }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+
+    // 之后的成功兑换
+    .more-exchanges-badge {
+        opacity: 0;
+        animation: ripple ease 2s;
+        z-index: 11;
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    }
+
+}

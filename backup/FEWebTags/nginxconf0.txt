@@ -1,0 +1,24 @@
+server
+ {
+    listen       ${PORT};
+    server_name  css.test.meixincdn.com js.test.meixincdn.com;
+    index index.html index.htm index.php;
+    root  ${DISKPATH};
+    charset utf-8;
+    location / {
+        index index.html index.htm;
+        add_header Access-Control-Allow-Origin *;
+    }
+ }
+ server
+ {
+    listen       ${PORT};
+    server_name  css.dev.meixincdn.com js.dev.meixincdn.com;
+    index index.html index.htm index.php;
+    root  ${DISKPATH};
+    charset utf-8;
+    location / {
+        index index.html index.htm;
+        add_header Access-Control-Allow-Origin *;
+    }
+ }

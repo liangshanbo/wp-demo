@@ -1,0 +1,68 @@
+<%- include('./header.html',{
+pageTitle: '前端打tag系统'
+}) %>
+    <form action="/hitTag" method="post" target="panel">
+        <p style="font-size:18px;">
+            需要上线的svn路径模块：
+            <label>
+                <select name="svnpath" class="form-control short-form-control">
+                    <%for (var i=0; i<mods.length; i++){%>
+                    <option value="<%=mods[i]%>"><%=mods[i]%></option>
+                    <%}%>
+                    app|h5|pc|public|op
+                </select>
+            </label>
+            <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal">打Tag</button>
+        </p>
+    </form>
+
+    <form action="/cleantags" method='post' target="panel" id='cleantags'>
+        <input type="submit" value="清理两周以前的tags" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+        <p class="warn" style="margin-top:20px; font-size:16px;">请不要随便使用，
+            如果累积tags过多导致一段时间后页面无响应是正常的，后台其实正在清理</p>
+    </form>
+
+    <form id="rollback" class="mform">
+        <h3>对10.125.2.44的svn进行操作</h3><br>
+        <select name="target" class="form-control projects">
+            <option value="app">app</option>
+            <option value="h5">h5</option>
+            <option value="pc">pc</option>
+            <option value="oppc">oppc</option>
+            <option value="oph5">oph5</option>
+            <option value="opapp">opapp</option>
+            <option value="public">public</option>
+        </select>
+    </form>
+    <div class="text-center mborders">
+        <table name="p" id="version" class="table table-striped">
+            <thead><tr class="head">
+                <th>序号</th> <th>时间</th> <th>版本</th> <th>用户</th> <th width="30%">注释</th> <th>操作</th></tr>
+            </thead>
+        </table>
+        <ul class="pagination pagination-lg pager " id="myPager"></ul>
+    </div>
+    <!--<input type="submit" value="回滚">-->
+
+
+    <!--<form action="/rmtags" method="post" target="panel" id="rmtags">
+            <p>删除10.125.2.44的tags</p>
+            <select name="target" class="projects">
+              <option value="app">app</option>
+              <option value="h5">h5</option>
+              <option value="pc">pc</option>
+              <option value="oppc">oppc</option>
+              <option value="oph5">oph5</option>
+              <option value="opapp">opapp</option>
+              <option value="public">public</option>
+            </select>
+            <input type="button" value="刷新" class="refresh"/>
+            <input type="submit" value="删除">
+            <ul style="height:200px;overflow-y:scroll;"></ul>
+        </form>-->
+        <%- include('./capacity.html') %>
+    <script type="text/javascript" src="/js/websocket.js"></script>
+    <script type="text/javascript" src="/mods/pagination.js"></script>
+    <script type="text/javascript" src="/mods/panel.js"></script>
+</body>
+</html>

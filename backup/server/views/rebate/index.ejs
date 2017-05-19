@@ -1,0 +1,199 @@
+<% include ../public/header.ejs %>
+
+<header class="header no-border">
+    <a href="javascript:history.go(-1)" class="back"></a>
+    <i class="help-btn"></i>
+</header>
+
+<div class="header-sub">
+    <a href="javascript:history.go(-1)" class="back"></a>
+    <i class="help-btn"></i>
+    <h1 class="main-title">
+        <% if (result.data.scale) {%>
+            <%=removeSymbol(result.data.scale)%>
+        <%} else {%>
+            0.00
+        <%}%>
+    </h1>
+    <h2 class="title">TOTAL PERCENTAGE</h2>
+    <div class="sub expected">
+        <h1 class="amount has-right-border">
+            <% if (result && result.data && result.data.expectedCashBackTotalAmount) {%>
+                Rs. <%=:result.data.expectedCashBackTotalAmount.amount|money:2%>
+            <%} else {%>
+                Rs. 0.00
+            <%}%>
+        </h1>
+        <h2 class="title has-right-border">TOTAL EXPECTED</h2>
+    </div>
+    <div class="sub rebated">
+        <h1 class="amount">
+           <% if (result && result.data && result.data.cashBackTotalAmount) {%>
+               Rs. <%=:result.data.cashBackTotalAmount.amount|money:2%>
+           <%} else {%>
+               Rs. 0.00
+           <%}%>
+        </h1>
+        <h2 class="title">total rebated</h2>
+    </div>
+</div>
+
+<div class="nav-wrap">
+    <ul class="nav" @click="filterOrders">
+       <li data-anchor="ALL" :class="{active: this.currentStatus === 'ALL'}">all</li>
+       <li data-anchor="CREATE_ORDER" :class="{active: this.currentStatus === 'CREATE_ORDER'}">orders</li>
+       <li data-anchor="EXPECTED_CASHBACK" :class="{active: this.currentStatus === 'EXPECTED_CASHBACK'}">rebating</li>
+       <li data-anchor="CASHBACK" :class="{active: this.currentStatus === 'CASHBACK'}">rebated</li>
+       <li data-anchor="FAIL" :class="{active: this.currentStatus === 'FAIL'}">failed</li>
+    </ul>
+</div>
+
+<div class="no-orders <%if(result.data.orders.length > 0){%> hide <%}%>" v-cloak>
+    <!-- 无数据 -->
+    <div v-if="this.currentStatus === 'ALL'" class="wrapper">
+        <img class="default" src="<%=config.wapcsspath%>/images/rebate/default.png" />
+        <h1 class="title">Don't have any orders</h1>
+        <a class="link" href="/">STROLL AROUND</a>
+    </div>
+    <div v-else class="wrapper">
+        <img class="default" src="<%=config.wapcsspath%>/images/rebate/default.png" />
+        <h1 class="title">no related orders</h1>
+    </div>
+</div>
+
+<% if (result.data.orders.length > 0) {%>
+    <% var firstScreenOrders = result.data.orders; %>
+    <ul class="orders">
+        <% for(var i=0; i < firstScreenOrders.length; i++) {%>
+            <% var order = firstScreenOrders[i]; %>
+            <li class="order" data-first-screen="true">
+                <a href="/rebate/detail?orderId=<%=order.id%>">
+                <span class="pic-wrapper">
+                    <img class="pic" src="<%=config.wapcsspath %>/images/common/default-prolist.png" gome-src="<%=:order.sku.mainImage|imgbed:'360'%>"/>
+                </span>
+                <div class="desc">
+                <h1 class="name">
+                   <%=order.sku.name%>
+                </h1>
+                <img class="source" src="<%=order.source.url%>">
+
+                <!-- 订单创建 -->
+                <% if (order.status == "CREATE_ORDER") {%>
+                  <div class="cashback-detail">
+                    <p>Expected Cashback
+                      <span class="amount">
+                          <%=:order.expectedCashBackAmount.alternative|price%>
+                          <%=:order.expectedCashBackAmount.amount|money:2 %>
+                      </span>
+                    </p>
+                    <p>Order Time <%=order.orderTime%></p>
+                  </div>
+                <%}%>
+
+                <!-- 预计返利 -->
+                <% if (order.status == "EXPECTED_CASHBACK") {%>
+                  <div class="cashback-detail">
+                    <p>Expected Cashback
+                      <span class="amount">
+                          <%=:order.expectedCashBackAmount.alternative|price%>
+                          <%=:order.expectedCashBackAmount.amount|money:2 %>
+                      </span>
+                    </p>
+                    <p>Audit Pass Time <%=:order.expectedCashBackTime|time %></p>
+                  </div>
+                <%}%>
+
+                <!-- 返利到账 -->
+                <% if (order.status == "CASHBACK") {%>
+                   <div class="cashback-detail">
+                    <p>Cashback
+                      <span class="amount">
+                          <%=:order.cashBackAmount.alternative|price%>
+                          <%=:order.cashBackAmount.amount|money:2 %>
+                      </span>
+                    </p>
+                    <p>Account Time <%=:order.cashBackTime|time%></p>
+                  </div>
+                <%}%>
+
+                <!-- 返利失败 -->
+                <% if (order.status == "FAIL") {%>
+                   <div class="cashback-detail failed">
+                      <p>Failed</p>
+                      <p><%=order.failReason%></p>
+                    </div>
+                <%}%>
+
+              </div>
+            </a>
+        </li>
+        <%}%>
+        <order-list-more :orders="orderListData"></order-list-more>
+    </ul>
+<%}%>
+
+<% include ./helpLayer.ejs %>
+
+<script type="v-template" id="order-list-more-template">
+    <li v-for="o in orders" class="order">
+        <a href="/rebate/detail?orderId={{ o.id }}">
+            <span class="pic-wrapper">
+                <img class="pic" src="<%=config.wapcsspath%>/images/common/default-prolist.png" :gome-src="o.sku.mainImage | imgbed '360'" />
+            </span>
+            <div class="desc">
+                <h1 class="name">
+                   {{ o.sku.name }}
+                </h1>
+                <img class="source" :src="o.source.url">
+
+                <!-- 订单创建 -->
+                <div v-if="o.status == 'CREATE_ORDER'" class="cashback-detail">
+                    <p>Expected Cashback
+                      <span class="amount">
+                           {{ o.expectedCashBackAmount.alternative | price }}
+                           {{ o.expectedCashBackAmount.amount | money 2 }}
+                      </span>
+                    </p>
+                    <p>order time {{ o.orderTime }}</p>
+                </div>
+
+                <!-- 预计返利 -->
+                <div v-if="o.status == 'EXPECTED_CASHBACK'" class="cashback-detail">
+                    <p>Expected Cashback
+                      <span class="amount">
+                           {{ o.expectedCashBackAmount.alternative | price }}
+                           {{ o.expectedCashBackAmount.amount | money 2 }}
+                      </span>
+                    </p>
+                    <p>audit pass time {{ o.expectedCashBackTime | time }}</p>
+                </div>
+
+                <!-- 返利到账 -->
+                <div v-if="o.status == 'CASHBACK'" class="cashback-detail">
+                    <p>Cashback
+                        <span class="amount">
+                            {{ o.cashBackAmount.alternative | price }}
+                            {{ o.cashBackAmount.amount | money 2 }}
+                        </span>
+                    </p>
+                    <p>account time {{ o.cashBackTime | time }}</p>
+                </div>
+
+                <!-- 返利失败 -->
+                <div v-if="o.status == 'FAIL'" class="cashback-detail failed">
+                    <p>Failed</p>
+                    <p>third party issue</p>
+                </div>
+
+            </div>
+        </a>
+    </li>
+</script>
+
+<%
+  function removeSymbol(string) {
+    return string.replace(/%$/, '');
+  }
+%>
+
+<% include ../public/footer.ejs %>

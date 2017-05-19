@@ -1,0 +1,11 @@
+
+<script>
+    var data = <%- JSON.stringify(result)%>;
+    var str = '';
+    for(var key in data){
+        str += key + ':' + (data[key] ? data[key].toString() : '') + '<br/>';
+    }
+    document.write(str);
+</script>
+
+

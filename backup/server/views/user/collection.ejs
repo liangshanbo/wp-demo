@@ -1,0 +1,69 @@
+<% include ../public/header.ejs %>
+<header class="header">
+    <a href="javascript:history.go(-1)" class="header-back-to"></a>
+    <h3 class="header-title">My Wishlist</h3>
+</header>
+<% if(result && result.data && result.data.items){ %>
+<section>
+    <%  var items = result.data.items;
+        function buy(url){
+            var search = /\?/.test(url);
+            if(!!userId){
+                return url + (search ? "&":"?")+"affExtParam1="+userId;
+            }
+            return "login?redirect="+encodeURIComponent(url)+"&type=buy";
+        }
+        if(items && items.length) { %>
+            <ul class="goods-list">
+                <% for(var i=0; i < items.length; i++) {
+                    var item = items[i],pdtype=8;
+                %>
+                    <%include ../public/proList.ejs%>
+                <% } %>
+                <listmore :items="listData"></listmore>
+            </ul>
+        <% }else{ %>
+            <section class="not-find">
+                <span class="notfind-pic no-collection"></span>
+                <p class="notfind-para">Go to the favorite goods to join the wish list, let him help you order it</p>
+                <a class="btn-not" href="/">GO SHOPPING</a>
+            </section>
+        <% } %>
+    </section>
+    <% }else{ %>
+        <section class="not-find">
+            <span class="notfind-pic no-collection"></span>
+            <p class="notfind-para">Go to the favorite goods to join the wish list, let him help you order it</p>
+            <a class="btn-not" href="/">GO SHOPPING</a>
+        </section>
+<% } %>
+<script type="v-template" id="collectionList">
+    <li v-for="item in items" class="goods-item">
+        <a href="/pro/detail?id={{item.id}}&pdtype=8" class="goods-item">
+            <span class="goods-item-pic">
+               <img gome-src="{{item.mainImage | imgbed '180'}}" src="<%= config.wapcsspath %>/images/common/default-prolist.png" alt="{{item.name}}">
+            </span>
+            <div class="goods-item-cont">
+                <h4 class="goods-item-title">{{item.name}}</h4>
+                <p class="goods-item-money">
+                    <strong class="current-money" v-if="item.sellingPrice">
+                        {{item.sellingPrice.alternative}}. {{Math.round(item.sellingPrice.amount/100)}}
+                    </strong>
+                    <del class="before-money" v-if="item.originPrice">
+                        {{item.originPrice.alternative}}. {{Math.round(item.originPrice.amount/100)}}
+                    </del>
+                    <span class="save-money">{{item.discountPercentage}}% Off</span>
+                </p>
+                <div class="rebate" v-if="item.item.expectedCashBack.amount>100">
+                    <em class="icon-tag"></em>
+                    <p class="rebate-para">Upto {{item.item.expectedCashBack.alternative}}. {{Math.round(item.item.expectedCashBack.amount/100)}} Cashback</p>
+                </div>
+                <div class="from" v-if="item.item.source.url">
+                    <img gome-src="{{ item.item.source.url }}" src="<%=config.wapcsspath%>/images/common/default-prolist.png" alt="{{ item.item.source.name }}" >
+                </div>
+                <a class="btn-buy" href="{{item.outerUrl | buy}}"></a>
+            </div>
+        </a>
+    </li>
+</script>
+<% include ../public/footer.ejs %>

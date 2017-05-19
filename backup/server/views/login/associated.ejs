@@ -1,0 +1,25 @@
+<% include ../public/header.ejs %>
+<div id="content">
+    <header class="header no-border">
+        <a class="header-back-to" href="javascript:history.go(-1)"></a>
+    </header>
+    <section class="register-section">
+        <h1 class="register-title">BIND<br>MOBILE NO</h1>
+        <div class="register-input">
+            <div class="register-input-phone">
+                <span class="register-area" id="register_area">IN +91</span>
+                <input type="tel" class="register-input-input" maxlength="17" autocomplete="off" id="username" placeholder="Mobile No." value="">
+            </div>
+            <div class="register-input-verification">
+                <input type="tel" class="register-input-input" maxlength="6" autocomplete="off" id="verification"
+                       placeholder="SMS verification code" value="">
+                <em id="send" class="register-verification-send">SEND</em>
+            </div>
+        </div>
+        <div class="register-btns" id="next">
+            <a class="btn btn-yellow disabled" href="javascript:;">Confirm</a>
+        </div>
+    </section>
+</div>
+<% include ../public/nationArea.ejs%>
+<% include ../public/footer.ejs %>

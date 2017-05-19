@@ -1,0 +1,114 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+
+/*===========头部标题==========*/
+.header{
+	margin:rem(0 30);
+	position: relative;
+	&:before{
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		width: 100%;
+		background-color: #E4E4E4;
+		transform:scaleY(0.5);
+	}
+	height: rem(96);
+	.header-title{
+		font-size: rem(36);
+		color: #333;
+		line-height: rem(98);
+		text-align: center;
+	}
+	%icon{
+		position: absolute;
+		width: rem(90);
+		height: rem(90);
+	}
+	.header-back{
+		@extend %icon;
+		top:0;
+		right: rem(-30);
+		background: url(../../../images/common/icon-index.png) center center no-repeat;
+		background-size: rem(40 42);
+	}
+	.header-back-to{
+		@extend %icon;
+		top:0;
+		left: rem(-30);
+		background: url(../../../images/common/go-back.png) center center no-repeat;
+		background-size: rem(36 36);
+	}
+	.header-close{
+		@extend %icon;
+		top:0;
+		right: rem(-20);
+		background: url(../../../images/common/icon-close.png) center center no-repeat;
+		background-size: rem(36 36);
+	}
+	.btn-cancel{
+		width: rem(120);
+		height: rem(98);
+		line-height: rem(98);
+		position: absolute;
+		right: 0;
+		font-size: rem(30);
+		text-align: right;
+	}
+}
+.header.no-border:before{
+	display: none !important;
+}
+
+/*===========头部搜索==========*/
+.header-search{
+	padding: rem(20 30);
+	@include flex(space,center);
+	.search{
+		width: rem(620);
+		height: rem(70);
+		@include flex(left,center);
+		background-color: #F6F6F6;
+		padding: rem(0 28);
+	}
+	.search-icon{
+		width: rem(34);
+		height: rem(34);
+		margin-right: rem(16);
+		background: url(../../../images/common/icon-search.png) no-repeat;
+		background-size: cover;
+	}
+	.search-txt{
+		flex:1;
+		color:#333;
+		font-size: rem(30);
+		border:none;
+		height: rem(40);
+		line-height: rem(40);
+	}
+	.header-back{
+		width: rem(40);
+		height: rem(42);
+		background: url(../../../images/common/icon-index.png) no-repeat;
+		background-size:cover;
+	}
+}
+
+/*===========头部搜索 search-more==========*/
+.search-more{
+	.search-close{
+		width: rem(32);
+		height: rem(32);
+		background: url(../../../images/common/search-close.png) no-repeat;
+		background-size: cover;
+		margin-left: rem(10);
+	}
+	.search{
+		width: rem(568);
+	}
+	.search-cancel{
+		font-size: rem(30);
+	}
+}

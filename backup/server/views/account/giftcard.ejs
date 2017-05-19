@@ -1,0 +1,77 @@
+<% include ../public/header.ejs %>
+
+<% if (!isApp) {%>
+    <div class="header-wrapper">
+        <header class="header">
+            <a class="header-back-to" href="javascript:history.go(-1)"></a>
+            <h3 class="header-title">MY GIFT CARDS</h3>
+        </header>
+    </div>
+<%}%>
+
+<div class="header-sub">
+    <h3 class="sub-title">Total Redeem Price</h3>
+    <p class="total-num">
+        <% include ./rupee-icon.ejs %>
+        <% if (result.code == 200 && result.data.totalExchange.amount) {%>
+            <%=:result.data.totalExchange.amount|money:2%>
+        <%} else {%>
+            0.00
+        <%}%>
+    </p>
+</div>
+
+<div class="separator"></div>
+
+<% if (result.code == 200 && result.data.myGiftCards && result.data.myGiftCards.length > 0) {%>
+    <ul class="cards-list">
+        <% for(var i = 0; i < result.data.myGiftCards.length; i++) {%>
+        <% var card = result.data.myGiftCards[i]; %>
+            <li class="cards-li">
+                <div class="title-row">
+                    Flipkart Gift Card
+                    <span>
+                        <% include ./rupee-icon.ejs %>
+                        <%=:card.denomination.amount|money%>
+                    </span>
+                </div>
+                <div class="number-row">
+                    <h3 class="sub-title">Card Number</h3>
+                    <p class="number"><%=card.cardId%></p>
+                    <span class="copy-btn" data-clipboard-text="<%=card.cardId%>">copy</span>
+                </div>
+                <div class="hr-wrap"><i class="hr"></i></div>
+                <div class="number-row">
+                    <h3 class="sub-title">Card Pin</h3>
+                    <p class="number"><%=card.code%></p>
+                    <span class="copy-btn" data-clipboard-text="<%=card.code%>">copy</span>
+                </div>
+                <div class="hr-wrap"><i class="hr"></i></div>
+                <div class="detail-row">
+                    <ul class="details">
+                        <li>Expiry Date: <%=:card.expiryDate|time%></li>
+                        <li>Redeemed Date: <%=:card.exchangeDate|time%></li>
+                        <li>
+                            <span class="float-left">Redeem Price:</span>
+                            <% include ./rupee-icon.ejs %>
+                            <%=:card.exchangePrice.amount|money%>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        <%}%>
+    </ul>
+    <div class="help-wrap">
+    	<span class="help-btn">HOW TO USE GIFT CARD?</span>
+    </div>
+<%} else {%>
+    <div class="no-data">
+    	<div class="wrap">
+    		<img class="default" src="<%=config.wapcsspath%>/images/account/giftcard-nodata.png">
+    		<h1 class="title">You have not redeemed the gift card yet!</h1>
+    	</div>
+    </div>
+<%}%>
+
+<% include ./helpLayer.ejs %>
+<% include ../public/footer.ejs %>

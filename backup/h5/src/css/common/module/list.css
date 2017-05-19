@@ -1,0 +1,130 @@
+@charset "UTF-8";
+/*--------榛勮壊鑳屾櫙--------*/
+/*--------瀛椾綋棰滆壊--------*/
+/*--------鍒嗗壊绾胯壊--------*/
+/*--------搴曡壊--------*/
+/*=========横向list   module===========*/
+.goods-item {
+  overflow: hidden;
+  position: relative;
+  padding: 0.16rem 0rem; }
+  .goods-item:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #E4E4E4;
+    transform: scaleY(0.5); }
+
+.goods-item-pic {
+  float: left;
+  width: 2.2rem;
+  height: 2.6rem;
+  margin: 0rem 0.24rem 0rem 0.3rem;
+  position: relative; }
+  .goods-item-pic img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 1.72rem;
+    max-height: 2.12rem; }
+
+.goods-item-cont {
+  overflow: hidden;
+  padding-right: 0.3rem; }
+
+.goods-item-title {
+  font-size: 0.28rem;
+  color: #333;
+  line-height: 0.36rem;
+  height: 0.72rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  overflow: hidden;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; }
+
+.goods-item-money {
+  font-size: 0;
+  line-height: 1;
+  margin: 0.24rem 0rem 0.2rem 0rem; }
+  .goods-item-money .current-money {
+    font-size: 0.32rem;
+    color: #333;
+    margin-right: 0.16rem; }
+  .goods-item-money .before-money {
+    color: #999;
+    font-size: 0.26rem;
+    margin-right: 0.16rem; }
+  .goods-item-money .save-money {
+    color: #B26200;
+    font-size: 0.26rem; }
+
+.rebate {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -ms-flexbox;
+  display: flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -ms-flex-pack: start;
+  flex-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  box-align: center;
+  -ms-flex-align: center;
+  flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center; }
+  .rebate .icon-tag {
+    width: 0.24rem;
+    height: 0.24rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAilJREFUSA3dVUFrE0EU/r5p6kHBUz0Xs6mgtUnBi3gKIuJVvPkPPBS0SBX0UEUPFXJQ23oUvIi/QBBvgqB46CZSJCY5CLVIRREED9p9vok7yTaZ3TTNzXd5M9/3vfd2ZnbeUMKpC5DoESCH4DV+BvEKOd7mdGPdK8kAKWvBliafyNDEFH/D8AqLjZXB2q7C9CUnPin9qytxIxlHFC3LWmHeIbvxWiBhxEWWWpM4YCYBpmxHVJFqsJCIyhwmC2xq8qdWzanGFow8SY2MZEnC4EYqnyASBTgh60f1y2MTnnBDrxe5I2Fh0cslQD3kvHTn3NAvfwbhMYic6+IZI/IuS82baYqeAmmyQTjvcbZ5zafSLWLDRwyHyYJU8xVfjAHlhY8YGoswr3/Xg944g/1mUVfxtZfY0zySOQnzqyJCF2/avyTkPMifDhzJCy6hWlh1OTqVpBacwjae680+6MiRPMdOsvTxTececKb5GjRnNemPkRK74Bzbv3+ngMVtRYzhjHbP7063R7/C6fpbG7ujgAU403qnsC3yzc6HNy6j1JxzcZ0zcIDz8v5ICX+2X/Z1WyfwefK+3urLSapvBY7k8XqobeO0rknfi10YWelNbqNSC1iSxVYN4yzrdn2x83QzS5r8qo/PLGAD2s8kc2Udbtp5n9lmN9u43ofHwMACVsdi/QOwr6yjjTjun6O5ldVJrSj1kHckiidSKwT6bD7WsMMQ2A760Kf7v7C/C1SaEk86h/cAAAAASUVORK5CYII=) no-repeat;
+    background-size: cover;
+    margin-right: 0.1rem; }
+  .rebate .rebate-para {
+    font-size: 0.26rem;
+    flex: 1;
+    overflow: hidden;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1; }
+
+.from {
+  margin-top: 0.2rem;
+  overflow: hidden; }
+  .from img {
+    float: left;
+    width: 0.8rem;
+    height: 0.3rem;
+    margin-right: 0.1rem; }
+
+.btn-buy {
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.22rem;
+  width: 0.52rem;
+  height: 0.52rem;
+  background: url(data:image/png;base64,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) no-repeat;
+  background-size: cover; }
+
+.no-more {
+  margin: 0.54rem 0rem 0.64rem 0rem;
+  text-align: center;
+  font-size: 0.28rem;
+  line-height: 0.46rem;
+  color: #B1B1B1; }

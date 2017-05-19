@@ -1,0 +1,45 @@
+<% include ../public/header.ejs %>
+<script>
+  window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '125552021295455',
+            xfbml      : true,
+            version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+    };
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://drl8vxuq8vzq2.cloudfront.net/public/overseasJS/src/plugs/third/v1/fbsdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div id="content">
+    <header class="header no-border">
+        <a class="header-close" href="javascript:history.go(-1)"></a>
+    </header>
+    <section class="login-section">
+        <h1 class="login-title">LOG IN/SIGN UP</h1>
+        <div class="login-input-phone">
+            <span class="login-area" id="login_area">IN +91</span>
+            <input  type="tel" class="login-input-input" autocomplete="off" id="username" placeholder="Mobile No." value="<%= phone%>" maxlength="17">
+            <em style="display:<%=phone?"block":"none"%>" id="login-phone-del" class="login-phone-del"></em>
+        </div>
+        <div class="login-input-pwd">
+            <input type="password" maxlength="20" class="login-input-input" autocomplete="off" id="password" placeholder="Password" value="">
+            <a href="/forgot" class="login-input-forgot">Forgot password</a>
+        </div>
+        <div class="login-btns">
+            <a class="btn btn-yellow disabled" id= "log"  disabled="true" href="javascript:;">LOG IN</a>
+            <a class="btn btn-border" href="/register">SIGN UP</a>
+        </div>
+        <div class="fb-btn" data-node="fbLog">
+            <p>Or log in via</p>
+            <a href="javascript:;"></a>
+        </div>
+    </section>
+</div>
+<% include ../public/nationArea.ejs%>
+<% include ../public/footer.ejs %>

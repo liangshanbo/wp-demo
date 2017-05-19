@@ -1,0 +1,73 @@
+/*
+ * Base structure
+ */
+body,button, input, select, textarea,
+h1 ,h2, h3, h4, h5, h6 {
+    font-family:Microsoft YaHei,'Dosis', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+}
+
+#navbar {
+    border-bottom:#000 solid 1px;
+    background:#fff;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+    border: 0;
+}
+
+
+
+/*
+ * Main content
+ */
+
+.main {
+    padding: 20px;
+}
+@media (min-width: 768px) {
+    .main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+.main .page-header {
+    margin-top: 0;
+}
+
+.open > .dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.9);
+}
+
+.hiddenForm {
+    display:inline-block;
+    line-height:50px;
+}
+
+.navbar-brand {
+    font-size:14px;
+}
+
+.active {
+    background-color: #4fb3e6;
+    color: #ffffff;
+    font-weight:600;
+}

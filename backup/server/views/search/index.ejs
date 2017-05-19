@@ -1,0 +1,108 @@
+<% include ../public/header.ejs %>
+<script>
+    var keyword = "<%-keyword%>";
+    var userId = "<%-userId%>";
+</script>
+<div id="s_result">
+    <div class="s_header <%=result && result.data && result.data.items && result.data.items.length>0?"":".h116"%>>">
+        <div class="s_fixed">
+            <header class="header-search">
+                <div class="search">
+                    <em class="search-icon"></em>
+                    <p id="s_result_input" @click="click_input_focus" class="search-txt" type="text"><%= keyword %></p>
+                </div>
+                <a class="header-back" href="/"></a>
+            </header>
+            <% if(result && result.data && result.data.items && result.data.items.length>0){ %>
+                <ul class="s_sort" id="s_sort">
+                    <li @click="click_nav(1)" class="s_sort_list"><em></em>Sort</li>
+                    <li @click="click_nav(2)" class="s_sort_list"><em></em>Filter</li>
+                </ul>
+            <%}%>
+        </div>
+    </div>
+    <div class="s_layer" @click.stop="click_close_filter" style="display: none" v-show="nav_type !== 0"> </div>
+    <div class="s_layer_content" style="display: none" v-show="nav_type !== 0">
+        <ul style="display: none" v-show="nav_type === 1" class="s_layer_sort">
+            <li @click="click_sort('')" :class="['s_layer_list',sort_type === '' ?'active':'']">Relevance</li>
+            <li @click="click_sort(0)" :class="['s_layer_list',sort_type === 0 ?'active':'']">Price Low To High</li>
+            <li @click="click_sort(1)" :class="['s_layer_list',sort_type === 1 ?'active':'']">Price High To Low</li>
+        </ul>
+        <div style="display: none" v-show="nav_type === 2" class="s_layer_filter">
+            <span>Category</span>
+            <% if(result && result.data && result.data.facet && result.data.facet.categories.length>0){
+                var categories = result.data.facet.categories;
+                function addMax(num){
+                    return num>=10000 ? 9999+"+":num;
+                }
+            %>
+            <ul>
+                <li class="s_layer_list active" id="allCount" @click="click_filter('',$event)">Apply All <em>(<%=addMax(result.data.count)%>)</em></li>
+                <%for(var i = 0,len =categories .length;i<len;i++){%>
+                <li @click="click_filter(<%=categories[i].id%>,$event)" class="s_layer_list" categorId="<%=categories[i].id%>"><%=categories[i].name%> <em>(<%=addMax(categories[i].itemCount)%>)</em></li>
+                <%}%>
+            </ul>
+            <%}%>
+        </div>
+    </div>
+    <section>
+        <% if(result && result.data && result.data.items){ %>
+        <%  var items = result.data.items;
+            function buy(url){
+                var search = /\?/.test(url);
+                if(!!userId){
+                    return url + (search ? "&":"?")+"affExtParam1="+userId;
+                }
+                return "/login?redirect="+encodeURIComponent(url)+"&type=buy";
+            }
+
+        if(items && items.length) { %>
+        <ul class="goods-list" id="good-list">
+            <% for(var i=0; i < items.length; i++) {
+                var item = items[i].item,pdtype=6;
+            %>
+            <%include ../public/proList.ejs%>
+            <% } %>
+        </ul>
+        <% }else{ %>
+            <%include noresult.ejs%>
+        <% } %>
+        <% }else{ %>
+            <%include noresult.ejs%>
+        <% } %>
+        <ul class="goods-list" style="margin-top: 0">
+            <listmore :items="listData"></listmore>
+        </ul>
+    </section>
+</div>
+<script type="v-template" id="searchList">
+    <li v-for="item in items" class="goods-item">
+        <a href="/pro/detail?id={{item.item.id}}&pdtype=6" class="goods-item">
+            <span class="goods-item-pic">
+               <img gome-src="{{item.item.mainImage | imgbed '180'}}" src="<%= config.wapcsspath %>/images/common/default-prolist.png" alt="{{item.item.name}}">
+            </span>
+            <div class="goods-item-cont">
+                <h4 class="goods-item-title">{{item.item.name}}</h4>
+                <p class="goods-item-money">
+                    <strong class="current-money" v-if="item.item.sellingPrice">
+                        {{item.item.sellingPrice.alternative}}. {{Math.round(item.item.sellingPrice.amount/100)}}
+                    </strong>
+                    <del class="before-money" v-if="item.item.originPrice">
+                        {{item.item.originPrice.alternative}}. {{Math.round(item.item.originPrice.amount/100)}}
+                    </del>
+                    <span class="save-money">{{item.item.discountPercentage}}% Off</span>
+                </p>
+                <div class="rebate" v-if="item.item.expectedCashBack.amount>100">
+                    <em class="icon-tag"></em>
+                    <p class="rebate-para">Upto {{item.item.expectedCashBack.alternative}}. {{Math.round(item.item.expectedCashBack.amount/100)}} Cashback</p>
+                </div>
+                <div class="from" v-if="item.item.source.url">
+                    <img gome-src="{{ item.item.source.url }}" src="<%=config.wapcsspath%>/images/common/default-prolist.png" alt="{{ item.item.source.name }}" >
+                </div>
+                <a class="btn-buy" href="{{item.item.outerUrl | buy}}"></a>
+            </div>
+        </a>
+    </li>
+</script>
+<% include ../public/searchLayer.ejs %>
+<% include ../public/footer.ejs %>

@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="<%=config.wapcsspath%>/css/pages/share/dialog.css">
+<div class="share-layer" id="share_layer" style="display:none">
+    <div class="share-mark" id="share_mark" @click="layer_hide"></div>
+    <div class="share-dialog mod-main" id="share_dialog" style="bottom:-240px">
+        <header class="share-header">
+            <div class="share-header-nav">
+                SHARE
+            </div>
+        </header>  
+        <section class="share-main" id = "share_m">
+            <div class="share-content">
+                <ul class="share-content-list">
+                    <li id="share_facebook">
+                        <em></em>
+                        <span>Facebook</span>
+                    </li>
+                    <li id="share_copylink" data-clipboard-text="">
+                        <em></em>
+                        <span>Copy Link</span>
+                    </li>
+                </ul>
+            </div>
+        </section>    
+    </div>
+</div>

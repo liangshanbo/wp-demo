@@ -1,0 +1,27 @@
+<section id="regist">
+	<% include ../public/header.ejs %>
+	<header class="header">
+		<h3 class="header-title">INVITE REGISTRATION</h3>
+	</header>
+	<div class="img"></div>
+	<section class="register-section">
+		<div class="register-input">
+			<div class="invite-input-phone">
+				<span class="register-input-href" @click="countryList()" id="countryNum">IN +91</span>
+				<input type="tel" class="register-input-input" maxlength="17" autocomplete="off" placeholder="Mobile No." value="" @focus="hideTS($event)" @input="isNext($event, 1)" @blur="showTS($event, 1)" id="username">
+			</div>
+			<div class="register-input-verification">
+	            <input type="tel" class="register-input-input" maxlength="6" autocomplete="off" placeholder="SMS verification code" value="" @focus="hideTS($event)" @input="isNext($event, 2)" @blur="showTS($event, 2)" id="verification">
+	            <em id="send" class="register-verification-send" @click="getCode($event)">SEND</em>
+	        </div>
+		</div>
+		<div class="register-btn">
+	        <a class="btn btn-yellow disabled" href="javascript:;" id="register" @click="nextStep($event)">NEXT</a>
+	    </div>
+	    <div class="register-agreement"  @click="isAgree($event)">
+	        <em class="register-agreement-select"></em>Agree<a href="/register/agreement" class="register-agreement-href">《Registration Agreement》</a>
+	    </div>
+	</section>
+</section>
+<% include ../public/nationArea.ejs%>
+<% include ../public/footer.ejs %>

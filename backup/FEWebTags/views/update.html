@@ -1,0 +1,76 @@
+<%- include('./header.html',{
+pageTitle: '更新服务器版本'
+}) %>
+<!--<form class="form"  <% if(sysType == 'svn'){%> action="/upsvn" <%}%>-->
+<!--<% if(sysType == 'gitlab'){%> action="/upgit" <%}%>-->
+<!--method="post" <% if(sysType == 'svn'){%>target="panel" <%}%> >-->
+<div class="form">
+<h3 class="title">更新10.69.201.45的<%=sysType%></h3>
+<div class="projectDetails">
+    <h4 class="cam">选择项目及分支</h4>
+    <div class="projectLab">
+        <div class="projectList">
+            <div>项目名称：</div>
+            <select class="form-control mIndent" name="target" id="upsvn_target">
+                <% if(sysType == 'svn'){%>
+                <option value="app">app</option>
+                <option value="h5">h5</option>
+                <option value="pc">pc</option>
+                <!-- <option value="oppc">oppc</option> -->
+                <!-- <option value="oph5">oph5</option> -->
+                <!-- <option value="opapp">opapp</option> -->
+                <option value="public">public</option>
+                <% }%>
+                <% if(sysType == 'gitlab'){%>
+                <%for (var i=0; i<mods.length; i++){%>
+                    <option projectUrl="<%=mods[i].http_url_to_repo%>" value="<%=mods[i].id%>"><%=mods[i].name%></option>
+                <%}%>
+                <%}%>
+            </select>
+        </div>
+        <div class="branchList">
+            <div>分支名称：</div>
+            <select class="form-control mIndent" name="p" id="upsvn_p">
+                <option value="devcdn">dev</option>
+                <option value="testcdn">test</option>
+                <option value="precdn">pre</option>
+            </select>
+        </div>
+    </div>
+    <p></p>
+    <h4 class="cam">
+        <% if(sysType == 'svn'){%>
+        svn
+        <%}%>
+        <% if(sysType == 'gitlab'){%>
+        gitlab
+        <%}%>
+        当前版本信息：</h4>
+    <div id="currentVersion" style="font-size:15px;"></div>
+</div>
+<div class="projectControl">
+    <h4 class="cam">编辑项目</h4>
+    <p class="repositoryType" id="repositoryType" style="display: none">当前仓库由
+        <span class="repository"><%=sysType%></span>管理
+        <b>请切换至<span class="repositoryR"><%=sysType%></span>管理</b>
+    </p>
+    <p class="no_repository" style="display: none">当前没有管理仓库请添加仓库</p>
+    <p class="gitNoRelease" style="display: none">请先在gitlab上创建项目的develop分支</p>
+    <% if(sysType == 'gitlab'){%>
+    <p><button type="button" class="btn btn-success" id="createRelease" style="display: none">在45服务器上创建develop本地分支</button></p>
+    <button type="button" class="btn btn-success mIndent" id="updateGit"  style="display: none">更新</button>
+    <button class="btn btn-success bIndent" id="checkoutGit" style="display: none">切换为git管理</button>
+    <%}%>
+    <% if(sysType == 'svn'){%>
+    <button type="submit" class="btn btn-success mIndent" data-toggle="modal" id="updateSvn" data-target="#myModal" style="display: none">更新</button>
+    <div>
+        <button class="btn btn-success bIndent" id="checkoutSvn"  style="display: none">切换为svn管理</button>
+    </div>
+    <%}%>
+</div>
+</div>
+<%- include('./capacity.html') %>
+<script type="text/javascript" src="/js/websocket.js"></script>
+<script type="text/javascript" src="/mods/update.js"></script>
+</body>
+</html>

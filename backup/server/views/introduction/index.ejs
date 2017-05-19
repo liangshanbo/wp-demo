@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>GOMEPLUS</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <style type="text/css">
+        @-webkit-keyframes rotation {
+            10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+            50%, 60% { transform: rotate(0deg); -webkit-transform: rotate(0deg) }
+            90% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+            100% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+        }
+        @keyframes rotation {
+            10% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+            50%, 60% { transform: rotate(0deg); -webkit-transform: rotate(0deg) }
+            90% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+            100% { transform: rotate(90deg); -webkit-transform: rotate(90deg) }
+        }
+        #orientLayer { display: none; }
+        @media screen and (min-aspect-ratio: 13/8) { #orientLayer { display: block; z-index: 10001} }
+        .mod-orient-layer { display: none; position: fixed; height: 100%; width: 100%; left: 0; top: 0; right: 0; bottom: 0; background: #000; z-index: 9997 }
+        .mod-orient-layer__content { position: absolute; width: 100%; top: 45%; margin-top: -75px; text-align: center }
+        .mod-orient-layer__icon-orient {background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAADaCAMAAABU68ovAAAAXVBMVEUAAAD29vb////x8fH////////x8fH5+fn29vby8vL////5+fn39/f6+vr////x8fH////////+/v7////09PT////x8fH39/f////////////////////x8fH///+WLTLGAAAAHXRSTlMAIpML+gb4ZhHWn1c2gvHBvq1uKJcC6k8b187lQ9yhhboAAAQYSURBVHja7d3blpowFIDhTUIAOchZDkre/zE7ycySrbUUpsRN2/1fzO18KzEqxEVgTiZNfgmmtxRc8iaR8HNe8x4BtjQePKayYCIoyBSgvNNE1AkNSHqZyLqk97EgUCCHBzZ5mkg7ScvIJuIyOyXBRFxgpqWZyGsAZLB1KjsJi8nutHU4JCRbFRH8tmirI9k8Jx2sqNs8K/m0LQkrktO2crgcgXGB4AiTEsB0hJfo9MGgX7CGcYiYwQxmMOOvZwRhBG8tCoMXjBDeXvWCEcHbi14wgCBmMIMZzGAGM5jxETNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxY6E2rUQxnH2tz9cirlJFwFBJedaPnUv0M7++egPDE8iAJcIDmxwH5wwv9vUviw2kLbVO3TJU5uul/EyB0FoLp4x60PdGUd3qPurrWyjGGTc05u+1dcgI7/+tCCPARWGhH7o5Y7RCf+bH9ctXLp6v2BVDxfqz0oPXeSVaNtINo/1SXDv4dck8IIkbhtC2ol+iouEonTBCbYvVMnXOjxww6s/RFrBUpXHh/gw1rHj5d/qhYn9Gpk2FWh6xRBRX5Oj3Znh2Sq49/L6+y8pB26q9GbE2dbA2mVbx6I+7MfBglLCttm73ZQi7AD3iL4HqjFYJHSPRppqaUaJ3ATpGa+ckpGak2hRRMyqjGMkvl+xyFeSMwjAqcsZgGDdyhl0oNTnDN4yenJGZFGxNChP5/Y3efh6SM2rDOJMzboYxkDMqwyjIGcIw6F+io2FU1IxIm1JqRmgXSkvNKNCXeTpGrU0JNSO2c6LIGPgCS8AuDHz9ta0SXWDtxoDRH+MqlbC2Dt2G2JFRadtQZt2qq/orGowdGb2euxYiqWEpVWhTBnszoNAPdStuQwxqf0aocdWKW4Z+DfszIh8pxJqbuCE4YAC+4bm0evtipjpgJHeFnyyt1Ku2xa0bhjxr27p75rECNwyI9ZwvXkHq+7aTaMEV44YYy/spfgjgjNHaWW+GeUhGEX7tLlVinIFDDSgnOwhi1V6bU0b6tVS9eAERe863g4dRrtiHdc6o+nn5vtyVVgR79Cqt4uL6gfHPQyGqtP2vf7HADGbcYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JjhtOM+J/AgT008yDMkN/dPP9hzS8zAMQN3OEYeekp5YU7KOKXwVXqiY+QS7smcinGKABWdiBgpPJTSMHJ4KidhhPBUSMLw4CmPhKHgKUXCkHsygum71ftNSgCX6bsl8FQyfbcL5EdYsDk0R3j7aiA5wpt5AjKg/2gLJEBD/0Hf2OOf/vRrj6z/7GtP4B3nMKyjHA12kIPSjnJs3FEO0TvKkYJHOWCR+rjJH0Vn6fI5PjNbAAAAAElFTkSuQmCC');display: inline-block; width: 67px; height: 109px;
+            transform: rotate(90deg); -webkit-transform: rotate(90deg); -webkit-animation: rotation infinite 1.5s ease-in-out; animation: rotation infinite 1.5s ease-in-out; -webkit-background-size: 67px; background-size: 67px }
+        .mod-orient-layer__desc { margin-top: 20px; font-size: 15px; color: #fff }
+    </style>
+        <style type="text/css">
+
+
+        #container_svg {
+            position: absolute;
+            width: 320px;
+            height: 504px;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            z-index:-9;
+            border: 0;
+            margin: 0;
+        }
+        #Gome4{
+            position: absolute;
+            top: 15px;
+            left: 7px;
+        }
+        #Gome8{
+            position: absolute;
+            top: 0px;
+            left: 8px;
+        }
+        body,html{
+            margin: 0;
+            padding:0;
+            width: 100%;
+            height: 100%;
+
+        }
+        #box{
+            width:320px;
+            height:504px;
+            left: 0;
+            top:0;
+            overflow: hidden;
+            z-index: 111;
+
+        }
+        #loading{
+            width:320px;
+            height:504px;
+            left: 0;
+            top:0;
+            overflow: hidden;
+        }
+        #load_bg{
+            background: url("img/page_3_086.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left: 0;
+            top:0;
+            width:320px;
+            height:504px;
+        }
+         #load_chunk{
+            background: url("img/page_3_085.png");
+             background-size: 100% 100%;
+             display: none;
+            position: absolute;
+            left: 106.5px;
+            top:272px;
+            width:107px;
+            height:214px;
+        }
+        #text{
+            font-size: 18px;
+            text-align: center;
+            width: 320px;
+            margin: auto;
+            height:13px;
+            color: #e60039;
+            position: absolute;
+            left:0;
+            top: 406.5px;
+            font-family: "微软雅黑";
+
+        }
+        #float{
+            background: url("img/page_3_087.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:149.5px;
+            width:35px;
+            height:21.5px;
+            -webkit-animation-duration: 2000ms;
+
+
+        }
+        #loading>div:nth-child(5){
+            background: url("img/page_3_088.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:120.5px;
+            width:30px;
+            height:18.5px;
+            -webkit-animation-delay: 100ms;
+            -webkit-animation-duration: 2100ms;
+
+        }
+        #loading>div:nth-child(5){
+            background: url("img/page_3_089.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:130.5px;
+            width:23.5px;
+            height:14px;
+            -webkit-animation-delay: 200ms;
+            -webkit-animation-duration: 2200ms;
+
+        }
+        #loading>div:nth-child(6){
+            background: url("img/page_3_090.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:200px;
+            width:21px;
+            height:14px;
+            -webkit-animation-delay: 300ms;
+            -webkit-animation-duration: 2300ms;
+
+        }
+        #loading>div:nth-child(7){
+            background: url("img/page_3_091.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:163.5px;
+            width:17px;
+            height:11px;
+            -webkit-animation-delay: 400ms;
+            -webkit-animation-duration: 2400ms;
+
+        }
+        #loading>div:nth-child(8){
+            background: url("img/page_3_092.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:99.5px;
+            width:21px;
+            height:13px;
+            -webkit-animation-delay: 500ms;
+            -webkit-animation-duration: 2500ms;
+
+        }
+        #loading>div:nth-child(9){
+            background: url("img/page_3_093.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:173.5px;
+            width:24px;
+            height:15px;
+            -webkit-animation-delay: 600ms;
+            -webkit-animation-duration: 2700ms;
+
+        }
+        #loading>div:nth-child(10){
+            background: url("img/page_3_094.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:162px;
+            width:14.5px;
+            height:8.5px;
+            -webkit-animation-delay: 700ms;
+            -webkit-animation-duration: 2800ms;
+        }
+        #loading>div:nth-child(11){
+            background: url("img/page_3_095.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:146.5px;
+            width:14.5px;
+            height:9px;
+            -webkit-animation-delay: 800ms;
+            -webkit-animation-duration: 2900ms;
+        }
+        #loading>div:nth-child(12){
+            background: url("img/page_3_096.png");
+            background-size: 100% 100%;
+            position: absolute;
+            left:167px;
+            width:19.5px;
+            height:12px;
+            -webkit-animation-delay: 900ms;
+            -webkit-animation-duration: 3000ms;
+        }
+
+        .ani_float{
+            -webkit-animation-name:float;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-fill-mode: both;
+            -webkit-transition-timing-function:linear;
+        }
+        @-webkit-keyframes float{
+            0%{
+                opacity: 0;
+                -webkit-transform:translateY(-50px);
+            }
+
+            100%{
+                opacity: 1;
+                -webkit-transform:translateY(330px);
+            }
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+<div id="orientLayer" class="mod-orient-layer">
+    <div class="mod-orient-layer__content">
+        <i class="icon mod-orient-layer__icon-orient"></i>
+        <div class="mod-orient-layer__desc">For a better experience, please rotate your device</div>
+    </div>
+</div>
+
+<!--<audio loop="loop" src="res/music.mp3" id="media" preload="preload"></audio>-->
+<!--<div id="music" class="on"></div>-->
+<div id="audio"></div>
+
+<div id="box">
+    <div id="loading">
+        <div id="load_chunk"></div>
+        <div id="load_bg"></div>
+        <div id="text"></div>
+        <div id="float" class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+        <div class="ani_float"></div>
+    </div>
+
+
+</div>
+
+<script>
+	var h5_config = {
+		baseUrl: ''
+	};
+    var width = window.innerWidth;
+    var height= window.innerHeight;
+    var changeBox = document.getElementById('box');
+    changeBox.style.cssText="transform: translate(" + (width - 320) / 2 + "px," + (height - 504) / 2 + "px) scale(" + height / 504 + ") ";
+    changeBox.style.cssText="-webkit-transform: translate(" + (width - 320) / 2 + "px," + (height - 504) / 2 + "px) scale(" + height / 504 + ") ";
+
+
+
+
+
+</script>
+<script src="js/vivus.min.js"></script>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/loader.js"></script>
+
+
+
+</body>
+</html>

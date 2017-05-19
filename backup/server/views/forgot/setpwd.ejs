@@ -1,0 +1,21 @@
+<% include ../public/header.ejs %>
+<header class="header no-border">
+    <a class="header-back-to" href="javascript:history.go(-1)"></a>
+</header>
+<section class="register-section">
+    <h1 class="register-title">NEW<br> PASSWORD</h1>
+    <div class="register-input">
+        <div class="register-input-phone">
+            <input style="padding-left: 0" type="password" class="register-input-input" maxlength="20" autocomplete="off" id="password" placeholder="New  Password"
+                   value="">
+        </div>
+        <div class="register-input-pwd">
+            <input type="password" class="register-input-input" maxlength="20" autocomplete="off" id="password1" placeholder="Confirm Password"
+                   value="">
+        </div>
+    </div>
+    <div class="register-btns" id="confirm">
+        <a class="btn btn-yellow disabled" href="javascript:;">SUBMIT</a>
+    </div>
+</section>
+<% include ../public/footer.ejs %>

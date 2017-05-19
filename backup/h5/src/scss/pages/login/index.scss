@@ -1,0 +1,149 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+@import "../../common/module/header.scss";
+@import "../../common/module/btn.scss";
+@import "../public/country";
+.login-title{
+  font-size: rem(56);
+  color: #333;
+  padding-top: rem(58);
+  font-weight: bold;
+}
+.login-section{
+  padding: rem(0 46);
+  .login-input-input{
+    border: none;
+    outline: 0;
+    margin-top: rem(44);
+    padding: rem(24 0);
+    height: rem(32);
+    box-sizing: content-box;
+    font-size:rem(32);
+    display: block;
+    @include flex-col();
+  }
+  .login-input-phone{
+    @include flex-box();
+    margin-top: rem(126);
+    height: rem(124);
+    position: relative;
+    .login-input-input{
+      padding-left: rem(20);
+    }
+    .login-area{
+      width: auto;
+      display: block;
+      height: rem(80);
+      margin-top: rem(44);
+      padding-right: rem(20);
+      line-height: rem(80);
+      position: relative;
+      font-size: rem(32);
+      color: #333;
+      &:before{
+        content: '';
+        position: absolute;
+        right: 0;
+        top: rem(22);
+        height: rem(36);
+        width: 1px;
+        background-color: #E4E4E4;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+      }
+    }
+    .login-phone-del{
+      position: absolute;
+      top: rem(44);
+      right: rem(20);
+      width: rem(64);
+      height: rem(80);
+      background: url("../../../images/login/icon-cancel.png") no-repeat center center;
+      background-size: rem(32) auto;
+      display: block;
+    }
+  }
+  .login-input-phone:before,.login-input-pwd:before{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #E4E4E4;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+  .login-input-pwd{
+    height: rem(124);
+    position: relative;
+    @include flex-box();
+    .login-input-forgot{
+      margin-top: rem(44);
+      width: rem(250);
+      height: rem(80);
+      text-align: right;
+      font-size: rem(30);
+      line-height: rem(80);
+      display: block;
+    }
+  }
+  .login-btns{
+    margin-top: rem(60);
+    a{
+      margin-bottom: rem(32);
+    }
+  }
+  .btn_third{
+     width:100%;
+     text-align: center;
+     margin-top: 1rem;
+     margin-bottom:1rem;
+  }
+  .btn_thirdnu{
+     width: 2rem;
+    height: 1rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .fb-btn {
+  margin-right: .76rem;
+  float:left;
+    a{
+    background: url("../../../images/public/icon_facebook.png") no-repeat;
+    width: rem(60);
+    height: rem(60);
+    display: block;
+    background-size: contain;
+  }
+   
+  
+  }
+  .google-btn {
+   position: relative;
+   float:left;
+      a{
+    background: url("../../../images/public/icon_google.png") no-repeat;
+    width: rem(60);
+    height: rem(60);
+    display: block;
+    background-size: contain;}
+    
+  }
+}
+.g-signin2{
+   width: rem(60);
+   height: rem(60);
+  position: absolute;
+  margin-top: -.6rem;
+}
+@media (-moz-min-device-pixel-ratio: 1.5){
+  .btn-border {
+    -moz-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+}
+}
+
+

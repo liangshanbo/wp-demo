@@ -1,0 +1,54 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure';
+@import '../../common/reset/reset.scss';
+@import '../../common/module/header.scss';
+.country{
+	margin:rem(0 50 0 30);
+}
+.country-item{
+	dt{
+		background-color: #F6F6F6;
+		height: rem(48);
+		line-height: rem(48);
+		font-weight: 600;
+		color: #333;
+		font-size: rem(36);
+		padding: rem(0 20);
+	  &.fixed{
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  z-index: 2;
+		  margin: rem(0 50 0 30);
+	  }
+	}
+	dd{
+		height: rem(108);
+		line-height: rem(108);
+		padding: rem(0 20);
+		font-size: rem(28);
+		@include line(bottom,#E4E4E4,0);
+		&:last-child{
+			&:before{
+				display: none;
+			}
+		}
+	}
+}
+
+/*-------右侧悬浮字母-------*/
+.move-bar{
+	position: fixed;
+	right: 0;
+	top:50%;
+	transform:translateY(-50%);
+	width: rem(50);
+	text-align: center;
+	a{
+		display: block;
+		color: #333;
+		font-size: rem(22);
+		line-height: 1.5;
+	}
+}

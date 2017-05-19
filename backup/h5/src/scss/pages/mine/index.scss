@@ -1,0 +1,103 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+
+@mixin background($img: url(../../../images/user/my-order.png)) {
+  background: $img no-repeat center center;
+  background-size: cover;
+}
+
+.header {
+  height: rem(88);
+  line-height: rem(88);
+  text-align: center;
+  border-bottom: 1px solid #e4e4e4;
+  background: #ffd022;
+  h3 {
+    font-size: rem(36);
+  }
+}
+.user-head {
+  height: rem(196);
+  position: relative;
+  font-size: rem(36);
+}
+.head-face {
+  width: rem(100); 
+  height: rem(100);
+  margin: rem(49 32 0 50);
+  float: left;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: rem(100);
+    -webkit-border-radius: rem(100);
+  }
+}
+.head-intro {
+  float:left;
+  .head-title {
+    padding: rem(60 0 16 0);
+    font-size: rem(36);
+  }
+  p {
+    color:#9c9c9c;
+    font-size: rem(28);
+  }
+}
+.user-entry {
+  a {
+    height: rem(109);
+    margin-left: rem(132);
+    border-bottom: 1px solid #e4e4e4;
+    position: relative;
+    display: block;
+    line-height: rem(109);
+    font-size: rem(28);
+    &:last-child {
+      border-bottom: none;
+    }
+    em {
+      width: rem(44);
+      height: rem(44);
+      position: absolute; 
+      left: rem(-80);
+      top: rem(32);   
+    }
+    h3 {
+      font-size: rem(28);
+    }
+  }
+}
+.icon-order {
+  @include background;
+}
+.icon-wishlist {
+  @include background(url(../../../images/user/my-wishlist.png));
+}
+.icon-treasures {
+  @include background(url(../../../images/user/my-treasures.png));
+}
+.icon-help {
+  @include background(url(../../../images/user/help&support.png));
+}
+.icon-logout {
+ @include background(url(../../../images/user/LOG-OUT.png));
+}
+.icon-account {
+ @include background(url(../../../images/user/account.png));
+}
+/*.login-btn {
+  width: 100%;;
+  padding: rem(160 48 78 48);
+  a{
+    width: 100%;
+    height: rem(80);
+    border: 1px solid #919191;
+    font-size: rem(30);
+    text-align: center;
+    line-height: rem(80);
+    display: inline-block;
+  }
+}*/

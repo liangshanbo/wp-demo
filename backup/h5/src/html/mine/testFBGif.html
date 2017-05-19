@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-use-rem="750">
+<head>
+    <meta charset="UTF-8">
+    <title>LOG IN</title> 
+    <script>
+      window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '125552021295455',
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <meta property="fb:app_id" content="125552021295455">
+    <meta name="description" content="Discover &amp; Share this You Blew It! GIF with everyone you know. GIPHY is how you search, share, discover, and create GIFs.">
+    <meta property="og:url" content="http://m-pre.gomeplus.in:8000/h5/src/html/mine/testFBGif.html">
+    <meta property="og:title" content="You Blew It! GIF - Find &amp; Share on GIPHY">
+    <meta property="og:description" content="Discover &amp; Share this You Blew It! GIF with everyone you know. GIPHY is how you search, share, discover, and create GIFs.">
+    <meta property="og:type" content="video">
+    <meta property="og:image" content="https://media.giphy.com/media/3oKIPyqTWsP720AOXe/giphy-facebook_s.jpg"> 
+    <style type="text/css">
+        img {
+        }
+    </style>
+</head>
+<body>
+    <img src="http://css-ovc-pre.meixincdn.com/m/src/images/game/laohuji/share.gif">
+    <video id="mp4" poster="http://css-ovc-pre.meixincdn.com/m/src/images/game/laohuji/share.gif" style="margin:0;padding:0" width="467" height="356" autoplay="" loop=""></video>
+    <button id="btn">share</button>
+    <script type="text/javascript">
+        document.getElementById('btn').addEventListener("click",function (){
+            FB.ui({
+              method: 'share',
+              href: location.href,
+            }, function(response){
+                console.log(response);
+            });
+        })
+    </script>
+</body>
+</html>

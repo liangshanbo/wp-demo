@@ -1,0 +1,198 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import '../../common/module/header.scss';
+@import '../../common/module/title.scss';
+@import "./_no-data.scss";
+@import "../../pages/public/help-layer.scss";
+// @import "../share/dialog.scss";
+
+html {
+    height: 100%;
+    background: #fff;
+}
+body {
+    position: relative;
+    height: 100%;
+    padding-top: rem(280);
+}
+img {
+    display: inline-block;
+}
+// 头部
+.header-wrapper {
+	position: fixed;
+	height: rem(96);
+	top: 0;
+	width: 100%;
+	background-color: #fff;
+	z-index: 2;
+}
+.header-sub {
+	z-index: 2;
+	position: fixed;
+	top: rem(96);
+	width: 100%;
+	padding: 0 rem(30);
+	height: rem(159);
+	background-color: #fff;
+    .sub-title {
+        font-size: rem(24);
+		color: #999;
+        margin: rem(40) 0 rem(10);
+    }
+	.total-num {
+		font-size: rem(52);
+		color: #b26200;
+        font-weight: 500;
+	}
+}
+.separator {
+	position: fixed;
+	top: rem(252);
+	width: 100%;
+	height: rem(30);
+	background-color: #f3f3f3;
+	z-index: 2;
+}
+// 主体
+.cards-list {
+	width: 100%;
+	z-index: 1;
+	padding: 0 rem(20);
+    background-color: #f3f3f3;
+}
+.cards-li {
+    position: relative;
+    height: rem(226*2);
+    margin-bottom: rem(30);
+    background-color: #fff;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    > div {
+        position: relative;
+        padding: 0 rem(30);
+    }
+    .title-row {
+        background-color: #ffe891;
+        line-height: rem(96);
+        font-size: rem(36);
+        color: #333;
+        > span {
+            float: right;
+            font-size: rem(36);
+            color: #b26200;
+            font-weight: 500;
+        }
+    }
+    .number-row {
+        height: rem(110);
+        padding-top: rem(20);
+        overflow: hidden;
+        .sub-title {
+            font-size: rem(24);
+            color: #999;
+            margin: 0 0 rem(10);
+        }
+        .number {
+            font-size: rem(36);
+            color: #333;
+        }
+        .copy-btn {
+            position: absolute;
+            right: rem(30);
+            top: 0;
+            color: #b26200;
+            font-size: rem(24);
+            line-height: rem(110);
+            text-transform: uppercase;
+            padding-top: rem(20);
+            &:after {
+                content: '';
+                width: 100%;
+                position: absolute;
+                left: 0;
+                bottom: rem(40);
+                border-bottom: rem(2) dotted #666;
+            }
+        }
+    }
+    .hr-wrap {
+        position: relative;
+        width: 100%;
+        .hr {
+            display: block;
+            border-bottom: rem(1) solid #e4e4e4;
+        }
+    }
+    .detail-row {
+        height: rem(132);
+        .details {
+            margin-top: rem(20);
+            > li {
+                margin-top: rem(10);
+                font-size: rem(24);
+                color: #999;
+            }
+        }
+        .fake-currency-icon {
+            display: inline-block;
+            height: rem(18);
+            margin-top: rem(-4);
+            margin-right: rem(-6);
+        }
+    }
+}
+// 底部
+.help-wrap {
+    position: relative;
+    padding: rem(30) 0;
+	width: 100%;
+	height: rem(84);
+	background-color: #f3f3f3;
+	.help-btn {
+		line-height: rem(24);
+		font-size: rem(24);
+		float: right;
+        color: #666;
+        margin-right: rem(20);
+		border-bottom: rem(2) solid #666;
+	}
+}
+/*=========帮助弹层==========*/
+
+.mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: rgba(#000, .7)
+}
+
+
+// 内嵌页reset
+html.app {
+    body {
+        padding-top: rem(280-96);
+    }
+    .header-sub {
+        top: 0;
+    }
+    .separator {
+        top: rem(252-96);
+    }
+    .no-data {
+		top: rem(280-96);
+	}
+}
+.inr-icon {
+	float: left;
+}
+.float-left {
+    float: left;
+    margin-right: rem(6);
+}

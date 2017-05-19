@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+Would skip repository nodegit/
+publics/logs/logerror.log
+publics/logs/logs.log
+project.json
+
+# OSX
+.DS_Store

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+
+/*-------------通栏黄色按钮-----------*/
+.btn-fix{
+	display: block;
+	width: 100%;
+	height: rem(110);
+	line-height: rem(110);
+	text-align: center;
+	background-color: $yellow;
+	color: #333;
+	font-size: rem(30);
+	z-index: 100;
+	font-weight: 600;
+}
+
+/*-------------通栏黄色按钮-----------*/
+.btn{
+	font-size: rem(30);
+	display: block;
+	height: rem(84);
+	line-height: rem(84);
+	text-align: center;
+	color: $color-normal;
+	font-size: rem(30);
+}
+.btn-border{
+	//border:rem(1) solid #919191;
+	position: relative;
+	@include line(all,#919191,0);
+	width: rem(658);
+}
+.btn-yellow{
+	background-color: $yellow;
+	width: rem(658);
+}
+.disabled{
+	background-color: $dis-yellow;
+	color: #858585;
+}

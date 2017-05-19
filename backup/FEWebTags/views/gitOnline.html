@@ -1,0 +1,34 @@
+<%- include('./header.html',{
+pageTitle: '项目上线'
+}) %>
+
+<div class="form">
+    <h3 class="title">更新10.69.201.45的<%=sysType%></h3>
+    <div class="projectDetails">
+        <h4 class="cam">选择项目及分支</h4>
+        <div class="projectLab">
+            <div class="projectList">
+                <div>项目名称：</div>
+                <select class="form-control mIndent" name="target" id="onlineProjectsSel">
+                    <% if(sysType == 'gitlab'){%>
+                    <%for (var i=0; i<mods.length; i++){%>
+                        <option projectUrl="<%=mods[i].http_url_to_repo%>" value="<%=mods[i].id%>"><%=mods[i].name%></option>
+                    <%}%>
+                    <%}%>
+                </select>
+            </div>
+        </div>
+        <p></p>
+        <h4 class="cam">
+            gitlab 当前版本信息：</h4>
+        <div id="currentVersion" style="font-size:15px;"></div>
+    </div>
+    <div class="projectControl" style="clear:both">
+        <button type="button" class="btn btn-success mIndent" id="onlineProjectBtn">上线</button>
+    </div>
+</div>
+<%- include('./capacity.html') %>
+<script type="text/javascript" src="/js/websocket.js"></script>
+<script type="text/javascript" src="/mods/gitonline.js"></script>
+</body>
+</html>

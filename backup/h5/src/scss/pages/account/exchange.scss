@@ -1,0 +1,333 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import '../../common/module/header.scss';
+@import '../../common/module/title.scss';
+@import '../../common/module/alert.scss';
+@import '../../common/plugin/swiper.scss';
+@import '../../common/module/swiper-list.scss';
+@import "../../common/layer/layer.scss";
+@import "./_no-data.scss";
+@import "./_animation.scss";
+// @import "../share/dialog.scss";
+html {
+    height: 100%;
+    // background: #fff;
+    background-color: #f3f3f3;
+}
+body {
+	width: 100%;
+	padding-top: rem(280);
+}
+
+// 头部
+.header-wrapper {
+	position: fixed;
+	height: rem(96);
+	top: 0;
+	width: 100%;
+	background-color: #fff;
+	z-index: 2;
+}
+.header-sub {
+	z-index: 2;
+	position: fixed;
+	top: rem(96);
+	width: 100%;
+	padding: 0 rem(30);
+	height: rem(156);
+	background-color: #fff;
+	.total-num {
+		line-height: rem(156);
+		font-size: rem(52);
+		color: #b26200;
+		font-weight: 500;
+	}
+	.link-giftcards {
+		position: absolute;
+		right: rem(30);
+		top: 0;
+		height: 100%;
+		text-align: center;
+		padding-top: rem(40);
+		.icon {
+			display: inline-block;
+			width: rem(60);
+			height: rem(40);
+			margin-bottom: rem(10);
+			position: relative;
+			background: #fff url("../../../images/account/icon-giftcard.png");
+			background-size: rem(60 40);
+		}
+		> h3 {
+			color: #333;
+			font-size: rem(26);
+		}
+	}
+}
+.separator {
+	position: fixed;
+	top: rem(252);
+	width: 100%;
+	height: rem(30);
+	background-color: #f3f3f3;
+	z-index: 2;
+}
+// 主体
+.cards-list {
+	width: 100%;
+	z-index: 1;
+	padding: 0 rem(20);
+}
+.cards-li {
+    position: relative;
+	height: rem(260);
+	margin-bottom: rem(30);
+	padding: rem(20) 0;
+	z-index: 1;
+	background-color: #fff;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	.left {
+		position: relative;
+		width: rem(160);
+		height: 100%;
+		float: left;
+		text-align: center;
+		border-right: rem(1) #e4e4e4 dotted;
+		.label {
+			text-transform: uppercase;
+			color: #999;
+			font-size: rem(32);
+			margin-top: rem(70);
+		}
+		.content {
+			display: inline-block;
+			margin-top: rem(24);
+			color: #333;
+			font-size: rem(32);
+			font-weight: 700;
+		}
+		&:after,
+		&:before {
+			position: absolute;
+			content: "";
+			width: rem(40);
+			height: rem(40);
+			border-radius: 50%;
+			background-color: #f3f3f3;
+			top: rem(-45);
+			right: rem(-20);
+		}
+		&:after {
+			top: auto;
+			bottom: rem(-45);
+		}
+	}
+	.right {
+		position: relative;
+		width: rem(256*2);
+		height: 100%;
+		float: right;
+		margin-right: rem(20);
+		padding-top: rem(18);
+		.card-name {
+			color: #333;
+			font-size: rem(28);
+			margin-bottom: rem(10);
+		}
+		.notes {
+			padding-left: rem(16);
+			> li {
+				position: relative;
+				color: #999;
+				font-size: rem(24);
+				line-height: 1.5;
+				&:before {
+					content: "•";
+					position: absolute;
+					left: rem(-16);
+					top: 0;
+				}
+			}
+		}
+		.exchange-price {
+			position: absolute;
+			bottom: rem(10);
+			left: 0;
+			color: #333;
+			font-size: rem(28);
+			.label {
+				float: left;
+				margin-right: rem(12);
+			}
+			.amount {
+				font-weight: 500;
+				color: #b26200;
+			}
+		}
+		.exchange-btn {
+			position: absolute;
+			text-transform: uppercase;
+			padding: 0 rem(12);
+			right: 0;
+			bottom: 0;
+			line-height: rem(60);
+			font-size: rem(24);
+			background-color: #FFD022;
+			color: #333;
+			border-radius: rem(4);
+		}
+	}
+	.color-brown {
+		color: #b26200;
+	}
+}
+
+/*========= 弹层 ==========*/
+.mask {
+    // display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(#000, .7);
+	> div {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+
+	.prompt {
+      color: #333;
+      width: 5.4rem;
+      min-height: 2.2rem;
+      overflow: hidden;
+      padding-bottom: .88rem;
+      background-color: #fff;
+      -webkit-border-radius: .2rem;
+      border-radius: .2rem;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 40010;
+      -moz-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+      .content {
+        color: #333;
+        font-size: .3rem;
+        line-height: 1.3;
+        text-align: center;
+        padding: .3rem .6rem;
+        margin-top: -.4rem;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+      }
+      .buttons {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-top: 1px solid #e5e5e5;
+        @include flex-box();
+        .button {
+          font-size: .32rem;
+          line-height: .88rem;
+          overflow: hidden;
+          width: 50%;
+          text-align: center;
+          display: block;
+        }
+        :last-child{
+          background-color: #ffd022;
+        }
+      }
+    }
+
+	.result {
+	  min-width: 60%;
+	  height: auto;
+	  background-color: rgba(0, 0, 0, .8);
+	  -webkit-border-radius: rem(20);
+	  border-radius: rem(20);
+	  position: fixed;
+	  left: 50%;
+	  top: 50%;
+	  z-index: 40010;
+	  -moz-transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
+	  .content {
+	    color: #FFF;
+	    font-size: rem(30);
+	    line-height: 1.3;
+	    text-align: center;
+	    padding: rem(30);
+	  }
+	}
+
+	.loading {
+		width: rem(100);
+		height: rem(100);
+		margin-left: rem(-50);
+		margin-top: rem(-50);
+		border-radius: 50%;
+		border: rem(4) solid #fff;
+		border-bottom-color: transparent;
+		animation: rotate 0.75s linear infinite;
+	}
+	@keyframes rotate {
+	    from {
+	        transform: rotate(0deg);
+	    }
+	    to {
+	        transform: rotate(360deg);
+	    }
+	}
+}
+
+// Vue
+.v-cloak-wrap {
+    width: 100%;
+    height: 100%;
+    background-color: #f3f3f3;
+    animation: fadeIn .4s;
+}
+[v-cloak] {
+    display: none;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// 内嵌页reset
+html.app {
+	body {
+		padding-top: rem(280-96);
+	}
+	.header-sub {
+		top: 0;
+	}
+	.separator {
+		top: rem(252-96);
+	}
+	.no-data {
+		top: rem(280-96);
+	}
+}
+.inr-icon {
+	float: left;
+}

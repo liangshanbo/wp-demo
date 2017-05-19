@@ -1,0 +1,78 @@
+<% include ../public/header.ejs %>
+
+<header class="header">
+    <a class="header-back-to" href="javascript:history.go(-1);"></a>
+    <span class="exchange"><a href="/account/exchange">Exchange</a></span>
+    <div class="hmoney">
+        <span class="moneynum">
+            <% if (result.code == 200 && result.data.balance) {%>
+                Rs. <%=:result.data.balance.amount|money:2%>
+            <%} else {%>
+                Rs. 0.00
+            <%}%>
+        </span>
+        <div class="accountname">
+            ACCOUNT BALANCE
+        </div>
+    </div>
+</header>
+<section class="wrap">
+    <% if (result.code == 200 && result.data.details && result.data.details.length > 0) {%>
+        <ul class="accountlist">
+            <% for(var i=0; i < result.data.details.length; i++) {%>
+                <% var detail = result.data.details[i]; %>
+                <li class="account">
+                    <span class="account-name">
+                       <%=detail.cause%>
+                    </span>
+
+                    <%if(detail.balanceType == "IN"){%>
+                    <span class="account-num grren">
+                        +
+                        Rs. <%=:detail.tradeAmount.amount|money:2%>
+                    </span>
+
+                    <%}else if(detail.balanceType == "OUT"){%>
+                    <span class="account-num ">
+                        -
+                        Rs. <%=:detail.tradeAmount.amount|money:2%>
+                    </span>
+
+                    <%}%>
+                    <span class="account-time">
+                        <%=:detail.createTime|time%>
+                    </span>
+                </li>
+            <%}%>
+            <account-list-more :details="accountDetailsData"></account-list-more>
+        </ul>
+    <%}else{%>
+         <div class="nodata">
+            <img src="<%=config.wapcsspath%>/images/account/account-nodata.png">
+            <div class="text">There is no money into the accoount,<br>refueling oh!</div>
+            <div class="goshop"><a href="/">STROLL AROUND</a></div>
+        </div>
+    <%}%>
+</section>
+
+<script type="v-template" id="account-list-more-template">
+    <li v-for="d in accountDetails" class="account">
+        <span class="account-name">
+           {{ d.cause }}
+        </span>
+
+        <span v-if="d.balanceType === 'IN'" class="account-num grren">
+            +{{ d.tradeAmount.amount|money 2}}
+        </span>
+
+        <span v-else class="account-num">
+            -{{ d.tradeAmount.amount|money 2 }}
+        </span>
+
+        <span class="account-time">
+            {{ d.createTime|time }}
+        </span>
+    </li>
+</script>
+
+<% include ../public/footer.ejs %>

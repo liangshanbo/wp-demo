@@ -1,0 +1,233 @@
+/*panel*/
+form{
+    border: 1px solid silver;
+    margin: 20px;
+    padding: 26px;
+}
+.warn{
+    color: #ff6f00;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #66be66;
+    border-color: #4fb64f;
+}
+
+.btn-warning {
+    color: white;
+    background-color: rgba(255, 157, 13, 0.79);
+    border-color: rgba(188, 144, 10, 0.84);
+}
+
+.btn-warning:hover {
+    background-color: rgba(255, 118, 35, 0.79);
+    border-color: rgba(255, 102, 0, 0.84);
+}
+
+.btn-info {
+    height:40px;
+}
+
+.table td{
+    text-align:center;
+}
+.table th{
+    text-align:center;
+}
+
+.pagination > li > a.active{
+    background-color: black;
+}
+
+.pagination>li.active>a {
+    background: #5ea25a;;
+    color: #f6f7ff;
+    border:15px #c9dec8;
+}
+
+.pagination>li.active>a:hover {
+    background: #90ed8c;;
+    text-decoration-color: #00fF11;
+}
+
+.pagination {
+    font-size: 1.4em;
+    padding: 9px 8px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.pagination li { font-weight: bold; }
+
+.pagination li a {
+    display: block;
+    float: left;
+    color: #5ea25a;
+    text-decoration: none;
+    padding: 9px 12px;
+    margin-right: 6px;
+    border-radius: 16px;
+    background: #fff;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.pagination li a:hover {
+    color: #4f664e;
+    background: #c9dec8;
+}
+.pagination li a:active {
+    -webkit-box-shadow: 1px 1px 3px -1px rgba(0,0,0, .55);
+    -moz-box-shadow: 1px 1px 3px -1px rgba(0,0,0, .55);
+    box-shadow: 1px 1px 3px -1px rgba(0,0,0, .55);
+}
+
+.pagination li.navpage a {
+    padding: 9px 13px;
+    background: #c8eac6;
+    color: #4f664e;
+}
+.pagination li.navpage a:hover {
+    color: #414e40;
+    background: #a4c6a2;
+}
+
+.pagination li.current { background: #505362; }
+.pagination li.single, .paginate.pag5 li.current {
+    display: block;
+    float: left;
+    padding: 9px 12px;
+    margin-right: 6px;
+    border-radius: 16px;
+    color: #fff;
+}
+
+
+.form-control {
+    width:10%;
+    font-size:18px;
+    height: 40px;
+}
+
+.short-form-control {
+    width:100%;
+}
+
+.hiddenForm {
+    border: 0px;
+    padding: 0px;
+    margin: 3px;
+    display:inline;
+}
+
+iframe {
+    display:block;
+    border-color: rgba(255, 250, 250, 0.24);
+    -webkit-box-shadow: inset 0 2px 2px rgba(0,0,0,.075), 0 0 10px rgba(255, 250, 250, 0.6);
+    box-shadow: inset 0 2px 2px rgba(0,0,0,.075), 0 0 10px rgba(255, 250, 250, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.mborders {
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    padding: 20px;
+    margin:20px;
+    width:auto;
+    border-top-color: transparent;
+    margin-top:0px;
+}
+
+.mform {
+    margin-bottom:0px;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-bottom-color:transparent;
+}
+
+.form-control:focus {
+    border-color: #6aff88;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(199, 255, 217, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(199, 255, 217, 0.6);
+}
+
+/*project.css*/
+.formitem{
+    margin:5px;
+}
+input[type=text]{
+    width:300px;
+}
+
+.desc {
+    color: #646464;
+    font-size:16px;
+}
+
+/*update.css*/
+.mIndent {
+    margin-bottom:10px;
+    display:inline-block;
+    width:100px;
+}
+.icon_container {
+    position:relative; padding:0; margin:0;
+}
+#input_icon {
+    position:absolute; bottom:9px; left:55px; width:22px; height:22px;
+}
+.form{
+    border: 1px solid silver;
+    margin: 2%;
+    padding: 40px 0;
+    display: block;
+    width: 96%;
+    overflow: hidden;
+}
+.projectDetails,.projectControl{
+    width: 46%;
+    margin-left: 4%;
+    display: block;
+    float:left;
+}
+.repositoryType,.no_repository,.gitNoRelease{
+    color:#dc1ca4;
+}
+.bIndent{
+    margin-bottom:10px;
+    display:inline-block;
+    width:150px;
+}
+.title{
+    text-indent: 2rem;
+    margin: 0 0 20px 0 ;
+}
+.cam{
+    color:#398439;
+    margin-bottom: 15px;
+}
+.projectLab{
+    width: 100%;
+    overflow: hidden;
+    display: block;
+}
+.projectList,.branchList{
+    display: block;
+    float:left;
+    margin: 0 30px 0 0;
+}
+.oneKeyCro{
+    width: 100%;
+    text-align: right;
+}
+.oneKeyRecovery{
+    margin: -35px 25px 0 0;
+}
+.static{
+    border: 1px solid silver;
+    margin: 20px;
+    padding: 26px;
+}

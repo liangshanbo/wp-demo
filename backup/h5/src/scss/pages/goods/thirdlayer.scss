@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+/*-----点击购买去三方弹层提示---------*/
+.third-party{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  .third-content{
+    width: 6.3rem;
+    max-height: rem(838);
+    overflow: auto;
+    margin: rem(70) auto 0 auto;
+    background: #fff;
+    position: relative;
+    z-index: 1001;
+    padding: rem(0 50);
+    h2{
+      font-size: rem(36);
+      margin: rem(40 0 30 0);
+      text-align: center;
+      line-height: rem(36);
+      color: #333;
+      font-weight: bold;
+    }
+    .third-tip{
+      font-size: rem(30);
+      line-height: rem(48);
+      color: #666;
+    }
+    .third-logo{
+      @include flex();
+      height: rem(170);
+      background: url("../../../images/goods/arrow.png") no-repeat center center;
+      background-size: rem(90) auto;
+      span{
+        margin-top: rem(36);
+        margin-left: rem(76);
+        width: rem(100);
+        height:rem(100);
+        background: url("../../../images/goods/gome.png") no-repeat;
+        background-size:cover;
+      }
+      em{
+        margin-top: rem(64);
+        margin-left: rem(160);
+        width: rem(120);
+        height:rem(46);
+        background: url("../../../images/goods/flipkart.png") no-repeat;
+        background-size:cover;
+      }
+    }
+    .third-txts{
+      font-size: rem(30);
+      color: #666;
+      line-height: rem(48);
+    }
+  }
+  .third-btns{
+    width: 6.3rem;
+    height: rem(216);
+    background: #fff;
+    margin: 0 auto;
+    padding: rem(0 50);
+    span{
+      font-size: rem(24);
+      color: #999;
+      line-height: rem(30);
+      padding-top: rem(30);
+      @include flex();
+      &.active em{
+        background: url("../../../images/goods/select.png") no-repeat;
+        background-size: rem(30) auto;
+      }
+      em{
+        width: rem(30);
+        height: rem(30);
+        margin-right: rem(10);
+        display: block;
+        background: url("../../../images/goods/no-select.png") no-repeat;
+        background-size: rem(30) auto;
+      }
+    }
+    .btn-fix{
+      position: static;
+      margin-top: rem(30);
+      height: rem(84);
+      line-height: rem(84);
+      color: #333;
+      font-size: rem(30);
+    }
+  }
+}
+.btn-fix {
+  margin-top: rem(30);
+  height: rem(84);
+  line-height: rem(84);
+  color: #333;
+  font-size: rem(30);
+  width: 100%;
+  text-align: center;
+  background-color: #FFD742;}

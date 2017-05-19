@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*--------榛勮壊鑳屾櫙--------*/
+/*--------瀛椾綋棰滆壊--------*/
+/*--------鍒嗗壊绾胯壊--------*/
+/*--------搴曡壊--------*/
+.not-find {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6.5rem;
+  text-align: center; }
+  .not-find .notfind-pic {
+    display: block;
+    width: 3.4rem;
+    height: 3.4rem;
+    background: url(../../../images/common/not-find.png) no-repeat;
+    background-size: cover;
+    margin: 0 auto .4rem; }
+    .not-find .notfind-pic.no-search {
+      background: url(../../../images/search/no_result.png) no-repeat;
+      background-size: cover; }
+    .not-find .notfind-pic.no-collection {
+      background: url(../../../images/user/collection-no-result.png) no-repeat;
+      background-size: cover; }
+  .not-find .notfind-title {
+    font-size: 0.32rem;
+    line-height: 0.36rem;
+    color: #666;
+    margin: 0rem 0rem 0.2rem; }
+  .not-find .notfind-para {
+    color: #999;
+    font-size: 0.26rem;
+    line-height: 1.2; }
+  .not-find .btn-not {
+    display: block;
+    width: 3.28rem;
+    height: 0.84rem;
+    line-height: 0.84rem;
+    text-align: center;
+    background-color: #FFD022;
+    color: #333;
+    font-size: 0.3rem;
+    margin: 0.6rem auto 0;
+    text-decoration: none; }

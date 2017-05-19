@@ -1,0 +1,156 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+
+.pt110{
+	padding-bottom: rem(110);
+}
+/*=============头部===================*/
+.header{
+	margin:rem(0 30);
+	position: fixed;
+	width: 100%;
+	height: rem(96);
+	%icon{
+		position: absolute;
+		width: rem(90);
+		height: rem(90);
+	}
+	.header-back-to{
+		@extend %icon;
+		top:0;
+		left: rem(-30);
+		background: url(../../../images/common/go-back-fff.png) center center no-repeat;
+		background-size: rem(36 36);
+	}
+}
+/*==========banner==========*/
+.banner{
+	width: 100%;
+	min-height: rem(400);
+	background: #f6f6f6 url(../../../images/common/img-default.png) center center no-repeat;
+	background-size: rem(120 110);
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+/*----------------文章主体-----------------*/
+.articles{
+	padding: rem(0 30);
+}
+.articles-title{
+	color: #333;
+	font-size: rem(40);
+	font-weight: 600;
+	line-height: rem(48);
+	padding: rem(30 0 0);
+}
+.articles-type{
+	margin:rem(10 0 0);
+	span{
+		display: inline-block;
+		height: rem(38);
+		line-height: rem(38);
+		padding: rem(0 8);
+		box-sizing:content-box;
+		@include line(all,#F1CFA5,0);
+		color: #D3882D;
+		font-size: rem(22);
+		margin-right: rem(10);
+	}
+}
+.articles-infor{
+	@include flex(space,center);
+	color: #999;
+	font-size: rem(28);
+	padding: rem(30 0);
+	@include line(bottom,#E4E4E4,0);
+	.author{
+		em{
+			padding: rem(0 6);
+		}
+	}
+	.time{
+		font-weight: normal;
+	}
+}
+.tips{
+	color: #999;
+	font-size: rem(36);
+	line-height: rem(42);
+	padding: rem(30 0);
+}
+.article-cont{
+	color: #333333;
+	font-size: rem(36);
+	line-height: rem(41);
+}
+.article-cont p,.article-cont span{
+	display: block;
+	color: #333333;
+	font-size: rem(36);
+	line-height: rem(42);
+	margin-bottom: rem(30);
+
+}
+.article-cont img{
+	width: 100%;
+	height: auto;
+	margin-bottom: rem(30);
+}
+/*-------------通栏黄色按钮-----------*/
+.btn-fix{
+	display: block;
+	width: 100%;
+	height: rem(110);
+	line-height: rem(110);
+	text-align: center;
+	background-color: $yellow;
+	color: #333;
+	font-size: rem(30);
+	z-index: 100;
+	position: fixed;
+	left: 0;
+	bottom:0;
+	font-weight: normal;
+}
+/*=======404==============*/
+.not-find{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	width: rem(650);
+	text-align: center;
+	.notfind-pic{
+		display: block;
+		width: rem(340);
+		height: rem(340);
+		background: url(../../../images/common/not-find.png) no-repeat;
+		background-size: cover;
+		margin:0 auto .4rem;
+	}
+	.notfind-title{
+		font-size: rem(32);
+		line-height: rem(36);
+		color: #666;
+		margin: rem(0 0 20);
+	}
+	.notfind-para{
+		color: #999;
+		font-size: rem(26);
+		line-height: 1;
+	}
+	.btn-not{
+		display: block;
+		width: rem(328);
+		height: rem(84);
+		line-height: rem(84);
+		text-align: center;
+		background-color: $yellow;
+		color: #333;
+		font-size: rem(30);
+		margin:rem(60) auto 0;
+	}
+}

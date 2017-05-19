@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+
+.not-find{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	width: rem(650);
+	text-align: center;
+	.notfind-pic{
+		display: block;
+		width: rem(340);
+		height: rem(340);
+		background: url(../../../images/common/not-find.png) no-repeat;
+		background-size: cover;
+		margin:0 auto .4rem;
+	  &.no-search{
+		background: url(../../../images/search/no_result.png) no-repeat;
+		background-size: cover;
+	  }
+	  &.no-collection{
+	  	background: url(../../../images/user/collection-no-result.png) no-repeat;
+		background-size: cover;
+	  }
+	}
+	.notfind-title{
+		font-size: rem(32);
+		line-height: rem(36);
+		color: #666;
+		margin: rem(0 0 20);
+	}
+	.notfind-para{
+		color: #999;
+		font-size: rem(26);
+		line-height: 1.2;
+	}
+	.btn-not{
+		display: block;
+		width: rem(328);
+		height: rem(84);
+		line-height: rem(84);
+		text-align: center;
+		background-color: $yellow;
+		color: #333;
+		font-size: rem(30);
+		margin:rem(60) auto 0;
+	   text-decoration: none;
+	}
+}

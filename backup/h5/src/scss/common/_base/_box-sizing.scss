@@ -1,0 +1,19 @@
+//based on prefix() API;
+//Arhtor: ZYZ
+
+@import "_prefix.scss";
+
+@mixin box-sizing($mode,$prefixes:webkit){
+  @if $mode == border{
+    @include prefix(box-sizing,border-box,$prefixes);
+  }
+  @else if $mode == content{
+    @include prefix(box-sizing,content-box,$prefixes);
+  }
+  @else if $mode == padding{
+    @include prefix(box-sizing,padding-box,$prefixes);
+  }
+  @else {
+    @error $mode is undefined;
+  }
+}

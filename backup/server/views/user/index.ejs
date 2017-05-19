@@ -1,0 +1,44 @@
+<% include ../public/header.ejs %>
+<div class="wrap">
+    <header class="header">
+        <h3>MY GOMEPLUS</h3>
+    </header>
+    <section class="user-head">
+        <dl>
+            <dt class="head-face">
+                <img src="<%= result.facePicUrl%>" alt="facePicUrl">
+            </dt>
+            <dd class="head-intro">
+                <h3 class="head-title"><%= result.nickname%></h3>
+                <p class="head-ID"><%= result.userName%></p>
+            </dd>
+        </dl>
+    </section>
+    <section class="user-entry">
+        <a href="/account">
+            <em class="icon-account"></em>
+            <h3 class="entry-title">My Balance</h3>
+        </a>
+        <a href="/rebate">
+            <em class="icon-order"></em>
+            <h3 class="entry-title">My Order</h3>
+        </a>
+        <a href="/user/collection">
+            <em class="icon-wishlist"></em>
+            <h3 class="entry-title">My Wishlist</h3>
+        </a>
+        <a href="/hy/game/slot">
+            <em class="icon-treasures"></em>
+            <h3 class="entry-title">My Treasures</h3>
+        </a>
+        <a href="/user/help">
+            <em class="icon-help"></em>
+            <h3 class="entry-title">Help</h3>
+        </a>
+        <a href="javascript:;" id="loginoff">
+            <em class="icon-logout"></em>
+            <h3 class="entry-title">Log Out</h3>
+        </a>
+    </section>
+</div>
+<% include ../public/footer.ejs %>

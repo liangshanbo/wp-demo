@@ -1,0 +1,33 @@
+<% include ../public/header.ejs %>
+<script>
+    var userId = "<%-userId%>";
+</script>
+<header class="header">
+    <a class="header-back" href="/"></a>
+    <h3 class="header-title">HEADLINES</h3>
+</header>
+<section>
+   <% if(result && result.data &&result.data.peas){ %>
+    <%  var items = result.data.peas;
+    if(items && items.length) { %>
+    <ul class="goods-list">
+        <% for(var i=0; i < items.length; i++) {
+            function buy(url){
+                var search = /\?/.test(url);
+                if(!!userId){
+                    return url + (search ? "&":"?")+"affExtParam1="+userId;
+                }
+                return "/login?redirect="+encodeURIComponent(url)+"&type=buy";
+            }
+            var item = items[i],pdtype = 10; %>
+            <% include ../public/proList.ejs %>
+        <% } %>
+    </ul>
+    <% }else{ %>
+    <p>no data</p>
+    <% } %>
+    <% }else{ %>
+    <p>server error</p>
+    <% } %>
+</section>
+<% include ../public/footer.ejs %>

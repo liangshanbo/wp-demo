@@ -1,0 +1,120 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import '../../common/module/header.scss';
+@import '../../common/module/title.scss';
+@import '../../common/module/alert.scss';
+@import '../../common/plugin/swiper.scss';
+@import '../../common/module/swiper-list.scss';
+@import "../../common/layer/layer.scss";
+@import "../share/dialog.scss";
+@import '../../common/plugin/dropload.scss';
+@import '../../pages/notFind/notFind.scss';
+body {
+	position: relative;
+}
+.header .header-back-to{
+	left:0;
+}
+.header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	background-color: #fff;
+	z-index: 2;
+	margin:0;
+	background: #FFD022;
+	height: rem(300);
+	.exchange{
+        font-size: .3rem;
+        float: right;
+        margin-right: .3rem;
+        margin-top: .35rem;
+        }
+	.hmoney{
+		margin-top: 1.4rem;
+		text-align: center;
+		font-size: .52rem;
+		.moneynum {
+			margin-bottom: rem(20);
+		}
+       .accountname{
+              margin-top: .16rem;
+              font-size: .28rem;
+              color:#867100;
+       }
+	}
+}
+.wrap{
+	z-index: 1;
+	margin-top: rem(300);
+	.hmoney{
+	    width: 100%;
+        height: 2rem;
+        border-bottom: 1px solid #eee;
+	   .moneynum{
+            font-size: .36rem;
+            margin-left: .3rem;
+            line-height: 2rem;
+	   }
+
+	}
+	.accountlist{
+		.account{
+			border-bottom: 1px solid #eee;
+			height: 1.4rem;
+			margin-left: .3rem;
+			margin-right: .3rem;
+			position: relative;
+		}
+		.account-name{
+		    display: block;
+			font-size: .32rem;
+			line-height: 1rem;
+		}
+		.account-time{
+		    display: block;
+		 	margin-top:-.15rem;
+			font-size: .28rem;
+			color: #999;
+		}
+		.account-num{
+			position: absolute;
+			font-size: .36rem;
+			bottom: 0;
+			right: 0;
+			line-height: 1.4rem;
+			color:#333;
+		}
+		.grren{
+	    color:#B26200;
+	    }
+
+	}
+
+.nodata{
+	   padding-top:2.8rem;
+	   text-align:center;
+	   img{
+	     height: 2.56rem;
+         width: 2.56rem;
+         margin: 0 auto;
+	   }
+	   .text{
+            font-size: 0.32rem;
+            line-height: 0.36rem;
+            color: #666;
+            margin: 0rem 0rem 0.2rem;
+	   }
+	   .goshop{
+          margin-top:.8rem;
+          a{
+	        padding: .2rem .4rem;
+            background: #FFD022 100%;
+             font-size: .3rem;
+
+	        }
+	    }
+
+	}
+}

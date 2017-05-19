@@ -1,0 +1,234 @@
+@charset "UTF-8";
+@import '../../common/_base/_configure.scss';
+@import '../../common/reset/reset.scss';
+@import "../../common/layer/layer.scss";
+@import "../../common/module/header.scss";
+@import "../../common/module/background.scss";
+
+$colors: (
+    gen-font: #333,
+    gen-border: #e4e4e4,
+    gen-font-sub: #999,
+    good-name-font: #666,
+    sep-yellow: #FFD022,
+    sep-gray: #e3e3e3,
+    progress-border: #f6f6f6,
+    progress-fail-red: #F15555,
+    outlay-font: #b26200,
+    logo-border: #ababab,
+);
+
+body {
+    font-size: rem(26);
+    color: map-get($colors, gen-font);
+    line-height: 1;
+}
+
+/*=========头部==========*/
+
+.rebate-progress {
+    position: relative;
+    width: 100%;
+    border-bottom: rem(16) solid map-get($colors, progress-border);
+}
+
+/*=========返利数量==========*/
+
+.rebate-amount {
+    text-align: center;
+    margin: 0 rem(30);
+    padding: rem(40) 0;
+    .value {
+        display: block;
+        font-size: rem(52);
+        font-weight: 500;
+        &.failed {
+            text-transform: uppercase;
+            color: map-get($colors, progress-fail-red);
+        }
+    }
+    .title {
+        display: block;
+        font-size: rem(26);
+        color: map-get($colors, gen-font-sub);
+        margin-top: rem(10);
+        text-transform: capitalize;
+    }
+}
+
+/*=========进度展示==========*/
+
+.rebate-progress-tags {
+    position: relative;
+    min-height: rem(220);
+    margin: 0 rem(60);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    &.failed {
+        width: rem(430);
+        margin: 0 auto;
+        ._rebating {
+            display: none;
+        }
+        ._rebated::before {
+            width: rem(130);
+            left: rem(-120);
+        }
+    }
+}
+.rebate-progress-tag {
+    position: relative;
+    width: rem(160);
+    padding-top: rem(114);
+    text-align: center;
+    font-size: rem(24);
+    background-position-x: rem(30);
+    background-repeat: no-repeat;
+    background-size: rem(100) rem(100);
+    .title {
+        margin-bottom: rem(10);
+        text-transform: uppercase;
+        &.pending {
+            color: map-get($colors, gen-font-sub);
+        }
+        &.failed {
+            color: map-get($colors, progress-fail-red);
+        }
+    }
+    .date {
+        color: map-get($colors, gen-font-sub);
+    }
+    &:before {
+        content: '';
+        width: rem(110);
+        height: 1px;
+        background-color: map-get($colors, sep-yellow);
+        position: absolute;
+        left: rem(-92);
+        top: rem(50);
+    }
+    &:first-of-type:before {
+        display: none;
+    }
+    &._order {
+        background-image: url("../../../images/rebate/order.png");
+    }
+    &._rebating {
+        background-image: url("../../../images/rebate/rebating.png");
+        &.pending {
+            background-image: url("../../../images/rebate/rebating-pending.png");
+            &:before {
+                background-color: map-get($colors, sep-gray);
+            }
+        }
+    }
+    &._rebated {
+        background-image: url("../../../images/rebate/rebated.png");
+        &.pending {
+            background-image: url("../../../images/rebate/rebated-pending.png");
+            &:before {
+                background-color: map-get($colors, sep-gray);
+            }
+        }
+        &.failed {
+            background-image: url("../../../images/rebate/rebated-failed.png");
+        }
+    }
+}
+
+
+/*=========商品详情==========*/
+
+.good-detail {
+    width: 100%;
+    height: rem(280);
+    position: relative;
+    margin: rem(40) 0;
+    padding: 0 0 0 rem(30);
+    .good-image-wrapper {
+        position: relative;
+        float: left;
+        width: rem(240);
+        height: 100%;
+    }
+    .good-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .good-description {
+        float: left;
+        width: rem(450);
+        height: 100%;
+        margin-left: rem(30);
+        padding-right: rem(30);
+        @include line(bottom, #e4e4e4, 0);
+        // border-bottom: rem(2) solid map-get($colors, gen-border);
+    }
+    .good-name {
+        color: map-get($colors, good-name-font);
+        font-size: rem(28);
+        line-height: rem(36);
+        max-height: rem(72);
+        @include ellipsis(mobile, 2);
+    }
+    .source {
+        display: block;
+        width: rem(92);
+        height: rem(36);
+        margin-top: rem(16);
+    }
+    .at-bottom {
+        position: absolute;
+        bottom: 0;
+        font-size: rem(28);
+        .good-price {
+            margin-bottom: rem(14);
+            .good-price__old {
+                font-size: rem(26);
+                text-decoration: line-through;
+                color: map-get($colors, gen-font-sub);
+                margin-left: rem(10);
+            }
+        }
+        .good-quantity {
+            margin-bottom: rem(10);
+            color: map-get($colors, good-name-font);
+            font-size: rem(28);
+
+        }
+        .order-outlay {
+            font-size: rem(28);
+            margin-bottom: rem(12);
+            .title {
+                color: map-get($colors, good-name-font);
+                text-transform: capitalize;
+                margin-right: rem(10);
+            }
+            .value {
+                color: map-get($colors, outlay-font);
+            }
+        }
+    }
+}
+
+/*=========订单详情==========*/
+
+.order-detail {
+    font-size: rem(24);
+    color: map-get($colors, gen-font-sub);
+    padding-left: rem(30);
+    > p {
+        margin: rem(16) 0;
+        .title {
+            text-transform: capitalize;
+            margin-right: rem(10);
+        }
+    }
+}

@@ -1,0 +1,97 @@
+<% include ../public/header.ejs %>
+
+<% if (!isApp) {%>
+    <div class="header-wrapper">
+        <header class="header">
+            <a class="header-back-to" href="javascript:history.go(-1)"></a>
+            <h3 class="header-title">REDEEM</h3>
+        </header>
+    </div>
+<%}%>
+
+<div class="header-sub">
+    <p class="total-num">
+        <% include ./rupee-icon.ejs %>
+        <span class="actual-amount">
+            <%if (result.code == 200 && result.data.balance) {%>
+                <%=:result.data.balance.amount|money:2%>
+            <%} else {%>
+                0.00
+            <%}%>
+        </span>
+    </p>
+    <% if (!isApp) {%>
+        <a class="link-giftcards" href="/account/giftcard">
+            <img src="<%=config.wapcsspath%>/images/account/icon-giftcard.png" />
+            <h3>My Gift Voucher</h3>
+        </a>
+    <%} else {%>
+        <div class="link-giftcards">
+            <img src="<%=config.wapcsspath%>/images/account/icon-giftcard.png" />
+            <h3>My Gift Voucher</h3>
+        </div>
+    <%}%>
+</div>
+
+<div class="separator"></div>
+
+<% if (result.code == 200 && result.data.giftCards && result.data.giftCards.length > 0) {%>
+    <ul class="cards-list">
+        <% for(var i = 0; i < result.data.giftCards.length; i++) {%>
+        <% var g = result.data.giftCards[i]; %>
+        <li class="cards-li">
+            <div class="left">
+                <h3 class="label">value</h3>
+                <p class="content">
+                    <% include ./rupee-icon.ejs %>
+                    <span><%=:g.denomination.amount|money%></span>
+                </p>
+            </div>
+            <div class="right">
+                <h3 class="card-name"><%=g.title%></h3>
+                <ul class="notes">
+                    <li><%=g.description%></li>
+                    <% if (g.expiryDate !== 0) {%>
+                        <li>Expiry Date: <%=:g.expiryDate|time%></li>
+                    <%}%>
+                </ul>
+                <div class="exchange-price">
+                    <span class="label">Redeem Price:</span>
+                    <span class="color-brown">
+                        <% include ./rupee-icon.ejs %>
+                    </span>
+                    <span class="amount"><%=:g.exchangePrice.amount|money%></span>
+                </div>
+                <span class="exchange-btn"
+                    data-card-id="<%=g.id%>"
+                    @click="showExchangePrompt">
+                    redeem
+                </span>
+            </div>
+        </li>
+        <%}%>
+    </ul>
+<%} else {%>
+    <div class="no-data">
+    	<div class="wrap">
+    		<img class="default" src="<%=config.wapcsspath%>/images/account/giftcard-nodata.png">
+    		<h1 class="title">No gift card can be redeemed</h1>
+    	</div>
+    </div>
+<%}%>
+
+<div class="mask" v-show="shownElementName !== ''" v-cloak>
+	<div class="prompt" v-show="shownElementName === 'prompt'">
+		<h3 class="content">
+            Redeem this Gift Card?
+		</h3>
+		<ul class="buttons">
+			<li class="button" @click="removeMaskAndAlert">Cancel</li>
+			<li class="button" @click="sendExchangeReq">Redeem</li>
+		</ul>
+	</div>
+    <div class="loading" v-show="shownElementName === 'loading'"></div>
+</div>
+
+
+<% include ../public/footer.ejs %>

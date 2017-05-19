@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap_css/bootstrap.min.css">
+</head>
+
+<body>
+<link rel="stylesheet" href="/css/login.css">
+<div class="container">
+    <form class="form-signin" method="post" action="login">
+        <% if(flash.message){ %>
+        <p style="color:#fff"><%= flash.message %></p>
+        <% } %>
+        <div class="title">web前端自动化运维系统(Tag平台)</div>
+        <input type="userName" name="username" class="form-control" placeholder="用户名" required autofocus><br>
+        <input type="password" name="pwd" class="form-control" placeholder="密码" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登 录</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>
